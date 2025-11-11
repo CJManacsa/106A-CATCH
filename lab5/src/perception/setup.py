@@ -14,7 +14,7 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='ee106a-tah',
-    maintainer_email='danielmunicio360@gmail.com',
+    maintainer_email='samdreahsu@gmail.com',
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],
@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
             'process_pointcloud = perception.process_pointcloud:main',
             'display_plane = perception.find_table_plane:main',
+            'color_identifier = perception.color_identifier:main'
         ],
     },
 )
