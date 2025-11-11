@@ -1,15 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#-- COPIED FROM IMUTILS LIBRARY: https://github.com/jrosebr1/imutils/blob/master/bin/range-detector
-
-
-# USAGE: You need to specify a filter and "only one" image source
-#
-# (python) range-detector --filter RGB --image /path/to/image.png
-# or
-# (python) range-detector --filter HSV --webcam
-
+import pyrealsense2 as rs
+import numpy as np
 import cv2
 import argparse
 from operator import xor
@@ -46,7 +39,7 @@ def get_arguments():
         ap.error("Please specify only one image source")
 
     if not args['filter'].upper() in ['RGB', 'HSV']:
-        ap.error("Please speciy a correct filter.")
+        ap.error("Please specify a correct filter.")
 
     return args
 
@@ -63,47 +56,48 @@ def get_trackbar_values(range_filter):
 
 
 def main():
-    args = get_arguments()
+    # Set up RealSense pipeline
+    pipeline = rs.pipeline()
+    config = rs.config()
 
-    range_filter = args['filter'].upper()
+    # Configure the pipeline to use the color stream
+    config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
 
-    if args['image']:
-        image = cv2.imread(args['image'])
+    # Start streaming
+    pipeline.start(config)
 
-        if range_filter == 'RGB':
-            frame_to_thresh = image.copy()
-        else:
-            frame_to_thresh = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    else:
-        camera = cv2.VideoCapture(0)
-
+    range_filter = 'HSV'  # Default filter (can be set to 'RGB' or 'HSV')
     setup_trackbars(range_filter)
 
     while True:
-        if args['webcam']:
-            ret, image = camera.read()
+        # Wait for a new frame
+        frames = pipeline.wait_for_frames()
+        color_frame = frames.get_color_frame()
 
-            if not ret:
-                break
+        # Convert to numpy array and then to OpenCV format
+        color_image = np.asanyarray(color_frame.get_data())
 
-            if range_filter == 'RGB':
-                frame_to_thresh = image.copy()
-            else:
-                frame_to_thresh = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        # Convert to HSV if necessary
+        if range_filter == 'HSV':
+            frame_to_thresh = cv2.cvtColor(color_image, cv2.COLOR_BGR2HSV)
+        else:
+            frame_to_thresh = color_image.copy()
 
         v1_min, v2_min, v3_min, v1_max, v2_max, v3_max = get_trackbar_values(range_filter)
 
+        # Apply color filter (HSV or RGB)
         thresh = cv2.inRange(frame_to_thresh, (v1_min, v2_min, v3_min), (v1_max, v2_max, v3_max))
 
-        if args['preview']:
-            preview = cv2.bitwise_and(image, image, mask=thresh)
-            cv2.imshow("Preview", preview)
-        else:
-            cv2.imshow("Original", image)
-            cv2.imshow("Thresh", thresh)
+        # Show the original and thresholded images
+        cv2.imshow("Original", color_image)
+        cv2.imshow("Thresh", thresh)
 
-        if cv2.waitKey(1) & 0xFF is ord('q'):
+        # Exit on 'q' key press
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
+    # Stop the pipeline
+    pipeline.stop()
 
 
 if __name__ == '__main__':

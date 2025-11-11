@@ -77,8 +77,8 @@ def blob_detect(image,                  #-- The frame (cv standard)
         params = cv2.SimpleBlobDetector_Params()
          
         # Change thresholds
-        params.minThreshold = 0;
-        params.maxThreshold = 100;
+        params.minThreshold = 0
+        params.maxThreshold = 100
          
         # Filter by Area.
         params.filterByArea = True
@@ -86,16 +86,16 @@ def blob_detect(image,                  #-- The frame (cv standard)
         params.maxArea = 20000
          
         # Filter by Circularity
-        params.filterByCircularity = True
-        params.minCircularity = 0.1
+        params.filterByCircularity = False
+        # params.minCircularity = 0.1
          
-        # Filter by Convexity
-        params.filterByConvexity = True
-        params.minConvexity = 0.5
+        # # Filter by Convexity
+        params.filterByConvexity = False
+        # params.minConvexity = 0.5
          
         # Filter by Inertia
-        params.filterByInertia =True
-        params.minInertiaRatio = 0.5
+        params.filterByInertia = False
+        # params.minInertiaRatio = 0.5
          
     else:
         params = blob_params     
@@ -118,19 +118,26 @@ def blob_detect(image,                  #-- The frame (cv standard)
 #-- return(im_with_keypoints)
 def draw_keypoints(image,                   #-- Input image
                    keypoints,               #-- CV keypoints
-                   line_color=(0,0,255),    #-- line's color (b,g,r)
+                   line_color=(0,0,255),    #-- Circle color (b, g, r)
+                   radius_factor=1.0,       #-- Scale factor for circle radius (optional)
                    imshow=False             #-- show the result
                   ):
     
-    #-- Draw detected blobs as red circles.
-    #-- cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS ensures the size of the circle corresponds to the size of blob
-    im_with_keypoints = cv2.drawKeypoints(image, keypoints, np.array([]), line_color, cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
- 
-    if imshow:
-        # Show keypoints
-        cv2.imshow("Keypoints", im_with_keypoints)
+    #-- Loop through each keypoint and draw a solid circle
+    for keypoint in keypoints:
+        # Extract the keypoint center and size (diameter)
+        center = (int(keypoint.pt[0]), int(keypoint.pt[1]))  # x, y center of the circle
+        radius = int(keypoint.size * radius_factor / 2)  # Use the size of the keypoint for the radius, scaleable
         
-    return(im_with_keypoints)
+        # Draw a solid circle (thickness=-1 means filled circle)
+        image = cv2.circle(image, center, radius, line_color, thickness=-1)
+    
+    # Optionally display the image with keypoints
+    if imshow:
+        cv2.imshow("Keypoints", image)
+        cv2.waitKey(0)
+    
+    return image
 
 #---------- Draw search window: returns the image
 #-- return(image)
