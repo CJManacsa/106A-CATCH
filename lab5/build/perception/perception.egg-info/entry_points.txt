@@ -1,0 +1,6 @@
+[console_scripts]
+blob_detector = perception.blob_detector_ros2:main
+color_identifier = perception.color_identifier:main
+display_plane = perception.find_table_plane:main
+process_pointcloud = perception.process_pointcloud:main
+

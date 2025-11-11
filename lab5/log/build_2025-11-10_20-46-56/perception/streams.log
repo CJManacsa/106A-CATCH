@@ -1,0 +1,41 @@
+[2.260s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/src/perception': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/perception build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/install.log --single-version-externally-managed install_data
+[2.496s] running egg_info
+[2.496s] creating ../../build/perception/perception.egg-info
+[2.496s] writing ../../build/perception/perception.egg-info/PKG-INFO
+[2.501s] writing dependency_links to ../../build/perception/perception.egg-info/dependency_links.txt
+[2.505s] writing entry points to ../../build/perception/perception.egg-info/entry_points.txt
+[2.507s] writing requirements to ../../build/perception/perception.egg-info/requires.txt
+[2.510s] writing top-level names to ../../build/perception/perception.egg-info/top_level.txt
+[2.514s] writing manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[2.529s] reading manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[2.531s] writing manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[2.533s] running build
+[2.533s] running build_py
+[2.536s] creating /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build
+[2.536s] creating /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib
+[2.538s] creating /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib/perception
+[2.540s] copying perception/__init__.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib/perception
+[2.542s] copying perception/find_table_plane.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib/perception
+[2.547s] copying perception/process_pointcloud.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib/perception
+[2.551s] running install
+[2.552s] running install_lib
+[2.554s] creating /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[2.555s] copying /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib/perception/__init__.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[2.559s] copying /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib/perception/find_table_plane.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[2.565s] copying /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib/perception/process_pointcloud.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[2.573s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception/__init__.py to __init__.cpython-310.pyc
+[2.579s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception/find_table_plane.py to find_table_plane.cpython-310.pyc
+[2.587s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception/process_pointcloud.py to process_pointcloud.cpython-310.pyc
+[2.595s] running install_data
+[2.595s] creating /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/share/ament_index
+[2.596s] creating /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/share/ament_index/resource_index
+[2.597s] creating /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/share/ament_index/resource_index/packages
+[2.599s] copying resource/perception -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/share/ament_index/resource_index/packages
+[2.603s] copying package.xml -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/share/perception
+[2.608s] running install_egg_info
+[2.612s] Copying ../../build/perception/perception.egg-info to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception-0.0.0-py3.10.egg-info
+[2.649s] running install_scripts
+[2.670s] Installing display_plane script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/perception
+[2.673s] Installing process_pointcloud script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/perception
+[2.676s] writing list of installed files to '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/install.log'
+[2.720s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/src/perception' returned '0': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/perception build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/install.log --single-version-externally-managed install_data

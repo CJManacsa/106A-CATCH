@@ -22,7 +22,8 @@ setup(
         'console_scripts': [
             'process_pointcloud = perception.process_pointcloud:main',
             'display_plane = perception.find_table_plane:main',
-            'color_identifier = perception.color_identifier:main'
+            'color_identifier = perception.color_identifier:main',
+            'blob_detector = perception.blob_detector_ros2:main'    
         ],
     },
 )
