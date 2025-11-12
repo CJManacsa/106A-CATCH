@@ -61,7 +61,7 @@ def main():
     config = rs.config()
 
     # Configure the pipeline to use the color stream
-    config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+    config.enable_stream(rs.stream.color, 848, 480, rs.format.bgr8, 60)
 
     # Start streaming
     pipeline.start(config)

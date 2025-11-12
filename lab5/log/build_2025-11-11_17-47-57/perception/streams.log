@@ -1,0 +1,27 @@
+[1.505s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/src/perception': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/perception build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/install.log --single-version-externally-managed install_data
+[1.795s] running egg_info
+[1.796s] writing ../../build/perception/perception.egg-info/PKG-INFO
+[1.800s] writing dependency_links to ../../build/perception/perception.egg-info/dependency_links.txt
+[1.803s] writing entry points to ../../build/perception/perception.egg-info/entry_points.txt
+[1.805s] writing requirements to ../../build/perception/perception.egg-info/requires.txt
+[1.807s] writing top-level names to ../../build/perception/perception.egg-info/top_level.txt
+[1.813s] reading manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[1.817s] writing manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[1.819s] running build
+[1.819s] running build_py
+[1.820s] copying perception/blob_detector_ros2.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib/perception
+[1.826s] running install
+[1.826s] running install_lib
+[1.828s] copying /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib/perception/blob_detector_ros2.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[1.835s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception/blob_detector_ros2.py to blob_detector_ros2.cpython-310.pyc
+[1.842s] running install_data
+[1.843s] running install_egg_info
+[1.845s] removing '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception-0.0.0-py3.10.egg-info' (and everything under it)
+[1.851s] Copying ../../build/perception/perception.egg-info to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception-0.0.0-py3.10.egg-info
+[1.890s] running install_scripts
+[1.912s] Installing blob_detector script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/perception
+[1.915s] Installing color_identifier script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/perception
+[1.918s] Installing display_plane script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/perception
+[1.921s] Installing process_pointcloud script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/perception
+[1.923s] writing list of installed files to '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/install.log'
+[2.043s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/src/perception' returned '0': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/perception build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/install.log --single-version-externally-managed install_data

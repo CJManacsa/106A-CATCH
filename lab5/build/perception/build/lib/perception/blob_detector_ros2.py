@@ -20,10 +20,10 @@ class BlobDetectorNode(Node):
         self.get_logger().info("Starting Blob Detector Node (ROS2)")
 
         # --- Parameters (tweak with ColorIdentifier)
-        self.thr_min = (92, 197, 50)
-        self.thr_max = (106, 255, 255)
+        self.thr_min = (95, 89, 66) #self.thr_min = (92, 197, 50) #self.thr_min = (98, 134, 50)
+        self.thr_max = (106, 255, 255) #self.thr_max = (106, 255, 255)
         self.blur = 0
-        self.detection_window = [0.0, 0.0, 1.0, 1.0]
+        self.detection_window = [0.25, 0.05, 0.75, 1.0]
 
         # --- Configure blob parameters
         params = cv2.SimpleBlobDetector_Params()
@@ -31,11 +31,11 @@ class BlobDetectorNode(Node):
         params.minArea = 100
         params.maxArea = 1e6
         params.filterByCircularity = True
-        params.minCircularity = 0.6
+        params.minCircularity = 0.7
         params.filterByConvexity = True
-        params.minConvexity = 0.2
+        params.minConvexity = 0.7
         params.filterByInertia = True
-        params.minInertiaRatio = 0.7
+        params.minInertiaRatio = 0.5
         self.blob_params = params
 
         # --- CV Bridge
@@ -79,35 +79,21 @@ class BlobDetectorNode(Node):
             self.image_blob_pub.publish(self.bridge.cv2_to_imgmsg(frame_disp, "bgr8"))
             self.image_mask_pub.publish(self.bridge.cv2_to_imgmsg(mask, "8UC1"))
 
-            # --- Publish first blob position and draw a small circle at the blob center
+            # --- Publish first blob position
             for i, kp in enumerate(keypoints):
-                # Get the blob's relative position in the image
                 x, y = get_blob_relative_position(frame, kp)
-                
-                # Draw a small circle at the blob's center
-                radius = 10  # You can adjust the radius size as needed
-                color = (0, 255, 0)  # Circle color in BGR format (Green in this case)
-                thickness = 2  # Line thickness (2 pixels)
-
-                # Draw the circle on the frame
-                cv2.circle(frame_disp, (int(x), int(y)), radius, color, thickness)
-
-                # Create a Point message and publish it
                 point_msg = Point()
                 point_msg.x = float(x)
                 point_msg.y = float(y)
                 self.point_blob_pub.publish(point_msg)
 
                 self.get_logger().info(f"Blob {i}: x={x:.2f}, y={y:.2f}")
-
-                # Only publish the first detected blob for now
                 break
 
             # --- Compute FPS
             fps = 1.0 / (time.time() - self._t0)
             self._t0 = time.time()
             self.get_logger().info(f"FPS: {fps:.1f}")
-
 
 
 def main(args=None):

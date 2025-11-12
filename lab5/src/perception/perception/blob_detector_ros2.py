@@ -20,10 +20,10 @@ class BlobDetectorNode(Node):
         self.get_logger().info("Starting Blob Detector Node (ROS2)")
 
         # --- Parameters (tweak with ColorIdentifier)
-        self.thr_min = (92, 197, 50)
-        self.thr_max = (106, 255, 255)
+        self.thr_min = (95, 89, 66) #self.thr_min = (92, 197, 50) #self.thr_min = (98, 134, 50)
+        self.thr_max = (106, 255, 255) #self.thr_max = (106, 255, 255)
         self.blur = 0
-        self.detection_window = [0.0, 0.0, 1.0, 1.0]
+        self.detection_window = [0.25, 0.05, 0.75, 1.0]
 
         # --- Configure blob parameters
         params = cv2.SimpleBlobDetector_Params()
@@ -31,11 +31,11 @@ class BlobDetectorNode(Node):
         params.minArea = 100
         params.maxArea = 1e6
         params.filterByCircularity = True
-        params.minCircularity = 0.6
+        params.minCircularity = 0.7
         params.filterByConvexity = True
-        params.minConvexity = 0.2
+        params.minConvexity = 0.7
         params.filterByInertia = True
-        params.minInertiaRatio = 0.7
+        params.minInertiaRatio = 0.5
         self.blob_params = params
 
         # --- CV Bridge
