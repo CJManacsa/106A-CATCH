@@ -10,6 +10,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch', ['launch/track_ball.launch.py'])
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -22,7 +23,10 @@ setup(
         'console_scripts': [
             'process_pointcloud = perception.process_pointcloud:main',
             'display_plane = perception.find_table_plane:main',
-            'color_identifier = perception.color_identifier:main'
+            'color_identifier = perception.color_identifier:main',
+            'track_ball = perception.track_ball:main',
+            'ball_tracker = perception.ball_tracker:main',
+            'show_hsv = perception.show_hsv:main'
         ],
     },
 )

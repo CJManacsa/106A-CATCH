@@ -9,6 +9,7 @@ setup.py
 ../../../build/perception/perception.egg-info/top_level.txt
 ../../../build/perception/perception.egg-info/zip-safe
 perception/__init__.py
+perception/ball_tracker.py
 perception/color_identifier.py
 perception/find_table_plane.py
 perception/process_pointcloud.py

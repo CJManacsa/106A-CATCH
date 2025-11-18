@@ -1,0 +1,50 @@
+[1.520s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/src/perception': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/perception build --build-base /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build install --record /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/install.log --single-version-externally-managed install_data
+[1.817s] running egg_info
+[1.817s] creating ../../build/perception/perception.egg-info
+[1.818s] writing ../../build/perception/perception.egg-info/PKG-INFO
+[1.824s] writing dependency_links to ../../build/perception/perception.egg-info/dependency_links.txt
+[1.827s] writing entry points to ../../build/perception/perception.egg-info/entry_points.txt
+[1.830s] writing requirements to ../../build/perception/perception.egg-info/requires.txt
+[1.832s] writing top-level names to ../../build/perception/perception.egg-info/top_level.txt
+[1.835s] writing manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[1.840s] reading manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[1.842s] writing manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[1.844s] running build
+[1.844s] running build_py
+[1.845s] creating /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build
+[1.845s] creating /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib
+[1.846s] creating /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib/perception
+[1.848s] copying perception/__init__.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib/perception
+[1.853s] copying perception/find_table_plane.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib/perception
+[1.859s] copying perception/process_pointcloud.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib/perception
+[1.864s] copying perception/color_identifier.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib/perception
+[1.870s] copying perception/track_ball.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib/perception
+[1.875s] running install
+[1.875s] running install_lib
+[1.879s] creating /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[1.880s] copying /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib/perception/__init__.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[1.884s] copying /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib/perception/find_table_plane.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[1.890s] copying /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib/perception/process_pointcloud.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[1.896s] copying /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib/perception/color_identifier.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[1.902s] copying /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build/lib/perception/track_ball.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[1.909s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception/__init__.py to __init__.cpython-310.pyc
+[1.915s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception/find_table_plane.py to find_table_plane.cpython-310.pyc
+[1.922s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception/process_pointcloud.py to process_pointcloud.cpython-310.pyc
+[1.930s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception/color_identifier.py to color_identifier.cpython-310.pyc
+[1.935s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception/track_ball.py to track_ball.cpython-310.pyc
+[1.942s] running install_data
+[1.942s] creating /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/share/ament_index
+[1.943s] creating /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/share/ament_index/resource_index
+[1.944s] creating /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/share/ament_index/resource_index/packages
+[1.946s] copying resource/perception -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/share/ament_index/resource_index/packages
+[1.949s] copying package.xml -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/share/perception
+[1.953s] running install_egg_info
+[1.958s] Copying ../../build/perception/perception.egg-info to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception-0.0.0-py3.10.egg-info
+[1.999s] running install_scripts
+[2.017s] Installing ball_tracker script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/perception
+[2.020s] Installing color_identifier script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/perception
+[2.022s] Installing display_plane script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/perception
+[2.025s] Installing process_pointcloud script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/perception
+[2.028s] Installing track_ball script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/perception
+[2.030s] writing list of installed files to '/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/install.log'
+[2.062s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/src/perception' returned '0': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/perception build --build-base /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/build install --record /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/perception/install.log --single-version-externally-managed install_data
