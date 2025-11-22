@@ -22,6 +22,10 @@ setup(
         'console_scripts': [
             'main = planning.main:main',
             'tf = planning.static_tf_transform:main',
+            'pyroki_test = planning.pyroki_test:main',
+            'robot_control = planning.robot_control:main',
+            'debug_catcher = planning.debug_ball_catcher:main',
+            'topic_catcher = planning.topic_ball_catcher:main'
         ],
     },
 )
