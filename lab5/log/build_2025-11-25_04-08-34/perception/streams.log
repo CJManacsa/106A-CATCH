@@ -1,0 +1,27 @@
+[1.793s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/src/perception': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/perception build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/install.log --single-version-externally-managed install_data
+[2.172s] running egg_info
+[2.173s] writing ../../build/perception/perception.egg-info/PKG-INFO
+[2.176s] writing dependency_links to ../../build/perception/perception.egg-info/dependency_links.txt
+[2.179s] writing entry points to ../../build/perception/perception.egg-info/entry_points.txt
+[2.181s] writing requirements to ../../build/perception/perception.egg-info/requires.txt
+[2.183s] writing top-level names to ../../build/perception/perception.egg-info/top_level.txt
+[2.190s] reading manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[2.193s] writing manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[2.195s] running build
+[2.195s] running build_py
+[2.197s] copying perception/process_depth_image.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib/perception
+[2.201s] running install
+[2.202s] running install_lib
+[2.205s] copying /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build/lib/perception/process_depth_image.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception
+[2.212s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception/process_depth_image.py to process_depth_image.cpython-310.pyc
+[2.220s] running install_data
+[2.220s] running install_egg_info
+[2.222s] removing '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception-0.0.0-py3.10.egg-info' (and everything under it)
+[2.232s] Copying ../../build/perception/perception.egg-info to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages/perception-0.0.0-py3.10.egg-info
+[2.272s] running install_scripts
+[2.292s] Installing blob_detector script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/perception
+[2.296s] Installing color_identifier script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/perception
+[2.299s] Installing display_plane script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/perception
+[2.306s] Installing process_depth_image script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/perception
+[2.307s] writing list of installed files to '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/install.log'
+[2.386s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/src/perception' returned '0': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/install/perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/perception build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/perception/install.log --single-version-externally-managed install_data

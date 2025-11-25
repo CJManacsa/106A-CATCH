@@ -20,10 +20,11 @@ class BlobDetectorNode(Node):
         self.get_logger().info("Starting Blob Detector Node (ROS2)")
 
         # --- Parameters (tweak with ColorIdentifier)
-        self.thr_min = (95, 89, 66) #self.thr_min = (92, 197, 50) #self.thr_min = (98, 134, 50)
-        self.thr_max = (106, 255, 255) #self.thr_max = (106, 255, 255)
+        self.thr_min = (95, 118, 53) # self.thr_min = (95, 89, 66)
+        self.thr_max = (107, 255, 255)
         self.blur = 0
-        self.detection_window = [0.25, 0.05, 0.75, 1.0]
+        self.detection_window = [0.0, 0.05, 1.0, 1.0]
+        # self.detection_window = [0.25, 0.05, 0.75, 1.0]
 
         # --- Configure blob parameters
         params = cv2.SimpleBlobDetector_Params()
