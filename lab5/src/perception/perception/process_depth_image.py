@@ -111,7 +111,7 @@ class RealSensePCSubscriber(Node):
         # --- Radius filter (baseball radius ~0.036 m) ---
         R_ball = 0.036  # meters
         dist_to_median = np.sqrt((Xs - X_med) ** 2 + (Ys - Y_med) ** 2 + (Zs - Z_med) ** 2)
-        inliers = dist_to_median < R_ball * 1.5  # 50% margin
+        inliers = dist_to_median < R_ball * 3  # 50% margin
         Xs = Xs[inliers]
         Ys = Ys[inliers]
         Zs = Zs[inliers]
@@ -121,11 +121,11 @@ class RealSensePCSubscriber(Node):
             return
 
         # --- Depth spread check ---
-        depth_std = np.std(Zs)
-        max_depth_std_allowed = 0.06  # 6 cm for a baseball
-        if depth_std > max_depth_std_allowed:
-            self.get_logger().warn(f"Depth spread too large (std={depth_std:.3f} m), not publishing")
-            return
+        # depth_std = np.std(Zs)
+        # max_depth_std_allowed = 0.06  # 6 cm for a baseball
+        # if depth_std > max_depth_std_allowed:
+        #     self.get_logger().warn(f"Depth spread too large (std={depth_std:.3f} m), not publishing")
+        #     return
 
         # --- Weighted average around median ---
         dist_to_median = np.sqrt((Xs - X_med) ** 2 + (Ys - Y_med) ** 2 + (Zs - Z_med) ** 2)
