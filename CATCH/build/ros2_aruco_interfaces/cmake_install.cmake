@@ -360,7 +360,23 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros2_aruco_interfaces/srv" TYPE FILE FILES "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_adapter/ros2_aruco_interfaces/srv/StoreTransform.idl")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros2_aruco_interfaces/msg" TYPE FILE FILES "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/ros2_aruco/ros2_aruco_interfaces/msg/ArucoMarkers.msg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros2_aruco_interfaces/srv" TYPE FILE FILES "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/ros2_aruco/ros2_aruco_interfaces/srv/StoreTransform.srv")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros2_aruco_interfaces/srv" TYPE FILE FILES "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_cmake/srv/StoreTransform_Request.msg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros2_aruco_interfaces/srv" TYPE FILE FILES "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_cmake/srv/StoreTransform_Response.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

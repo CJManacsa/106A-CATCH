@@ -3,7 +3,8 @@
   "output_dir": "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_generator_cpp/ros2_aruco_interfaces",
   "template_dir": "/opt/ros/humble/share/rosidl_generator_cpp/cmake/../resource",
   "idl_tuples": [
-    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_adapter/ros2_aruco_interfaces:msg/ArucoMarkers.idl"
+    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_adapter/ros2_aruco_interfaces:msg/ArucoMarkers.idl",
+    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_adapter/ros2_aruco_interfaces:srv/StoreTransform.idl"
   ],
   "ros_interface_dependencies": [
     "geometry_msgs:/opt/ros/humble/share/geometry_msgs/msg/Accel.idl",
@@ -88,6 +89,7 @@
     "/opt/ros/humble/share/rosidl_generator_cpp/cmake/../resource/srv__struct.hpp.em",
     "/opt/ros/humble/share/rosidl_generator_cpp/cmake/../resource/srv__traits.hpp.em",
     "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_adapter/ros2_aruco_interfaces/msg/ArucoMarkers.idl",
+    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_adapter/ros2_aruco_interfaces/srv/StoreTransform.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/Accel.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl",

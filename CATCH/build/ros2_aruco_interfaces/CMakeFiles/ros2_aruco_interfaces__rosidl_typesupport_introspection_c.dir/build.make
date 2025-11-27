@@ -78,6 +78,7 @@ rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_marker
 rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/srv__rosidl_typesupport_introspection_c.h.em
 rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/srv__type_support.c.em
 rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__rosidl_typesupport_introspection_c.h: rosidl_adapter/ros2_aruco_interfaces/msg/ArucoMarkers.idl
+rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__rosidl_typesupport_introspection_c.h: rosidl_adapter/ros2_aruco_interfaces/srv/StoreTransform.idl
 rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
 rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl
 rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl
@@ -145,8 +146,14 @@ rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_marker
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C introspection for ROS interfaces"
 	/usr/bin/python3 /opt/ros/humble/lib/rosidl_typesupport_introspection_c/rosidl_typesupport_introspection_c --generator-arguments-file /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_typesupport_introspection_c__arguments.json
 
+rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__rosidl_typesupport_introspection_c.h: rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__rosidl_typesupport_introspection_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__rosidl_typesupport_introspection_c.h
+
 rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c: rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__rosidl_typesupport_introspection_c.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c
+
+rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c: rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__rosidl_typesupport_introspection_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c
 
 CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c.o: CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/flags.make
 CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c.o: rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c
@@ -162,14 +169,30 @@ CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c -o CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c.s
 
+CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.o: CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/flags.make
+CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.o: rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c
+CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.o: CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.o -MF CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.o.d -o CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.o -c /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c
+
+CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c > CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.i
+
+CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c -o CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.s
+
 # Object files for target ros2_aruco_interfaces__rosidl_typesupport_introspection_c
 ros2_aruco_interfaces__rosidl_typesupport_introspection_c_OBJECTS = \
-"CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c.o"
+"CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c.o" \
+"CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.o"
 
 # External object files for target ros2_aruco_interfaces__rosidl_typesupport_introspection_c
 ros2_aruco_interfaces__rosidl_typesupport_introspection_c_EXTERNAL_OBJECTS =
 
 libros2_aruco_interfaces__rosidl_typesupport_introspection_c.so: CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c.o
+libros2_aruco_interfaces__rosidl_typesupport_introspection_c.so: CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c.o
 libros2_aruco_interfaces__rosidl_typesupport_introspection_c.so: CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/build.make
 libros2_aruco_interfaces__rosidl_typesupport_introspection_c.so: libros2_aruco_interfaces__rosidl_generator_c.so
 libros2_aruco_interfaces__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_c.so
@@ -182,7 +205,7 @@ libros2_aruco_interfaces__rosidl_typesupport_introspection_c.so: /opt/ros/humble
 libros2_aruco_interfaces__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 libros2_aruco_interfaces__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/librcutils.so
 libros2_aruco_interfaces__rosidl_typesupport_introspection_c.so: CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libros2_aruco_interfaces__rosidl_typesupport_introspection_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared library libros2_aruco_interfaces__rosidl_typesupport_introspection_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -195,6 +218,8 @@ CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/clean:
 
 CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__rosidl_typesupport_introspection_c.h
 CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.c
+CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__rosidl_typesupport_introspection_c.h
+CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/ros2_aruco_interfaces/srv/detail/store_transform__type_support.c
 	cd /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/ros2_aruco/ros2_aruco_interfaces /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/ros2_aruco/ros2_aruco_interfaces /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/ros2_aruco_interfaces/CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ros2_aruco_interfaces__rosidl_typesupport_introspection_c.dir/depend
 

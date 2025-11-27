@@ -1,0 +1,22 @@
+[1.340s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/planning': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/planning/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/planning build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/planning/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/planning/install.log --single-version-externally-managed install_data
+[1.600s] running egg_info
+[1.601s] writing ../../build/planning/planning.egg-info/PKG-INFO
+[1.605s] writing dependency_links to ../../build/planning/planning.egg-info/dependency_links.txt
+[1.608s] writing entry points to ../../build/planning/planning.egg-info/entry_points.txt
+[1.611s] writing requirements to ../../build/planning/planning.egg-info/requires.txt
+[1.613s] writing top-level names to ../../build/planning/planning.egg-info/top_level.txt
+[1.620s] reading manifest file '../../build/planning/planning.egg-info/SOURCES.txt'
+[1.623s] writing manifest file '../../build/planning/planning.egg-info/SOURCES.txt'
+[1.625s] running build
+[1.625s] running build_py
+[1.630s] running install
+[1.630s] running install_lib
+[1.636s] running install_data
+[1.639s] running install_egg_info
+[1.640s] removing '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/planning/lib/python3.10/site-packages/planning-0.0.0-py3.10.egg-info' (and everything under it)
+[1.647s] Copying ../../build/planning/planning.egg-info to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/planning/lib/python3.10/site-packages/planning-0.0.0-py3.10.egg-info
+[1.686s] running install_scripts
+[1.706s] Installing main script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/planning/lib/planning
+[1.708s] Installing tf script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/planning/lib/planning
+[1.712s] writing list of installed files to '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/planning/install.log'
+[1.731s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/planning' returned '0': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/planning/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/planning build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/planning/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/planning/install.log --single-version-externally-managed install_data

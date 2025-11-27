@@ -67,6 +67,9 @@ include CMakeFiles/ros2_aruco_interfaces.dir/compiler_depend.make
 include CMakeFiles/ros2_aruco_interfaces.dir/progress.make
 
 CMakeFiles/ros2_aruco_interfaces: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/ros2_aruco/ros2_aruco_interfaces/msg/ArucoMarkers.msg
+CMakeFiles/ros2_aruco_interfaces: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/ros2_aruco/ros2_aruco_interfaces/srv/StoreTransform.srv
+CMakeFiles/ros2_aruco_interfaces: rosidl_cmake/srv/StoreTransform_Request.msg
+CMakeFiles/ros2_aruco_interfaces: rosidl_cmake/srv/StoreTransform_Response.msg
 CMakeFiles/ros2_aruco_interfaces: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
 CMakeFiles/ros2_aruco_interfaces: /opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl
 CMakeFiles/ros2_aruco_interfaces: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl

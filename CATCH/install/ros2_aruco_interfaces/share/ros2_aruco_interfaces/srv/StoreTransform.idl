@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from ros2_aruco_interfaces/srv/StoreTransform.srv
+// generated code does not contain a copyright notice
+
+
+module ros2_aruco_interfaces {
+  module srv {
+    @verbatim (language="comment", text=
+      "Request: full frame names")
+    struct StoreTransform_Request {
+      string parent_frame;
+
+      string child_frame;
+    };
+    @verbatim (language="comment", text=
+      "Response: success flag")
+    struct StoreTransform_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

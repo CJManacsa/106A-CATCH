@@ -1,0 +1,93 @@
+[0.103s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs': CMAKE_PREFIX_PATH=/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/custom_msgs -DCMAKE_INSTALL_PREFIX=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs
+[0.848s] -- The C compiler identification is GNU 11.4.0
+[0.849s] -- The CXX compiler identification is GNU 11.4.0
+[0.849s] -- Detecting C compiler ABI info
+[0.850s] -- Detecting C compiler ABI info - done
+[0.851s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.851s] -- Detecting C compile features
+[0.851s] -- Detecting C compile features - done
+[0.851s] -- Detecting CXX compiler ABI info
+[0.851s] -- Detecting CXX compiler ABI info - done
+[0.851s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.852s] -- Detecting CXX compile features
+[0.852s] -- Detecting CXX compile features - done
+[0.853s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.911s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.060s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.067s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.079s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.136s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.183s] -- Found std_msgs: 4.9.0 (/opt/ros/humble/share/std_msgs/cmake)
+[1.753s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[2.387s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[3.223s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.263s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[3.267s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[3.301s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[3.301s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[3.301s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[3.301s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[3.328s] -- Found PythonExtra: .so  
+[3.567s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[3.759s] -- Added test 'lint_cmake' to check CMake code style
+[3.782s] -- Added test 'xmllint' to check XML markup files
+[3.864s] -- Configuring done
+[4.593s] -- Generating done
+[4.758s] -- Build files have been written to: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs
+[4.764s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs' returned '0': CMAKE_PREFIX_PATH=/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/custom_msgs -DCMAKE_INSTALL_PREFIX=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs
+[4.769s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs': CMAKE_PREFIX_PATH=/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake --build /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs -- -j32 -l32
+[4.852s] [  3%] [34m[1mGenerating C code for ROS interfaces[0m
+[4.868s] [  6%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[4.886s] [  6%] Built target ament_cmake_python_copy_catch_custom_msgs
+[5.089s] [  6%] Built target catch_custom_msgs__cpp
+[5.130s] [ 12%] [32mBuilding C object CMakeFiles/catch_custom_msgs__rosidl_generator_c.dir/rosidl_generator_c/catch_custom_msgs/msg/detail/point_vel__functions.c.o[0m
+[5.132s] [ 19%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[5.132s] [ 19%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[5.134s] [ 19%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[5.154s] running egg_info
+[5.155s] creating catch_custom_msgs.egg-info
+[5.156s] writing catch_custom_msgs.egg-info/PKG-INFO
+[5.159s] writing dependency_links to catch_custom_msgs.egg-info/dependency_links.txt
+[5.163s] writing top-level names to catch_custom_msgs.egg-info/top_level.txt
+[5.165s] writing manifest file 'catch_custom_msgs.egg-info/SOURCES.txt'
+[5.172s] reading manifest file 'catch_custom_msgs.egg-info/SOURCES.txt'
+[5.175s] writing manifest file 'catch_custom_msgs.egg-info/SOURCES.txt'
+[5.204s] [ 19%] Built target ament_cmake_python_build_catch_custom_msgs_egg
+[5.209s] [ 22%] [32m[1mLinking C shared library libcatch_custom_msgs__rosidl_generator_c.so[0m
+[5.259s] [ 22%] Built target catch_custom_msgs__rosidl_generator_c
+[5.292s] [ 32%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[5.292s] [ 32%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[5.293s] [ 32%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[5.337s] [ 35%] [32mBuilding CXX object CMakeFiles/catch_custom_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/catch_custom_msgs/msg/point_vel__type_support.cpp.o[0m
+[5.358s] [ 38%] [32mBuilding CXX object CMakeFiles/catch_custom_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/catch_custom_msgs/msg/detail/point_vel__type_support.cpp.o[0m
+[5.364s] [ 41%] [32mBuilding CXX object CMakeFiles/catch_custom_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/catch_custom_msgs/msg/detail/dds_fastrtps/point_vel__type_support.cpp.o[0m
+[5.516s] [ 45%] [32mBuilding CXX object CMakeFiles/catch_custom_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/catch_custom_msgs/msg/point_vel__type_support.cpp.o[0m
+[5.531s] [ 48%] [32mBuilding CXX object CMakeFiles/catch_custom_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/catch_custom_msgs/msg/detail/point_vel__type_support_c.cpp.o[0m
+[5.539s] [ 51%] [32mBuilding C object CMakeFiles/catch_custom_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/catch_custom_msgs/msg/detail/point_vel__type_support.c.o[0m
+[5.552s] [ 54%] [32m[1mLinking CXX shared library libcatch_custom_msgs__rosidl_typesupport_cpp.so[0m
+[5.573s] [ 58%] [32m[1mLinking CXX shared library libcatch_custom_msgs__rosidl_typesupport_c.so[0m
+[5.612s] [ 61%] [32m[1mLinking C shared library libcatch_custom_msgs__rosidl_typesupport_introspection_c.so[0m
+[5.619s] [ 61%] Built target catch_custom_msgs__rosidl_typesupport_cpp
+[5.645s] [ 61%] Built target catch_custom_msgs__rosidl_typesupport_c
+[5.654s] [ 64%] [32m[1mLinking CXX shared library libcatch_custom_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[5.669s] [ 67%] [32m[1mLinking CXX shared library libcatch_custom_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[5.672s] [ 67%] Built target catch_custom_msgs__rosidl_typesupport_introspection_c
+[5.740s] [ 67%] Built target catch_custom_msgs__rosidl_typesupport_fastrtps_cpp
+[5.741s] [ 67%] Built target catch_custom_msgs__rosidl_typesupport_introspection_cpp
+[5.857s] [ 70%] [32m[1mLinking CXX shared library libcatch_custom_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[5.931s] [ 70%] Built target catch_custom_msgs__rosidl_typesupport_fastrtps_c
+[5.965s] [ 70%] Built target catch_custom_msgs
+[5.999s] [ 74%] [34m[1mGenerating Python code for ROS interfaces[0m
+[6.241s] [ 74%] Built target catch_custom_msgs__py
+[6.298s] [ 77%] [32mBuilding C object CMakeFiles/catch_custom_msgs__rosidl_generator_py.dir/rosidl_generator_py/catch_custom_msgs/msg/_point_vel_s.c.o[0m
+[6.424s] [ 80%] [32m[1mLinking C shared library rosidl_generator_py/catch_custom_msgs/libcatch_custom_msgs__rosidl_generator_py.so[0m
+[6.507s] [ 80%] Built target catch_custom_msgs__rosidl_generator_py
+[6.596s] [ 83%] [32mBuilding C object CMakeFiles/catch_custom_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/catch_custom_msgs/_catch_custom_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[6.599s] [ 90%] [32mBuilding C object CMakeFiles/catch_custom_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/catch_custom_msgs/_catch_custom_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[6.600s] [ 90%] [32mBuilding C object CMakeFiles/catch_custom_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/catch_custom_msgs/_catch_custom_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[6.722s] [100%] [32m[1mLinking C shared library rosidl_generator_py/catch_custom_msgs/catch_custom_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.722s] [100%] [32m[1mLinking C shared library rosidl_generator_py/catch_custom_msgs/catch_custom_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.723s] [100%] [32m[1mLinking C shared library rosidl_generator_py/catch_custom_msgs/catch_custom_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.793s] [100%] Built target catch_custom_msgs__rosidl_typesupport_fastrtps_c__pyext
+[6.795s] [100%] Built target catch_custom_msgs__rosidl_typesupport_c__pyext
+[6.797s] [100%] Built target catch_custom_msgs__rosidl_typesupport_introspection_c__pyext

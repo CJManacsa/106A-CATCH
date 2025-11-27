@@ -137,6 +137,9 @@ class ArucoNode(rclpy.node.Node):
         
         self.marker_size_map = {1: 0.15, 2: 0.15, 3: 0.15, 4: 0.15, 5: 0.15, 11: 0.15, 
                                 6: 0.15, 7: 0.15, 8: 0.15, 9: 0.15, 10: 0.15}
+        
+        self.default_marker_size = 0.0625
+        
         self.get_logger().info(f"Marker size map for marker ids is: {self.marker_size_map}")
 
         dictionary_id_name = (
@@ -236,7 +239,7 @@ class ArucoNode(rclpy.node.Node):
             goal_markers = []
             final_marker_ids = []
             for i, marker_id in enumerate(marker_ids):
-                marker_size = self.marker_size_map[marker_id[0]]
+                marker_size = self.marker_size_map.get(marker_id[0], self.default_marker_size)
                 if marker_size == 0.05:
                     turtlebot_corners.append(corners[i])
                     turtlebot_markers.append(marker_id)

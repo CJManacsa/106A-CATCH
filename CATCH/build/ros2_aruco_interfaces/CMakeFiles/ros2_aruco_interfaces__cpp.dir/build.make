@@ -71,6 +71,11 @@ CMakeFiles/ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interface
 CMakeFiles/ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/detail/aruco_markers__struct.hpp
 CMakeFiles/ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/detail/aruco_markers__traits.hpp
 CMakeFiles/ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.hpp
+CMakeFiles/ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/srv/store_transform.hpp
+CMakeFiles/ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__builder.hpp
+CMakeFiles/ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__struct.hpp
+CMakeFiles/ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__traits.hpp
+CMakeFiles/ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__type_support.hpp
 CMakeFiles/ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
 
 rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp: /opt/ros/humble/lib/rosidl_generator_cpp/rosidl_generator_cpp
@@ -89,6 +94,7 @@ rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp: /opt/ros/humbl
 rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp: /opt/ros/humble/share/rosidl_generator_cpp/resource/srv__struct.hpp.em
 rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp: /opt/ros/humble/share/rosidl_generator_cpp/resource/srv__traits.hpp.em
 rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp: rosidl_adapter/ros2_aruco_interfaces/msg/ArucoMarkers.idl
+rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp: rosidl_adapter/ros2_aruco_interfaces/srv/StoreTransform.idl
 rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
 rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp: /opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl
 rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl
@@ -168,12 +174,32 @@ rosidl_generator_cpp/ros2_aruco_interfaces/msg/detail/aruco_markers__traits.hpp:
 rosidl_generator_cpp/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.hpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.hpp
 
+rosidl_generator_cpp/ros2_aruco_interfaces/srv/store_transform.hpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ros2_aruco_interfaces/srv/store_transform.hpp
+
+rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__builder.hpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__builder.hpp
+
+rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__struct.hpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__struct.hpp
+
+rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__traits.hpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__traits.hpp
+
+rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__type_support.hpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__type_support.hpp
+
 ros2_aruco_interfaces__cpp: CMakeFiles/ros2_aruco_interfaces__cpp
 ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/aruco_markers.hpp
 ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/detail/aruco_markers__builder.hpp
 ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/detail/aruco_markers__struct.hpp
 ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/detail/aruco_markers__traits.hpp
 ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/msg/detail/aruco_markers__type_support.hpp
+ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__builder.hpp
+ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__struct.hpp
+ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__traits.hpp
+ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/srv/detail/store_transform__type_support.hpp
+ros2_aruco_interfaces__cpp: rosidl_generator_cpp/ros2_aruco_interfaces/srv/store_transform.hpp
 ros2_aruco_interfaces__cpp: CMakeFiles/ros2_aruco_interfaces__cpp.dir/build.make
 .PHONY : ros2_aruco_interfaces__cpp
 

@@ -70,8 +70,11 @@ ros2_aruco_interfaces__py/CMakeFiles/ros2_aruco_interfaces__py: rosidl_generator
 ros2_aruco_interfaces__py/CMakeFiles/ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_introspection_c.c
 ros2_aruco_interfaces__py/CMakeFiles/ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_c.c
 ros2_aruco_interfaces__py/CMakeFiles/ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/msg/_aruco_markers.py
+ros2_aruco_interfaces__py/CMakeFiles/ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/srv/_store_transform.py
 ros2_aruco_interfaces__py/CMakeFiles/ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/msg/__init__.py
+ros2_aruco_interfaces__py/CMakeFiles/ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/srv/__init__.py
 ros2_aruco_interfaces__py/CMakeFiles/ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/msg/_aruco_markers_s.c
+ros2_aruco_interfaces__py/CMakeFiles/ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/srv/_store_transform_s.c
 
 rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/lib/rosidl_generator_py/rosidl_generator_py
 rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_py/__init__.py
@@ -87,6 +90,7 @@ rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typ
 rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/rosidl_generator_py/resource/_srv_pkg_typesupport_entry_point.c.em
 rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/rosidl_generator_py/resource/_srv.py.em
 rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/ros2_aruco_interfaces/msg/ArucoMarkers.idl
+rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/ros2_aruco_interfaces/srv/StoreTransform.idl
 rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
 rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl
 rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl
@@ -163,11 +167,20 @@ rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typ
 rosidl_generator_py/ros2_aruco_interfaces/msg/_aruco_markers.py: rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/ros2_aruco_interfaces/msg/_aruco_markers.py
 
+rosidl_generator_py/ros2_aruco_interfaces/srv/_store_transform.py: rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/ros2_aruco_interfaces/srv/_store_transform.py
+
 rosidl_generator_py/ros2_aruco_interfaces/msg/__init__.py: rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/ros2_aruco_interfaces/msg/__init__.py
 
+rosidl_generator_py/ros2_aruco_interfaces/srv/__init__.py: rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/ros2_aruco_interfaces/srv/__init__.py
+
 rosidl_generator_py/ros2_aruco_interfaces/msg/_aruco_markers_s.c: rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/ros2_aruco_interfaces/msg/_aruco_markers_s.c
+
+rosidl_generator_py/ros2_aruco_interfaces/srv/_store_transform_s.c: rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/ros2_aruco_interfaces/srv/_store_transform_s.c
 
 ros2_aruco_interfaces__py: ros2_aruco_interfaces__py/CMakeFiles/ros2_aruco_interfaces__py
 ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco_interfaces_s.ep.rosidl_typesupport_c.c
@@ -176,6 +189,9 @@ ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/_ros2_aruco
 ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/msg/__init__.py
 ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/msg/_aruco_markers.py
 ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/msg/_aruco_markers_s.c
+ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/srv/__init__.py
+ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/srv/_store_transform.py
+ros2_aruco_interfaces__py: rosidl_generator_py/ros2_aruco_interfaces/srv/_store_transform_s.c
 ros2_aruco_interfaces__py: ros2_aruco_interfaces__py/CMakeFiles/ros2_aruco_interfaces__py.dir/build.make
 .PHONY : ros2_aruco_interfaces__py
 

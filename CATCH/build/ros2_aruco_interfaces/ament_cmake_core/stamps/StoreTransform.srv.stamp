@@ -1,0 +1,7 @@
+# Request: full frame names
+string parent_frame
+string child_frame
+---
+# Response: success flag
+bool success
+string message

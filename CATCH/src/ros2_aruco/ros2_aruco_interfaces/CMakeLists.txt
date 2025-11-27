@@ -25,13 +25,6 @@ find_package(rosidl_default_generators REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/ArucoMarkers.msg"
-  DEPENDENCIES geometry_msgs
-  DEPENDENCIES std_msgs
- )
-
-
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -42,5 +35,12 @@ if(BUILD_TESTING)
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/ArucoMarkers.msg"
+  "srv/StoreTransform.srv"
+  DEPENDENCIES geometry_msgs
+  DEPENDENCIES std_msgs
+)
 
 ament_package()
