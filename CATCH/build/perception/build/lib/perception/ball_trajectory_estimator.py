@@ -8,165 +8,184 @@ import struct
 from catch_custom_msgs.msg import PointVel
 from std_srvs.srv import Empty
 
+class KalmanFilter3D:
+    def __init__(self):
+        self.g = 9.81  # +Y downward
+        self.x = np.zeros((6, 1))  # [x, y, z, vx, vy, vz]
+        self.P = np.eye(6)
+        self.P[0:3,0:3] *= 1.0
+        self.P[3:6,3:6] *= 2000.0
+        self.Q = np.eye(6)
+        self.Q[0:3,0:3] *= 0.0001
+        self.Q[3:6,3:6] *= 0.25
+        self.R = np.eye(6)
+        self.R[0:3,0:3] *= 0.0015
+        self.R[3:6,3:6] *= 0.15
+        self.H = np.eye(6)
+
+    def predict(self, dt):
+        F = np.eye(6)
+        F[0,3] = F[1,4] = F[2,5] = dt
+        B = np.zeros((6,1))
+        B[1,0] = 0.5*self.g*dt**2
+        B[4,0] = self.g*dt
+        self.x = F @ self.x + B
+        self.P = F @ self.P @ F.T + self.Q
+
+    def update(self, meas):
+        z = meas.reshape((6,1))
+        y = z - self.H @ self.x
+        S = self.H @ self.P @ self.H.T + self.R
+        K = self.P @ self.H.T @ np.linalg.inv(S)
+        self.x = self.x + K @ y
+        self.P = (np.eye(6) - K @ self.H) @ self.P
 
 class BallTrajectoryEstimator(Node):
     def __init__(self):
         super().__init__('ball_trajectory_estimator')
-
-        # Subscribe to ball state topic
         self.sub = self.create_subscription(PointVel, '/ball_state', self.ball_callback, 10)
-
-        # Publishers
         self.trajectory_pub = self.create_publisher(PointCloud2, '/ball_trajectory', 1)
         self.predicted_pub = self.create_publisher(PointCloud2, '/ball_predicted_trajectory', 1)
-
-        # Reset service
         self.reset_srv = self.create_service(Empty, 'reset_trajectory', self.reset_callback)
 
-        # History
-        self.positions_history = deque(maxlen=10)
-        self.velocities_history = deque(maxlen=10)
-        self.predicted_trajs = deque(maxlen=10)
+        self.positions = deque(maxlen=20)
+        self.predicted_trajs = deque(maxlen=20)
+        self.kf = KalmanFilter3D()
+        self.last_time = None
+        self.header_frame = None
+        self.pred_points = 20
 
-        self.header = None
+class BallTrajectoryEstimator(Node):
+    def __init__(self):
+        super().__init__('ball_trajectory_estimator')
+        self.sub = self.create_subscription(PointVel, '/ball_state', self.ball_callback, 10)
+        self.trajectory_pub = self.create_publisher(PointCloud2, '/ball_trajectory', 1)
+        self.predicted_pub = self.create_publisher(PointCloud2, '/ball_predicted_trajectory', 1)
+        self.reset_srv = self.create_service(Empty, 'reset_trajectory', self.reset_callback)
 
-        self.get_logger().info("Ball Trajectory Estimator node started.")
+        self.positions = deque(maxlen=20)
+        self.predicted_trajs = deque(maxlen=20)
+        self.kf = KalmanFilter3D()
+        # reduce initial velocity uncertainty for stability
+        self.kf.P[3:6, 3:6] = np.eye(3) * 5.0
+        self.last_time = None
+        self.header_frame = None
+        self.pred_points = 20
 
     def ball_callback(self, msg: PointVel):
-        # Append new measurement
-        self.positions_history.append([msg.x, msg.y, msg.z])
-        self.velocities_history.append([msg.vx, msg.vy, msg.vz])
+        curr_time = msg.header.stamp.sec + msg.header.stamp.nanosec*1e-9
+        dt = max(curr_time - self.last_time, 1e-6) if self.last_time is not None else 0.033
+        self.last_time = curr_time
+        self.header_frame = msg.header.frame_id
 
-        positions_array = np.array(self.positions_history)
-        velocities_array = np.array(self.velocities_history)
-        self.header = msg.header
-
-        # --- Publish green trail ---
-        self.publish_pointcloud(positions_array, self.trajectory_pub, msg.header, color=(0, 255, 0, 255))
-
-        # --- Smooth X and Z velocities ---
-        vx_nonzero = velocities_array[-5:, 0][velocities_array[-5:, 0] != 0]
-        vz_nonzero = velocities_array[-5:, 2][velocities_array[-5:, 2] != 0]
-
-        vx_smooth = vx_nonzero.mean() if len(vx_nonzero) > 0 else velocities_array[-1, 0]
-        vz_smooth = vz_nonzero.mean() if len(vz_nonzero) > 0 else velocities_array[-1, 2]
-
-        # --- Smooth Y velocity using linear regression ---
-        dt = 0.033  # timestep between velocity measurements
-        if len(velocities_array) < 2:
-            # Not enough points to compute any velocity
-            vy_smooth = velocities_array[-1, 1]
-        elif len(velocities_array) < 5:
-            # Use finite difference on last two positions
-            vy_smooth = (positions_array[-1, 1] - positions_array[-2, 1]) / dt
-        else:
-            # Use linear regression on last 5 points
-            N = 5
-            y_vel_history = velocities_array[-N:, 1]
-            t_history = np.arange(N) * dt
-            a, b = np.polyfit(t_history, y_vel_history, 1)
-            vy_smooth = a * t_history[-1] + b
-
-        # --- Combine smoothed velocities ---
-        v0 = np.array([vx_smooth, vy_smooth, vz_smooth])
-
-        # --- Least squares Z smoothing ---
-        positions_for_ls = positions_array[-5:]
-        xs = positions_for_ls[:, 0]
-        zs = positions_for_ls[:, 2]
-        last_x = positions_for_ls[-1, 0]
-        if len(xs) >= 2:
+        # --- Append and smooth positions ---
+        self.positions.append([msg.x, msg.y, msg.z])
+        pos_array = np.array(self.positions)
+        N = min(5, len(pos_array))
+        if N >= 2:
+            xs = pos_array[-N:,0]
+            zs = pos_array[-N:,2]
             a, b = np.polyfit(xs, zs, 1)
-            z_smooth = a * last_x + b
+            pos_array[-1,2] = a*xs[-1] + b
+            self.positions[-1][2] = pos_array[-1,2]
+
+        # --- Compute velocity from last two points ---
+        if len(pos_array) >= 2:
+            dx, dy, dz = pos_array[-1] - pos_array[-2]
+            vx, vy, vz = dx/dt, dy/dt, dz/dt
+            # --- Initialize Kalman velocity on second point ---
+            if len(self.positions) == 2:
+                self.kf.x[3,0] = vx
+                self.kf.x[4,0] = vy
+                self.kf.x[5,0] = vz
         else:
-            z_smooth = positions_for_ls[-1, 2]
+            vx = vy = vz = 0.0
 
-        last_pos = np.array([positions_array[-1, 0], positions_array[-1, 1], z_smooth])
+        meas = np.array([pos_array[-1,0], pos_array[-1,1], pos_array[-1,2], vx, vy, vz])
 
-        # --- Only predict trajectory if at least 5 positions ---
-        if len(positions_array) < 5:
-            return
+        # --- Kalman filter update ---
+        self.kf.predict(dt)
+        self.kf.update(meas)
+        x, y, z, vx, vy, vz = self.kf.x.flatten()
+        self.positions[-1] = [x, y, z]
 
-        # --- Predict trajectory ---
+        # --- Publish filtered trajectory ---
+        self.publish_pointcloud(np.array(self.positions), self.trajectory_pub, msg.header, color=(0,255,0,255))
+
+        # --- Predict future trajectory ---
         g = 9.81
-        predicted_points = []
-        for i in range(1, 11):
-            t = i * dt
-            x = last_pos[0] + v0[0] * t
-            y = last_pos[1] + v0[1] * t + 0.5 * g * t**2
-            z = last_pos[2] + v0[2] * t
-            predicted_points.append([x, y, z])
+        pred = []
+        for i in range(1, self.pred_points+1):
+            t = i*dt
+            xp = x + vx*t
+            yp = y + vy*t + 0.5*g*t**2
+            zp = z + vz*t
+            pred.append([xp, yp, zp])
+        pred_array = np.array(pred)
+        self.predicted_trajs.append(pred_array)
 
-        predicted_array = np.array(predicted_points)
-        self.predicted_trajs.append(predicted_array)
-
-        # --- Merge predictions with fade ---
+        # --- Fade older predictions ---
         all_points = []
-        N_trajs = len(self.predicted_trajs)
+        n = len(self.predicted_trajs)
         for i, traj in enumerate(self.predicted_trajs):
-            fade = (i + 1) / N_trajs
-            r, g_col, b_col, alpha = 255, int(255 * fade), 0, int(255 * fade)
+            fade = (i+1)/n
+            r, g_col, b_col, a = 255, int(255*fade), 0, 255
             for p in traj:
-                rgba = struct.unpack('<I', struct.pack('<BBBB', b_col, g_col, r, alpha))[0]
-                all_points.append([float(p[0]), float(p[1]), float(p[2]), int(rgba)])
+                rgba = struct.unpack('<I', struct.pack('<BBBB', b_col, g_col, r, a))[0]
+                all_points.append([p[0], p[1], p[2], rgba])
+        self.publish_pointcloud(np.array(all_points), self.predicted_pub, msg.header, color=None)
 
-        all_points_array = np.array(all_points)
-        self.publish_pointcloud(all_points_array, self.predicted_pub, msg.header, color=None)
-
-    def reset_callback(self, request, response):
-        # Clear histories
-        self.positions_history.clear()
-        self.velocities_history.clear()
+    def reset_callback(self, req, res):
+        self.positions.clear()
         self.predicted_trajs.clear()
-
-        # Publish a single dummy point far below scene to clear RViz
-        dummy_points = np.array([[0.0, 0.0, -100.0, 0]], dtype=np.float32)
+        self.kf = KalmanFilter3D()
+        self.last_time = None
         header = Header()
         header.stamp = self.get_clock().now().to_msg()
+        header.frame_id = self.header_frame if self.header_frame is not None else "world"
+        # safer dummy point (smaller Z to avoid float overflow)
+        dummy = np.array([[0.0, 0.0, -10.0, 0]], dtype=np.float32)
+        self.publish_pointcloud(dummy, self.trajectory_pub, header, color=(0,255,0,255))
+        self.publish_pointcloud(dummy, self.predicted_pub, header, color=None)
+        self.get_logger().info("Trajectory reset.")
+        return res
 
-        # Use last received header frame, or fallback to "world"
-        if self.header is not None:
-            header.frame_id = self.header.frame_id
-        else:
-            header.frame_id = "world"
-
-        self.publish_pointcloud(dummy_points, self.trajectory_pub, header, color=(0, 255, 0, 255))
-        self.publish_pointcloud(dummy_points, self.predicted_pub, header, color=None)
-
-        self.get_logger().info("Trajectory data reset and dummy point published!")
-        return response
-
-
-    def publish_pointcloud(self, points_array: np.ndarray, publisher, header: Header, color=None):
-        points = []
+    def publish_pointcloud(self, points_array, publisher, header, color=None):
+        if points_array.size == 0:
+            return
+        pts = []
         if color is not None:
             r, g, b, a = color
             for p in points_array:
+                x, y, z = np.clip(p[:3], -1e6, 1e6)  # avoid float overflow
                 rgba = struct.unpack('<I', struct.pack('<BBBB', b, g, r, a))[0]
-                points.append([float(p[0]), float(p[1]), float(p[2]), int(rgba)])
+                pts.append([float(x), float(y), float(z), rgba])
         else:
             for p in points_array:
-                points.append([float(p[0]), float(p[1]), float(p[2]), int(p[3])])
-
-        flat_points = b''.join([struct.pack('<fffI', p[0], p[1], p[2], int(p[3])) for p in points])
-
-        pc2_msg = PointCloud2()
-        pc2_msg.header = header
-        pc2_msg.height = 1
-        pc2_msg.width = len(points)
-        pc2_msg.is_dense = True
-        pc2_msg.is_bigendian = False
-        pc2_msg.fields = [
+                if len(p) < 4:
+                    continue
+                x, y, z, rgba = p
+                x, y, z = np.clip([x, y, z], -1e6, 1e6)
+                pts.append([float(x), float(y), float(z), int(rgba)])
+        if len(pts) == 0:
+            return
+        flat = b''.join([struct.pack('<fffI', *p) for p in pts])
+        msg = PointCloud2()
+        msg.header = header
+        msg.height = 1
+        msg.width = len(pts)
+        msg.is_dense = True
+        msg.is_bigendian = False
+        msg.fields = [
             PointField(name='x', offset=0, datatype=PointField.FLOAT32, count=1),
             PointField(name='y', offset=4, datatype=PointField.FLOAT32, count=1),
             PointField(name='z', offset=8, datatype=PointField.FLOAT32, count=1),
             PointField(name='rgba', offset=12, datatype=PointField.UINT32, count=1),
         ]
-        pc2_msg.point_step = 16
-        pc2_msg.row_step = pc2_msg.point_step * len(points)
-        pc2_msg.data = flat_points
-        publisher.publish(pc2_msg)
-
+        msg.point_step = 16
+        msg.row_step = msg.point_step * len(pts)
+        msg.data = flat
+        publisher.publish(msg)
 
 def main(args=None):
     rclpy.init(args=args)
@@ -175,6 +194,5 @@ def main(args=None):
     node.destroy_node()
     rclpy.shutdown()
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

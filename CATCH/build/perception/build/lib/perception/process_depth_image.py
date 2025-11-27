@@ -130,26 +130,27 @@ class RealSensePCSubscriber(Node):
         pt.point.x, pt.point.y, pt.point.z = float(X_final), float(Y_final), float(Z_final)
         self.ball_pose_pub.publish(pt)
 
-        # --- Compute velocity ---
+        # --- Compute velocity using proper dt ---
         curr_pos = np.array([X_final, Y_final, Z_final])
-        curr_time = msg.header.stamp.sec + msg.header.stamp.nanosec * 1e-9
+        curr_time = msg.header.stamp.sec + msg.header.stamp.nanosec*1e-9
 
-        if self.prev_pos is not None and self.prev_time is not None:
-            dt = curr_time - self.prev_time
-            vel = (curr_pos - self.prev_pos) / dt if dt > 0 else np.zeros(3)
+        if self.prev_pos is not None:
+            dt = max(curr_time - self.prev_time, 1e-6)  # avoid div-by-zero
+            vel = (curr_pos - self.prev_pos) / dt
         else:
+            dt = 0.033  # small default dt for first measurement
             vel = np.zeros(3)
 
+        # Update previous values after computing velocity
         self.prev_pos = curr_pos
         self.prev_time = curr_time
 
         # --- Publish PointVel with header ---
         pv = PointVel()
-        pv.header = msg.header  # <-- include header
+        pv.header = msg.header
         pv.x, pv.y, pv.z = float(X_final), float(Y_final), float(Z_final)
         pv.vx, pv.vy, pv.vz = float(vel[0]), float(vel[1]), float(vel[2])
         self.ball_state_pub.publish(pv)
-
 
 def main(args=None):
     rclpy.init(args=args)
