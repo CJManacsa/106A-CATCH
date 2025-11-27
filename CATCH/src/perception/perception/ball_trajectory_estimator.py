@@ -6,6 +6,7 @@ import numpy as np
 from collections import deque
 import struct
 from catch_custom_msgs.msg import PointVel
+from std_srvs.srv import Empty
 
 
 class BallTrajectoryEstimator(Node):
@@ -13,129 +14,131 @@ class BallTrajectoryEstimator(Node):
         super().__init__('ball_trajectory_estimator')
 
         # Subscribe to ball state topic
-        self.sub = self.create_subscription(
-            PointVel,
-            '/ball_state',
-            self.ball_callback,
-            10
-        )
+        self.sub = self.create_subscription(PointVel, '/ball_state', self.ball_callback, 10)
 
         # Publishers
         self.trajectory_pub = self.create_publisher(PointCloud2, '/ball_trajectory', 1)
         self.predicted_pub = self.create_publisher(PointCloud2, '/ball_predicted_trajectory', 1)
 
-        # History storage
-        self.positions = deque(maxlen=10)
-        self.velocities = deque(maxlen=10)
-        self.predicted_trajs = deque(maxlen=10)  # store last 10 predicted trajectories
+        # Reset service
+        self.reset_srv = self.create_service(Empty, 'reset_trajectory', self.reset_callback)
+
+        # History
+        self.positions_history = deque(maxlen=10)
+        self.velocities_history = deque(maxlen=10)
+        self.predicted_trajs = deque(maxlen=10)
+
+        self.header = None
 
         self.get_logger().info("Ball Trajectory Estimator node started.")
 
-    def smooth_latest_z(self, array: np.ndarray, window=3):
-        """Smooth only the latest point's z (or vz) based on previous points."""
-        N = len(array)
-        if N < 2:
-            return array
-        start = max(0, N - window)
-        z_to_average = array[start:, 2]
-        array[-1, 2] = np.mean(z_to_average)
-        return array
-
     def ball_callback(self, msg: PointVel):
-        # Append current position and velocity
-        pos = [msg.x, msg.y, msg.z]
-        vel = [msg.vx, msg.vy, msg.vz]
-        self.positions.append(pos)
-        self.velocities.append(vel)
+        # Append new measurement
+        self.positions_history.append([msg.x, msg.y, msg.z])
+        self.velocities_history.append([msg.vx, msg.vy, msg.vz])
 
-        if len(self.positions) < 2:
-            return  # need at least 2 points to predict
+        positions_array = np.array(self.positions_history)
+        velocities_array = np.array(self.velocities_history)
+        self.header = msg.header
 
-        # Convert to arrays
-        positions_array = np.array(self.positions)
-        velocities_array = np.array(self.velocities)
+        # --- Publish green trail ---
+        self.publish_pointcloud(positions_array, self.trajectory_pub, msg.header, color=(0, 255, 0, 255))
 
-        # Smooth only the newest z values
-        positions_array = self.smooth_latest_z(positions_array, window=7)
-        velocities_array = self.smooth_latest_z(velocities_array, window=7)
+        # --- Smooth X and Z velocities ---
+        vx_nonzero = velocities_array[-5:, 0][velocities_array[-5:, 0] != 0]
+        vz_nonzero = velocities_array[-5:, 2][velocities_array[-5:, 2] != 0]
 
-        dt = 0.033  # approximate time step
+        vx_smooth = vx_nonzero.mean() if len(vx_nonzero) > 0 else velocities_array[-1, 0]
+        vz_smooth = vz_nonzero.mean() if len(vz_nonzero) > 0 else velocities_array[-1, 2]
 
-        # --- PUBLISH HISTORY TRAIL (NEON GREEN) ---
-        self.publish_pointcloud(
-            positions_array,
-            self.trajectory_pub,
-            msg.header,
-            color=(0, 255, 0, 255)
-        )
+        # --- Smooth Y velocity using linear regression ---
+        dt = 0.033  # timestep between velocity measurements
+        if len(velocities_array) < 2:
+            # Not enough points to compute any velocity
+            vy_smooth = velocities_array[-1, 1]
+        elif len(velocities_array) < 5:
+            # Use finite difference on last two positions
+            vy_smooth = (positions_array[-1, 1] - positions_array[-2, 1]) / dt
+        else:
+            # Use linear regression on last 5 points
+            N = 5
+            y_vel_history = velocities_array[-N:, 1]
+            t_history = np.arange(N) * dt
+            a, b = np.polyfit(t_history, y_vel_history, 1)
+            vy_smooth = a * t_history[-1] + b
 
-        # --- Use smoothed velocity for prediction ---
-        v0 = velocities_array[-1]
+        # --- Combine smoothed velocities ---
+        v0 = np.array([vx_smooth, vy_smooth, vz_smooth])
 
-        # --- PREDICT PROJECTILE TRAJECTORY ---
+        # --- Least squares Z smoothing ---
+        positions_for_ls = positions_array[-5:]
+        xs = positions_for_ls[:, 0]
+        zs = positions_for_ls[:, 2]
+        last_x = positions_for_ls[-1, 0]
+        if len(xs) >= 2:
+            a, b = np.polyfit(xs, zs, 1)
+            z_smooth = a * last_x + b
+        else:
+            z_smooth = positions_for_ls[-1, 2]
+
+        last_pos = np.array([positions_array[-1, 0], positions_array[-1, 1], z_smooth])
+
+        # --- Only predict trajectory if at least 5 positions ---
+        if len(positions_array) < 5:
+            return
+
+        # --- Predict trajectory ---
         g = 9.81
-        num_predicted_points = 30
-        t_step = dt
-        last_pos = positions_array[-1]
         predicted_points = []
-
-        for i in range(1, num_predicted_points + 1):
-            t = i * t_step
+        for i in range(1, 11):
+            t = i * dt
             x = last_pos[0] + v0[0] * t
             y = last_pos[1] + v0[1] * t + 0.5 * g * t**2
             z = last_pos[2] + v0[2] * t
             predicted_points.append([x, y, z])
 
         predicted_array = np.array(predicted_points)
-        predicted_array = self.smooth_latest_z(predicted_array, window=3)
-
-        # Store this predicted trajectory
         self.predicted_trajs.append(predicted_array)
 
-        # --- MERGE PREDICTIONS WITH NEON YELLOW → RED FADE + OPACITY FADE ---
+        # --- Merge predictions with fade ---
         all_points = []
-        N = len(self.predicted_trajs)
-
+        N_trajs = len(self.predicted_trajs)
         for i, traj in enumerate(self.predicted_trajs):
-            fade = (i + 1) / N  # 1 = newest, 0 = oldest
-
-            # --- COLOR FADE ---
-            # Newest = neon yellow
-            # Older = fade toward red
-            r = 255
-            g_col = int(255 * fade)   # newest = 255, oldest = 0
-            b_col = 0
-
-            # --- OPACITY FADE ---
-            alpha = int(255 * fade)
-
+            fade = (i + 1) / N_trajs
+            r, g_col, b_col, alpha = 255, int(255 * fade), 0, int(255 * fade)
             for p in traj:
-                rgba = struct.unpack(
-                    '<I',
-                    struct.pack('<BBBB', b_col, g_col, r, alpha)
-                )[0]
+                rgba = struct.unpack('<I', struct.pack('<BBBB', b_col, g_col, r, alpha))[0]
                 all_points.append([float(p[0]), float(p[1]), float(p[2]), int(rgba)])
 
-        # Convert to numpy array
         all_points_array = np.array(all_points)
+        self.publish_pointcloud(all_points_array, self.predicted_pub, msg.header, color=None)
 
-        # --- PUBLISH MERGED TRAJECTORY CLOUD ---
-        self.publish_pointcloud(
-            all_points_array,
-            self.predicted_pub,
-            msg.header,
-            color=None
-        )
+    def reset_callback(self, request, response):
+        # Clear histories
+        self.positions_history.clear()
+        self.velocities_history.clear()
+        self.predicted_trajs.clear()
 
-        # Log smoothed velocity
-        self.get_logger().info(
-            f"Smoothed last velocity: vx={v0[0]:.2f}, vy={v0[1]:.2f}, vz={v0[2]:.2f}"
-        )
+        # Publish a single dummy point far below scene to clear RViz
+        dummy_points = np.array([[0.0, 0.0, -100.0, 0]], dtype=np.float32)
+        header = Header()
+        header.stamp = self.get_clock().now().to_msg()
+
+        # Use last received header frame, or fallback to "world"
+        if self.header is not None:
+            header.frame_id = self.header.frame_id
+        else:
+            header.frame_id = "world"
+
+        self.publish_pointcloud(dummy_points, self.trajectory_pub, header, color=(0, 255, 0, 255))
+        self.publish_pointcloud(dummy_points, self.predicted_pub, header, color=None)
+
+        self.get_logger().info("Trajectory data reset and dummy point published!")
+        return response
+
 
     def publish_pointcloud(self, points_array: np.ndarray, publisher, header: Header, color=None):
-        """Publish a PointCloud2 given points array (Nx3 or Nx4 if color included)."""
         points = []
-
         if color is not None:
             r, g, b, a = color
             for p in points_array:
@@ -145,10 +148,7 @@ class BallTrajectoryEstimator(Node):
             for p in points_array:
                 points.append([float(p[0]), float(p[1]), float(p[2]), int(p[3])])
 
-        flat_points = b''.join([
-            struct.pack('<fffI', p[0], p[1], p[2], int(p[3]))
-            for p in points
-        ])
+        flat_points = b''.join([struct.pack('<fffI', p[0], p[1], p[2], int(p[3])) for p in points])
 
         pc2_msg = PointCloud2()
         pc2_msg.header = header
@@ -165,7 +165,6 @@ class BallTrajectoryEstimator(Node):
         pc2_msg.point_step = 16
         pc2_msg.row_step = pc2_msg.point_step * len(points)
         pc2_msg.data = flat_points
-
         publisher.publish(pc2_msg)
 
 

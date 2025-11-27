@@ -24,7 +24,8 @@ setup(
             'display_plane = perception.find_table_plane:main',
             'color_identifier = perception.color_identifier:main',
             'ball_trajectory_estimator = perception.ball_trajectory_estimator:main',
-            'blob_detector = perception.blob_detector_ros2:main'    
+            'blob_detector = perception.blob_detector_ros2:main',
+            'zxLS = perception.zxLS:main',    
         ],
     },
 )

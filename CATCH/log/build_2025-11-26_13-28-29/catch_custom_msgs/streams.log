@@ -1,0 +1,144 @@
+[0.139s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/ros2_aruco:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/planning:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/perception:/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake --build /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs -- -j32 -l32
+[1.220s] [  3%] Built target catch_custom_msgs__cpp
+[1.221s] [ 12%] Built target catch_custom_msgs__rosidl_generator_c
+[1.222s] [ 22%] Built target catch_custom_msgs__rosidl_typesupport_introspection_c
+[1.223s] [ 41%] Built target ament_cmake_python_copy_catch_custom_msgs
+[1.223s] [ 58%] Built target catch_custom_msgs__rosidl_typesupport_cpp
+[1.223s] [ 70%] Built target catch_custom_msgs__rosidl_typesupport_fastrtps_c
+[1.224s] [ 70%] Built target catch_custom_msgs__rosidl_typesupport_c
+[1.225s] [ 70%] Built target catch_custom_msgs__rosidl_typesupport_introspection_cpp
+[1.225s] [ 70%] Built target catch_custom_msgs__rosidl_typesupport_fastrtps_cpp
+[1.226s] [ 70%] Built target catch_custom_msgs
+[1.226s] [ 74%] Built target catch_custom_msgs__py
+[1.227s] [ 80%] Built target catch_custom_msgs__rosidl_generator_py
+[1.227s] [ 90%] Built target catch_custom_msgs__rosidl_typesupport_fastrtps_c__pyext
+[1.227s] [100%] Built target catch_custom_msgs__rosidl_typesupport_introspection_c__pyext
+[1.227s] [100%] Built target catch_custom_msgs__rosidl_typesupport_c__pyext
+[1.227s] running egg_info
+[1.228s] writing catch_custom_msgs.egg-info/PKG-INFO
+[1.228s] writing dependency_links to catch_custom_msgs.egg-info/dependency_links.txt
+[1.228s] writing top-level names to catch_custom_msgs.egg-info/top_level.txt
+[1.228s] reading manifest file 'catch_custom_msgs.egg-info/SOURCES.txt'
+[1.229s] writing manifest file 'catch_custom_msgs.egg-info/SOURCES.txt'
+[1.229s] [100%] Built target ament_cmake_python_build_catch_custom_msgs_egg
+[1.236s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/ros2_aruco:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/planning:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/perception:/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake --build /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs -- -j32 -l32
+[1.259s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/ros2_aruco:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/planning:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/perception:/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake --install /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs
+[1.276s] -- Install configuration: ""
+[1.277s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/ament_index/resource_index/rosidl_interfaces/catch_custom_msgs
+[1.278s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs
+[1.278s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg
+[1.280s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/point_vel.h
+[1.280s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/rosidl_generator_c__visibility_control.h
+[1.280s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail
+[1.282s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__functions.c
+[1.286s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__functions.h
+[1.286s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__struct.h
+[1.287s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__type_support.h
+[1.287s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/environment/library_path.sh
+[1.287s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/environment/library_path.dsv
+[1.288s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/lib/libcatch_custom_msgs__rosidl_generator_c.so
+[1.290s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs
+[1.292s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg
+[1.294s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail
+[1.297s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__rosidl_typesupport_fastrtps_c.h
+[1.297s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[1.298s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/lib/libcatch_custom_msgs__rosidl_typesupport_fastrtps_c.so
+[1.301s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs
+[1.302s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg
+[1.304s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail
+[1.305s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__rosidl_typesupport_introspection_c.h
+[1.306s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__type_support.c
+[1.306s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[1.308s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/lib/libcatch_custom_msgs__rosidl_typesupport_introspection_c.so
+[1.312s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/lib/libcatch_custom_msgs__rosidl_typesupport_c.so
+[1.314s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs
+[1.316s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg
+[1.317s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/point_vel.hpp
+[1.318s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+[1.319s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail
+[1.320s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__builder.hpp
+[1.321s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__struct.hpp
+[1.322s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__traits.hpp
+[1.323s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__type_support.hpp
+[1.323s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs
+[1.325s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg
+[1.327s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail
+[1.329s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__rosidl_typesupport_fastrtps_cpp.hpp
+[1.330s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/dds_fastrtps
+[1.332s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[1.335s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/lib/libcatch_custom_msgs__rosidl_typesupport_fastrtps_cpp.so
+[1.338s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs
+[1.340s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg
+[1.341s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail
+[1.343s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__rosidl_typesupport_introspection_cpp.hpp
+[1.343s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/include/catch_custom_msgs/catch_custom_msgs/msg/detail/point_vel__type_support.cpp
+[1.345s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/lib/libcatch_custom_msgs__rosidl_typesupport_introspection_cpp.so
+[1.350s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/lib/libcatch_custom_msgs__rosidl_typesupport_cpp.so
+[1.353s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/environment/pythonpath.sh
+[1.354s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/environment/pythonpath.dsv
+[1.354s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs-0.0.0-py3.10.egg-info
+[1.355s] -- Installing: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs-0.0.0-py3.10.egg-info/PKG-INFO
+[1.369s] -- Installing: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs-0.0.0-py3.10.egg-info/dependency_links.txt
+[1.375s] -- Installing: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs-0.0.0-py3.10.egg-info/top_level.txt
+[1.381s] -- Installing: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs-0.0.0-py3.10.egg-info/SOURCES.txt
+[1.395s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs
+[1.397s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/__init__.py
+[1.397s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/msg
+[1.399s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/msg/_point_vel.py
+[1.400s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/msg/_point_vel_s.c
+[1.401s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/msg/__init__.py
+[1.401s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/_catch_custom_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[1.403s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/_catch_custom_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[1.404s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/_catch_custom_msgs_s.ep.rosidl_typesupport_c.c
+[1.404s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/libcatch_custom_msgs__rosidl_generator_py.so
+[1.405s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/catch_custom_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.406s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/catch_custom_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.406s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/catch_custom_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.482s] Listing '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs'...
+[1.482s] Listing '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/msg'...
+[1.488s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/catch_custom_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.494s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/catch_custom_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.499s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/local/lib/python3.10/dist-packages/catch_custom_msgs/catch_custom_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.504s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/lib/libcatch_custom_msgs__rosidl_generator_py.so
+[1.507s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/msg/PointVel.idl
+[1.507s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/msg/PointVel.msg
+[1.508s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/ament_index/resource_index/package_run_dependencies/catch_custom_msgs
+[1.508s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/ament_index/resource_index/parent_prefix_path/catch_custom_msgs
+[1.509s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/environment/ament_prefix_path.sh
+[1.509s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/environment/ament_prefix_path.dsv
+[1.510s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/environment/path.sh
+[1.510s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/environment/path.dsv
+[1.510s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/local_setup.bash
+[1.511s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/local_setup.sh
+[1.512s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/local_setup.zsh
+[1.512s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/local_setup.dsv
+[1.513s] -- Installing: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/package.dsv
+[1.525s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/ament_index/resource_index/packages/catch_custom_msgs
+[1.529s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/export_catch_custom_msgs__rosidl_generator_cExport.cmake
+[1.529s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/export_catch_custom_msgs__rosidl_generator_cExport-noconfig.cmake
+[1.534s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/export_catch_custom_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[1.535s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/export_catch_custom_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[1.537s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/catch_custom_msgs__rosidl_typesupport_introspection_cExport.cmake
+[1.537s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/catch_custom_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[1.539s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/catch_custom_msgs__rosidl_typesupport_cExport.cmake
+[1.540s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/catch_custom_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[1.542s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/export_catch_custom_msgs__rosidl_generator_cppExport.cmake
+[1.544s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/export_catch_custom_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[1.544s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/export_catch_custom_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[1.548s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/catch_custom_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[1.549s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/catch_custom_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[1.551s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/catch_custom_msgs__rosidl_typesupport_cppExport.cmake
+[1.552s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/catch_custom_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[1.555s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/export_catch_custom_msgs__rosidl_generator_pyExport.cmake
+[1.555s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/export_catch_custom_msgs__rosidl_generator_pyExport-noconfig.cmake
+[1.556s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/rosidl_cmake-extras.cmake
+[1.557s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[1.557s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.557s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[1.558s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[1.559s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[1.559s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[1.559s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/catch_custom_msgsConfig.cmake
+[1.560s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/cmake/catch_custom_msgsConfig-version.cmake
+[1.561s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/catch_custom_msgs/share/catch_custom_msgs/package.xml
+[1.566s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/ros2_aruco:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/planning:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/install/perception:/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake --install /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/build/catch_custom_msgs

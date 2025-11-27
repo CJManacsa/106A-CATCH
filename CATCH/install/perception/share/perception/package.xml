@@ -7,12 +7,18 @@
   <maintainer email="danielmunicio360@gmail.com">ee106a-tah</maintainer>
   <license>TODO: License declaration</license>
 
+  <!-- Buildtool / generation dependencies -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <build_depend>rosidl_default_generators</build_depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+
+  <!-- Existing dependencies -->
   <exec_depend>rclpy</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>cv_bridge</exec_depend>
   <exec_depend>image_transport</exec_depend>
 
-
+  <!-- Tests -->
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>

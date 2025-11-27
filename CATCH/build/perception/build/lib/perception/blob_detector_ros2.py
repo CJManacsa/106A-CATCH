@@ -17,8 +17,12 @@ class BlobDetectorNode(Node):
         self.get_logger().info("Starting Blob Detector Node (ROS2)")
 
         # --- Parameters (tweak with ColorIdentifier)
-        self.thr_min = (95, 118, 53) # self.thr_min = (95, 89, 66)
+        # Blue profile
+        self.thr_min = (95, 118, 53)
         self.thr_max = (107, 255, 255)
+        # Yellow profile
+        # self.thr_min = (30, 57, 91)
+        # self.thr_max = (54, 219, 255)
         self.blur = 0
         self.detection_window = [0.0, 0.05, 1.0, 1.0]
         # self.detection_window = [0.25, 0.05, 0.75, 1.0]

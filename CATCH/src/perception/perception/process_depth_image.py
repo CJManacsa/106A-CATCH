@@ -120,7 +120,7 @@ class RealSensePCSubscriber(Node):
         Y_final = np.average(Ys, weights=weights)
         Z_final = np.average(Zs, weights=weights)
 
-        if Z_final > 3.0:
+        if Z_final > 2.0:
             self.get_logger().warn(f"Ball too far away (Z={Z_final:.2f} m), not publishing")
             return
 
