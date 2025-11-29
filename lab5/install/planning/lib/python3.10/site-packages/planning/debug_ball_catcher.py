@@ -58,7 +58,7 @@ class HighSpeedBallTracker(Node):
         
         # Control parameters
         self.CONTROL_FREQUENCY = 50  # Hz (50 Hz = 20ms between commands)
-        self.TRAJECTORY_DURATION = 0.1  # 100ms lookahead
+        self.TRAJECTORY_DURATION = 1  # 100ms lookahead
         
         # High-frequency control loop
         self.control_timer = self.create_timer(

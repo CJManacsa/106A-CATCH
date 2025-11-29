@@ -171,6 +171,9 @@ class PyRokiIKPlanner(Node):
         current_config = None
         if self.current_joint_state is not None and len(self.current_joint_state.position) >= 6:
             current_config = jnp.array(self.current_joint_state.position[:6])
+        else:
+            # Use zeros if no current state available
+            current_config = jnp.zeros(self.robot.joints.num_actuated_joints)
         
         # Call the JIT-compiled JAX function
         cfg = self._solve_ik_jax(
@@ -178,7 +181,7 @@ class PyRokiIKPlanner(Node):
             jnp.array(target_link_index),
             jnp.array(target_wxyz),
             jnp.array(target_position),
-            current_config,  # Pass current config for rest cost
+            current_config,  # Always pass something (not None)
         )
         
         assert cfg.shape == (self.robot.joints.num_actuated_joints,)
@@ -191,19 +194,17 @@ class PyRokiIKPlanner(Node):
         target_link_index: jnp.ndarray,
         target_wxyz: jnp.ndarray,
         target_position: jnp.ndarray,
-        current_config: jnp.ndarray = None,  # Add current config parameter
+        current_config: jnp.ndarray = None,
     ) -> jnp.ndarray:
         """
-        JAX-compiled IK solver - based on pyroki_snippets/_solve_ik.py
-        
-        This uses:
-        - pose_cost_analytic_jac: Fast analytical Jacobian for pose matching
-        - limit_cost: Keeps joints within limits
-        - rest_cost: Bias toward current configuration (avoid big jumps)
-        - LeastSquaresProblem with Levenberg-Marquardt solver
+        JAX-compiled IK solver with initial guess seeding
         """
         # Create joint variable
-        joint_var = robot.joint_var_cls(0)
+        joint_var = robot.joint_var_cls(current_config)
+        
+        # CRITICAL: Initialize with current configuration if available
+        if current_config is not None:
+            joint_var = robot.joint_var_cls(current_config)
         
         # Define cost factors
         factors = [
@@ -214,23 +215,23 @@ class PyRokiIKPlanner(Node):
                     jaxlie.SO3(target_wxyz), target_position
                 ),
                 target_link_index,
-                pos_weight=50.0,  # High weight for position accuracy
-                ori_weight=10.0,   # Lower weight for orientation
+                pos_weight=10.0,
+                ori_weight=1,
             ),
             pk.costs.limit_cost(
                 robot,
                 joint_var,
-                weight=100.0,  # High weight to respect joint limits
+                weight=100.0,
             ),
         ]
         
-        # Add rest cost if current config provided (bias toward current pose)
+        # Add rest cost with HIGHER weight
         if current_config is not None:
             factors.append(
                 pk.costs.rest_cost(
                     joint_var,
                     rest_pose=current_config,
-                    weight=0.1,  # Low weight - just a preference, not a requirement
+                    weight=50.0,  # Increased from 0.1 to 50.0!
                 )
             )
         

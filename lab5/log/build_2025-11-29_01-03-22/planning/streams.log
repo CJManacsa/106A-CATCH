@@ -1,0 +1,34 @@
+[2.193s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/src/planning': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/planning/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/planning build --build-base /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/planning/build install --record /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/planning/install.log --single-version-externally-managed install_data
+[2.715s] running egg_info
+[2.716s] writing ../../build/planning/planning.egg-info/PKG-INFO
+[2.720s] writing dependency_links to ../../build/planning/planning.egg-info/dependency_links.txt
+[2.723s] writing entry points to ../../build/planning/planning.egg-info/entry_points.txt
+[2.726s] writing requirements to ../../build/planning/planning.egg-info/requires.txt
+[2.728s] writing top-level names to ../../build/planning/planning.egg-info/top_level.txt
+[2.736s] reading manifest file '../../build/planning/planning.egg-info/SOURCES.txt'
+[2.741s] writing manifest file '../../build/planning/planning.egg-info/SOURCES.txt'
+[2.743s] running build
+[2.743s] running build_py
+[2.744s] copying planning/ball_catcher_node.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/planning/build/lib/planning
+[2.749s] running install
+[2.750s] running install_lib
+[2.753s] copying /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/planning/build/lib/planning/ball_catcher_node.py -> /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/python3.10/site-packages/planning
+[2.763s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/python3.10/site-packages/planning/ball_catcher_node.py to ball_catcher_node.cpython-310.pyc
+[2.771s] running install_data
+[2.772s] running install_egg_info
+[2.776s] removing '/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/python3.10/site-packages/planning-0.0.0-py3.10.egg-info' (and everything under it)
+[2.784s] Copying ../../build/planning/planning.egg-info to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/python3.10/site-packages/planning-0.0.0-py3.10.egg-info
+[2.814s] running install_scripts
+[2.832s] Installing ball_catcher_node script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/planning
+[2.835s] Installing basic_IK script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/planning
+[2.837s] Installing current_pos script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/planning
+[2.840s] Installing debug_catcher script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/planning
+[2.843s] Installing main script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/planning
+[2.845s] Installing publish_ball script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/planning
+[2.848s] Installing pyroki_test script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/planning
+[2.851s] Installing robot_control script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/planning
+[2.853s] Installing single_pos script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/planning
+[2.856s] Installing tf script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/planning
+[2.859s] Installing topic_catcher script to /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/planning
+[2.862s] writing list of installed files to '/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/planning/install.log'
+[2.905s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/src/planning' returned '0': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/planning/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/install/planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/planning build --build-base /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/planning/build install --record /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/build/planning/install.log --single-version-externally-managed install_data

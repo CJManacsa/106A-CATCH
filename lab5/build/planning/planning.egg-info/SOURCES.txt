@@ -9,10 +9,15 @@ setup.py
 ../../build/planning/planning.egg-info/top_level.txt
 ../../build/planning/planning.egg-info/zip-safe
 planning/__init__.py
+planning/ball_catcher_node.py
+planning/ball_hitpoint_publisher.py
+planning/current_pos.py
 planning/debug_ball_catcher.py
 planning/main.py
+planning/pyroki_ik_planner.py
 planning/pyroki_test.py
 planning/robot_control.py
+planning/single_pos.py
 planning/static_tf_transform.py
 planning/topic_ball_catcher.py
 resource/planning
