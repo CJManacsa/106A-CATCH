@@ -46,28 +46,20 @@ class BallTrajectoryEstimator(Node):
         self.sub = self.create_subscription(PointVel, '/ball_state', self.ball_callback, 10)
         self.trajectory_pub = self.create_publisher(PointCloud2, '/ball_trajectory', 1)
         self.predicted_pub = self.create_publisher(PointCloud2, '/ball_predicted_trajectory', 1)
+
+        # NEW PUBLISHER YOU REQUESTED
+        self.latest_pred_pub = self.create_publisher(
+            PointCloud2,
+            '/ball_latest_predicted_trajectory',
+            1
+        )
+
         self.reset_srv = self.create_service(Empty, 'reset_trajectory', self.reset_callback)
 
         self.positions = deque(maxlen=20)
         self.predicted_trajs = deque(maxlen=20)
         self.kf = KalmanFilter3D()
-        self.last_time = None
-        self.header_frame = None
-        self.pred_points = 20
-
-class BallTrajectoryEstimator(Node):
-    def __init__(self):
-        super().__init__('ball_trajectory_estimator')
-        self.sub = self.create_subscription(PointVel, '/ball_state', self.ball_callback, 10)
-        self.trajectory_pub = self.create_publisher(PointCloud2, '/ball_trajectory', 1)
-        self.predicted_pub = self.create_publisher(PointCloud2, '/ball_predicted_trajectory', 1)
-        self.reset_srv = self.create_service(Empty, 'reset_trajectory', self.reset_callback)
-
-        self.positions = deque(maxlen=20)
-        self.predicted_trajs = deque(maxlen=20)
-        self.kf = KalmanFilter3D()
-        # reduce initial velocity uncertainty for stability
-        self.kf.P[3:6, 3:6] = np.eye(3) * 5.0
+        self.kf.P[3:6, 3:6] = np.eye(3) * 5.0  # reduced vel uncertainty
         self.last_time = None
         self.header_frame = None
         self.pred_points = 20
@@ -89,11 +81,10 @@ class BallTrajectoryEstimator(Node):
             pos_array[-1,2] = a*xs[-1] + b
             self.positions[-1][2] = pos_array[-1,2]
 
-        # --- Compute velocity from last two points ---
+        # --- Compute velocity ---
         if len(pos_array) >= 2:
             dx, dy, dz = pos_array[-1] - pos_array[-2]
             vx, vy, vz = dx/dt, dy/dt, dz/dt
-            # --- Initialize Kalman velocity on second point ---
             if len(self.positions) == 2:
                 self.kf.x[3,0] = vx
                 self.kf.x[4,0] = vy
@@ -103,16 +94,21 @@ class BallTrajectoryEstimator(Node):
 
         meas = np.array([pos_array[-1,0], pos_array[-1,1], pos_array[-1,2], vx, vy, vz])
 
-        # --- Kalman filter update ---
+        # Kalman update
         self.kf.predict(dt)
         self.kf.update(meas)
         x, y, z, vx, vy, vz = self.kf.x.flatten()
         self.positions[-1] = [x, y, z]
 
-        # --- Publish filtered trajectory ---
-        self.publish_pointcloud(np.array(self.positions), self.trajectory_pub, msg.header, color=(0,255,0,255))
+        # Publish filtered trajectory
+        self.publish_pointcloud(
+            np.array(self.positions),
+            self.trajectory_pub,
+            msg.header,
+            color=(0,255,0,255)
+        )
 
-        # --- Predict future trajectory ---
+        # Predict future trajectory
         g = 9.81
         pred = []
         for i in range(1, self.pred_points+1):
@@ -121,32 +117,60 @@ class BallTrajectoryEstimator(Node):
             yp = y + vy*t + 0.5*g*t**2
             zp = z + vz*t
             pred.append([xp, yp, zp])
-        pred_array = np.array(pred)
-        self.predicted_trajs.append(pred_array)
 
-        # --- Fade older predictions ---
+        pred_array = np.array(pred)
+
+        # --- Store ONLY older predictions in history ---
+        if not hasattr(self, "last_pred"):
+            self.last_pred = None
+
+        if self.last_pred is not None:
+            self.predicted_trajs.append(self.last_pred)
+
+        self.last_pred = pred_array
+
+        # NEW: publish only newest prediction (cyan)
+        self.publish_pointcloud(
+            pred_array,
+            self.latest_pred_pub,
+            msg.header,
+            color=(0, 255, 255, 255)
+        )
+
+
+        # Fade older predictions for big topic
         all_points = []
         n = len(self.predicted_trajs)
         for i, traj in enumerate(self.predicted_trajs):
             fade = (i+1)/n
             r, g_col, b_col, a = 255, int(255*fade), 0, 255
             for p in traj:
-                rgba = struct.unpack('<I', struct.pack('<BBBB', b_col, g_col, r, a))[0]
+                rgba = struct.unpack('<I',
+                        struct.pack('<BBBB', b_col, g_col, r, a))[0]
                 all_points.append([p[0], p[1], p[2], rgba])
-        self.publish_pointcloud(np.array(all_points), self.predicted_pub, msg.header, color=None)
+
+        self.publish_pointcloud(
+            np.array(all_points),
+            self.predicted_pub,
+            msg.header,
+            color=None
+        )
 
     def reset_callback(self, req, res):
         self.positions.clear()
         self.predicted_trajs.clear()
         self.kf = KalmanFilter3D()
         self.last_time = None
+
         header = Header()
         header.stamp = self.get_clock().now().to_msg()
-        header.frame_id = self.header_frame if self.header_frame is not None else "world"
-        # safer dummy point (smaller Z to avoid float overflow)
+        header.frame_id = self.header_frame if self.header_frame else "world"
+
         dummy = np.array([[0.0, 0.0, -10.0, 0]], dtype=np.float32)
         self.publish_pointcloud(dummy, self.trajectory_pub, header, color=(0,255,0,255))
         self.publish_pointcloud(dummy, self.predicted_pub, header, color=None)
+        self.publish_pointcloud(dummy, self.latest_pred_pub, header, color=(255,255,0,255))
+
         self.get_logger().info("Trajectory reset.")
         return res
 
@@ -157,8 +181,9 @@ class BallTrajectoryEstimator(Node):
         if color is not None:
             r, g, b, a = color
             for p in points_array:
-                x, y, z = np.clip(p[:3], -1e6, 1e6)  # avoid float overflow
-                rgba = struct.unpack('<I', struct.pack('<BBBB', b, g, r, a))[0]
+                x, y, z = np.clip(p[:3], -1e6, 1e6)
+                rgba = struct.unpack('<I',
+                        struct.pack('<BBBB', b, g, r, a))[0]
                 pts.append([float(x), float(y), float(z), rgba])
         else:
             for p in points_array:
@@ -167,8 +192,10 @@ class BallTrajectoryEstimator(Node):
                 x, y, z, rgba = p
                 x, y, z = np.clip([x, y, z], -1e6, 1e6)
                 pts.append([float(x), float(y), float(z), int(rgba)])
+
         if len(pts) == 0:
             return
+
         flat = b''.join([struct.pack('<fffI', *p) for p in pts])
         msg = PointCloud2()
         msg.header = header

@@ -27,17 +27,17 @@ class BlobDetectorNode(Node):
         self.detection_window = [0.0, 0.05, 1.0, 1.0]
         # self.detection_window = [0.25, 0.05, 0.75, 1.0]
 
-        # --- Configure blob parameters
+        # --- Configure blob parameters: should be good for our current setup
         params = cv2.SimpleBlobDetector_Params()
         params.filterByArea = True
         params.minArea = 100
         params.maxArea = 1e6
         params.filterByCircularity = True
-        params.minCircularity = 0.7
+        params.minCircularity = 0.5
         params.filterByConvexity = True
-        params.minConvexity = 0.7
-        params.filterByInertia = True
-        params.minInertiaRatio = 0.5
+        params.minConvexity = 0.5
+        params.filterByInertia = False
+        # params.minInertiaRatio = 0.5
         self.blob_params = params
 
         # --- CV Bridge
@@ -52,6 +52,7 @@ class BlobDetectorNode(Node):
         )
 
         self.image_blob_pub = self.create_publisher(Image, '/blob/image_blob', 1)
+        self.image_mask_true_pub = self.create_publisher(Image, '/blob/image_mask_true', 1)
         self.image_mask_pub = self.create_publisher(Image, '/blob/image_mask', 1)
         self.point_blob_pub = self.create_publisher(Point, '/blob/point_blob', 1)
 
@@ -79,7 +80,16 @@ class BlobDetectorNode(Node):
 
             # --- Publish debug images
             self.image_blob_pub.publish(self.bridge.cv2_to_imgmsg(frame_disp, "bgr8"))
-            self.image_mask_pub.publish(self.bridge.cv2_to_imgmsg(mask, "8UC1"))
+
+            # If no blobs → publish a fully white mask on the OLD topic
+            if len(keypoints) == 0:
+                white_mask = np.ones_like(mask) * 255
+                self.image_mask_pub.publish(self.bridge.cv2_to_imgmsg(white_mask, "8UC1"))
+            else:
+                self.image_mask_pub.publish(self.bridge.cv2_to_imgmsg(mask, "8UC1"))
+            
+            # Publish the raw, untouched mask
+            self.image_mask_true_pub.publish(self.bridge.cv2_to_imgmsg(mask, "8UC1"))
 
             # --- Publish first blob position
             for i, kp in enumerate(keypoints):
