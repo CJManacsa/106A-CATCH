@@ -24,7 +24,7 @@ class BlobDetectorNode(Node):
         # self.thr_min = (30, 57, 91)
         # self.thr_max = (54, 219, 255)
         self.blur = 0
-        self.detection_window = [0.0, 0.05, 1.0, 1.0]
+        self.detection_window = [0.0, 0.0, 1.0, 1.0]
         # self.detection_window = [0.25, 0.05, 0.75, 1.0]
 
         # --- Configure blob parameters: should be good for our current setup

@@ -25,6 +25,7 @@ setup(
             'color_identifier = perception.color_identifier:main',
             'ball_trajectory_estimator = perception.ball_trajectory_estimator:main',
             'blob_detector = perception.blob_detector_ros2:main',
+            'closest_predicted_point = perception.closest_predicted_point:main',
             'zxLS = perception.zxLS:main',    
         ],
     },

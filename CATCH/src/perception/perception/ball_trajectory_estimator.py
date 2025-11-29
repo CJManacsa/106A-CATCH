@@ -54,7 +54,7 @@ class BallTrajectoryEstimator(Node):
             1
         )
 
-        self.reset_srv = self.create_service(Empty, 'reset_trajectory', self.reset_callback)
+        self.reset_srv = self.create_service(Empty, 'reset_trajectory_estimator', self.reset_callback)
 
         self.positions = deque(maxlen=20)
         self.predicted_trajs = deque(maxlen=20)
@@ -157,6 +157,7 @@ class BallTrajectoryEstimator(Node):
         )
 
     def reset_callback(self, req, res):
+        # --- Reset this node ---
         self.positions.clear()
         self.predicted_trajs.clear()
         self.kf = KalmanFilter3D()
@@ -172,7 +173,19 @@ class BallTrajectoryEstimator(Node):
         self.publish_pointcloud(dummy, self.latest_pred_pub, header, color=(255,255,0,255))
 
         self.get_logger().info("Trajectory reset.")
+
+        # --- Fire-and-forget call to ClosestPredictedPoint reset ---
+        client = self.create_client(Empty, "reset_closest_predicted_point")
+        if client.wait_for_service(timeout_sec=1.0):
+            req2 = Empty.Request()
+            client.call_async(req2)  # send request asynchronously
+            self.get_logger().info("Triggered reset on ClosestPredictedPoint asynchronously.")
+        else:
+            self.get_logger().warn("ClosestPredictedPoint reset service not available.")
+
         return res
+
+
 
     def publish_pointcloud(self, points_array, publisher, header, color=None):
         if points_array.size == 0:
