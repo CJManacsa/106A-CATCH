@@ -1,0 +1,9 @@
+/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/pyroki_planning/CMakeFiles/uninstall.dir
+/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/pyroki_planning/CMakeFiles/pyroki_planning_uninstall.dir
+/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/pyroki_planning/CMakeFiles/test.dir
+/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/pyroki_planning/CMakeFiles/edit_cache.dir
+/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/pyroki_planning/CMakeFiles/rebuild_cache.dir
+/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/pyroki_planning/CMakeFiles/list_install_components.dir
+/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/pyroki_planning/CMakeFiles/install.dir
+/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/pyroki_planning/CMakeFiles/install/local.dir
+/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab5/build/pyroki_planning/CMakeFiles/install/strip.dir

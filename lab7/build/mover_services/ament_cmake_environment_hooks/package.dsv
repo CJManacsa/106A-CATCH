@@ -1,0 +1,4 @@
+source;share/mover_services/local_setup.bash
+source;share/mover_services/local_setup.dsv
+source;share/mover_services/local_setup.sh
+source;share/mover_services/local_setup.zsh

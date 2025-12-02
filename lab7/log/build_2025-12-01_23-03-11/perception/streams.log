@@ -1,0 +1,22 @@
+[1.807s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/perception': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/perception build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/perception/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/perception/install.log --single-version-externally-managed install_data
+[2.172s] running egg_info
+[2.173s] writing ../../build/perception/perception.egg-info/PKG-INFO
+[2.177s] writing dependency_links to ../../build/perception/perception.egg-info/dependency_links.txt
+[2.180s] writing entry points to ../../build/perception/perception.egg-info/entry_points.txt
+[2.183s] writing requirements to ../../build/perception/perception.egg-info/requires.txt
+[2.185s] writing top-level names to ../../build/perception/perception.egg-info/top_level.txt
+[2.193s] reading manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[2.197s] writing manifest file '../../build/perception/perception.egg-info/SOURCES.txt'
+[2.199s] running build
+[2.200s] running build_py
+[2.202s] running install
+[2.202s] running install_lib
+[2.207s] running install_data
+[2.208s] running install_egg_info
+[2.211s] removing '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception/lib/python3.10/site-packages/perception-0.0.0-py3.10.egg-info' (and everything under it)
+[2.218s] Copying ../../build/perception/perception.egg-info to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception/lib/python3.10/site-packages/perception-0.0.0-py3.10.egg-info
+[2.252s] running install_scripts
+[2.274s] Installing interactive_plane script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception/lib/perception
+[2.278s] Installing process_pointcloud script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception/lib/perception
+[2.282s] writing list of installed files to '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/perception/install.log'
+[2.339s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/perception' returned '0': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/perception build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/perception/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/perception/install.log --single-version-externally-managed install_data

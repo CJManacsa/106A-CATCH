@@ -1,0 +1,151 @@
+[0.119s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/ros2_aruco:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception:/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake --build /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services -- -j32 -l32
+[1.280s] [  6%] Built target mover_services__cpp
+[1.281s] [ 12%] Built target mover_services__rosidl_generator_c
+[1.281s] [ 35%] Built target mover_services__rosidl_typesupport_fastrtps_cpp
+[1.281s] [ 38%] Built target mover_services__rosidl_typesupport_cpp
+[1.282s] [ 51%] Built target mover_services__rosidl_typesupport_introspection_cpp
+[1.282s] [ 70%] Built target mover_services__rosidl_typesupport_c
+[1.283s] [ 70%] Built target mover_services__rosidl_typesupport_fastrtps_c
+[1.283s] [ 70%] Built target mover_services__rosidl_typesupport_introspection_c
+[1.283s] [ 70%] Built target ament_cmake_python_copy_mover_services
+[1.284s] [ 70%] Built target mover_services
+[1.284s] [ 74%] Built target mover_services__py
+[1.284s] [ 80%] Built target mover_services__rosidl_generator_py
+[1.285s] [100%] Built target mover_services__rosidl_typesupport_c__pyext
+[1.286s] [100%] Built target mover_services__rosidl_typesupport_introspection_c__pyext
+[1.286s] [100%] Built target mover_services__rosidl_typesupport_fastrtps_c__pyext
+[1.286s] running egg_info
+[1.286s] writing mover_services.egg-info/PKG-INFO
+[1.286s] writing dependency_links to mover_services.egg-info/dependency_links.txt
+[1.287s] writing top-level names to mover_services.egg-info/top_level.txt
+[1.287s] reading manifest file 'mover_services.egg-info/SOURCES.txt'
+[1.288s] writing manifest file 'mover_services.egg-info/SOURCES.txt'
+[1.288s] [100%] Built target ament_cmake_python_build_mover_services_egg
+[1.296s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/ros2_aruco:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception:/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake --build /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services -- -j32 -l32
+[1.307s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/ros2_aruco:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception:/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake --install /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services
+[1.322s] -- Install configuration: ""
+[1.323s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/ament_index/resource_index/rosidl_interfaces/mover_services
+[1.323s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services
+[1.323s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/msg
+[1.324s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/msg/rosidl_generator_c__visibility_control.h
+[1.325s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv
+[1.327s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/move_dir.h
+[1.328s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail
+[1.331s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__functions.c
+[1.332s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__functions.h
+[1.332s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__struct.h
+[1.332s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__type_support.h
+[1.333s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/environment/library_path.sh
+[1.334s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/environment/library_path.dsv
+[1.337s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/lib/libmover_services__rosidl_generator_c.so
+[1.340s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services
+[1.341s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/msg
+[1.343s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[1.344s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv
+[1.345s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail
+[1.347s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__rosidl_typesupport_fastrtps_c.h
+[1.348s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/lib/libmover_services__rosidl_typesupport_fastrtps_c.so
+[1.351s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services
+[1.353s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/msg
+[1.354s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[1.355s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv
+[1.357s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail
+[1.358s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__rosidl_typesupport_introspection_c.h
+[1.359s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__type_support.c
+[1.363s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/lib/libmover_services__rosidl_typesupport_introspection_c.so
+[1.367s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/lib/libmover_services__rosidl_typesupport_c.so
+[1.370s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services
+[1.372s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/msg
+[1.373s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/msg/rosidl_generator_cpp__visibility_control.hpp
+[1.374s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv
+[1.375s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/move_dir.hpp
+[1.376s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail
+[1.378s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__builder.hpp
+[1.379s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__struct.hpp
+[1.379s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__traits.hpp
+[1.380s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__type_support.hpp
+[1.380s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services
+[1.382s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/msg
+[1.383s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[1.383s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv
+[1.385s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail
+[1.387s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__rosidl_typesupport_fastrtps_cpp.hpp
+[1.387s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/dds_fastrtps
+[1.391s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/lib/libmover_services__rosidl_typesupport_fastrtps_cpp.so
+[1.394s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services
+[1.395s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv
+[1.396s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail
+[1.398s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__rosidl_typesupport_introspection_cpp.hpp
+[1.399s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/include/mover_services/mover_services/srv/detail/move_dir__type_support.cpp
+[1.403s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/lib/libmover_services__rosidl_typesupport_introspection_cpp.so
+[1.409s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/lib/libmover_services__rosidl_typesupport_cpp.so
+[1.413s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/environment/pythonpath.sh
+[1.414s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/environment/pythonpath.dsv
+[1.415s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services-0.0.0-py3.10.egg-info
+[1.416s] -- Installing: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services-0.0.0-py3.10.egg-info/PKG-INFO
+[1.425s] -- Installing: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services-0.0.0-py3.10.egg-info/dependency_links.txt
+[1.443s] -- Installing: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services-0.0.0-py3.10.egg-info/top_level.txt
+[1.464s] -- Installing: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services-0.0.0-py3.10.egg-info/SOURCES.txt
+[1.479s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services
+[1.480s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/__init__.py
+[1.482s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/srv
+[1.483s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/srv/_move_dir.py
+[1.484s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/srv/_move_dir_s.c
+[1.485s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/srv/__init__.py
+[1.485s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c
+[1.486s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/_mover_services_s.ep.rosidl_typesupport_introspection_c.c
+[1.488s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/_mover_services_s.ep.rosidl_typesupport_c.c
+[1.488s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/libmover_services__rosidl_generator_py.so
+[1.489s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/mover_services_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.490s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/mover_services_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.491s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/mover_services_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.558s] Listing '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services'...
+[1.558s] Listing '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/srv'...
+[1.565s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/mover_services_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.571s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/mover_services_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.578s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/local/lib/python3.10/dist-packages/mover_services/mover_services_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.583s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/lib/libmover_services__rosidl_generator_py.so
+[1.586s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/srv/MoveDir.idl
+[1.587s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/srv/MoveDir.srv
+[1.588s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/srv/MoveDir_Request.msg
+[1.589s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/srv/MoveDir_Response.msg
+[1.590s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/ament_index/resource_index/package_run_dependencies/mover_services
+[1.591s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/ament_index/resource_index/parent_prefix_path/mover_services
+[1.592s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/environment/ament_prefix_path.sh
+[1.593s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/environment/ament_prefix_path.dsv
+[1.594s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/environment/path.sh
+[1.596s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/environment/path.dsv
+[1.596s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/local_setup.bash
+[1.597s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/local_setup.sh
+[1.598s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/local_setup.zsh
+[1.599s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/local_setup.dsv
+[1.600s] -- Installing: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/package.dsv
+[1.606s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/ament_index/resource_index/packages/mover_services
+[1.611s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/export_mover_services__rosidl_generator_cExport.cmake
+[1.612s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/export_mover_services__rosidl_generator_cExport-noconfig.cmake
+[1.616s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/export_mover_services__rosidl_typesupport_fastrtps_cExport.cmake
+[1.617s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/export_mover_services__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[1.619s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/mover_services__rosidl_typesupport_introspection_cExport.cmake
+[1.621s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/mover_services__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[1.624s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/mover_services__rosidl_typesupport_cExport.cmake
+[1.625s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/mover_services__rosidl_typesupport_cExport-noconfig.cmake
+[1.629s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/export_mover_services__rosidl_generator_cppExport.cmake
+[1.632s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/export_mover_services__rosidl_typesupport_fastrtps_cppExport.cmake
+[1.633s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/export_mover_services__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[1.637s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/mover_services__rosidl_typesupport_introspection_cppExport.cmake
+[1.638s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/mover_services__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[1.641s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/mover_services__rosidl_typesupport_cppExport.cmake
+[1.642s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/mover_services__rosidl_typesupport_cppExport-noconfig.cmake
+[1.646s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/export_mover_services__rosidl_generator_pyExport.cmake
+[1.648s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/export_mover_services__rosidl_generator_pyExport-noconfig.cmake
+[1.648s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/rosidl_cmake-extras.cmake
+[1.650s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.650s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/ament_cmake_export_libraries-extras.cmake
+[1.652s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/ament_cmake_export_targets-extras.cmake
+[1.652s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[1.653s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/ament_cmake_export_dependencies-extras.cmake
+[1.654s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[1.654s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/mover_servicesConfig.cmake
+[1.655s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/cmake/mover_servicesConfig-version.cmake
+[1.656s] -- Up-to-date: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services/share/mover_services/package.xml
+[1.663s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/ros2_aruco:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception:/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake --install /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services

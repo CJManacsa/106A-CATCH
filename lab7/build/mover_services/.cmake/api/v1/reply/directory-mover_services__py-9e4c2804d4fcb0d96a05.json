@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "mover_services__py",
+		"source" : "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/mover_services__py"
+	}
+}

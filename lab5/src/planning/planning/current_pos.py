@@ -18,7 +18,7 @@ class PositionPrinter(Node):
             # Common frame names: 'tool0', 'ee_link', 'wrist_3_link'
             transform = self.tf_buffer.lookup_transform(
                 'base_link',      # or 'base'
-                'tool0',          # or 'ee_link' or 'wrist_3_link'
+                'wrist_3_link',          # or 'ee_link' or 'wrist_3_link'
                 rclpy.time.Time()
             )
             

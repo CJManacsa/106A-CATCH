@@ -1,0 +1,4 @@
+source;share/mover_services/environment/ament_prefix_path.sh
+source;share/mover_services/environment/library_path.sh
+source;share/mover_services/environment/path.sh
+source;share/mover_services/environment/pythonpath.sh

@@ -1,0 +1,27 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from mover_services/srv/MoveDir.srv
+// generated code does not contain a copyright notice
+
+
+module mover_services {
+  module srv {
+    @verbatim (language="comment", text=
+      "Request")
+    struct MoveDir_Request {
+      @verbatim (language="comment", text=
+        "\"up\", \"down\", \"left\", \"right\", \"forward\", \"backward\"")
+      string direction;
+
+      @verbatim (language="comment", text=
+        "meters")
+      double distance;
+    };
+    @verbatim (language="comment", text=
+      "Response")
+    struct MoveDir_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

@@ -1,0 +1,22 @@
+[0.138s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/ros2_aruco:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception:/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/mover_services -DCMAKE_INSTALL_PREFIX=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services
+[1.252s] -- The C compiler identification is GNU 11.4.0
+[1.253s] -- The CXX compiler identification is GNU 11.4.0
+[1.253s] -- Detecting C compiler ABI info
+[1.253s] -- Detecting C compiler ABI info - done
+[1.253s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.254s] -- Detecting C compile features
+[1.254s] -- Detecting C compile features - done
+[1.254s] -- Detecting CXX compiler ABI info
+[1.255s] -- Detecting CXX compiler ABI info - done
+[1.255s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.255s] -- Detecting CXX compile features
+[1.255s] -- Detecting CXX compile features - done
+[1.255s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.268s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.679s] [31mCMake Error at CMakeLists.txt:14 (rosidl_generate_interfaces):
+[1.679s]   Unknown CMake command "rosidl_generate_interfaces".
+[1.679s] 
+[1.680s] [0m
+[1.680s] -- Configuring incomplete, errors occurred!
+[1.681s] See also "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/CMakeFiles/CMakeOutput.log".
+[1.690s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/ros2_aruco:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/perception:/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/mover_services -DCMAKE_INSTALL_PREFIX=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/mover_services
