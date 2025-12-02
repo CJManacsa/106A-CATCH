@@ -3,7 +3,8 @@
   "output_dir": "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_generator_py/mover_services",
   "template_dir": "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource",
   "idl_tuples": [
-    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services:srv/MoveDir.idl"
+    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services:srv/MoveDir.idl",
+    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services:srv/MoveAbs.idl"
   ],
   "target_dependencies": [
     "/opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py",
@@ -19,6 +20,7 @@
     "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_msg.py.em",
     "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_srv_pkg_typesupport_entry_point.c.em",
     "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_srv.py.em",
-    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services/srv/MoveDir.idl"
+    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services/srv/MoveDir.idl",
+    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services/srv/MoveAbs.idl"
   ]
 }

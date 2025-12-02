@@ -78,11 +78,18 @@ rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__rosidl_ty
 rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/srv__rosidl_typesupport_introspection_c.h.em
 rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/srv__type_support.c.em
 rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__rosidl_typesupport_introspection_c.h: rosidl_adapter/mover_services/srv/MoveDir.idl
+rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__rosidl_typesupport_introspection_c.h: rosidl_adapter/mover_services/srv/MoveAbs.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C introspection for ROS interfaces"
 	/usr/bin/python3 /opt/ros/humble/lib/rosidl_typesupport_introspection_c/rosidl_typesupport_introspection_c --generator-arguments-file /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_typesupport_introspection_c__arguments.json
 
+rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__rosidl_typesupport_introspection_c.h: rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__rosidl_typesupport_introspection_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__rosidl_typesupport_introspection_c.h
+
 rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c: rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__rosidl_typesupport_introspection_c.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c
+
+rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c: rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__rosidl_typesupport_introspection_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c
 
 CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c.o: CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/flags.make
 CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c.o: rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c
@@ -98,21 +105,37 @@ CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesup
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c -o CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c.s
 
+CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.o: CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/flags.make
+CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.o: rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c
+CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.o: CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.o -MF CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.o.d -o CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.o -c /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c
+
+CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c > CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.i
+
+CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c -o CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.s
+
 # Object files for target mover_services__rosidl_typesupport_introspection_c
 mover_services__rosidl_typesupport_introspection_c_OBJECTS = \
-"CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c.o"
+"CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c.o" \
+"CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.o"
 
 # External object files for target mover_services__rosidl_typesupport_introspection_c
 mover_services__rosidl_typesupport_introspection_c_EXTERNAL_OBJECTS =
 
 libmover_services__rosidl_typesupport_introspection_c.so: CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c.o
+libmover_services__rosidl_typesupport_introspection_c.so: CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c.o
 libmover_services__rosidl_typesupport_introspection_c.so: CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/build.make
 libmover_services__rosidl_typesupport_introspection_c.so: libmover_services__rosidl_generator_c.so
 libmover_services__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/librosidl_typesupport_introspection_c.so
 libmover_services__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 libmover_services__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/librcutils.so
 libmover_services__rosidl_typesupport_introspection_c.so: CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libmover_services__rosidl_typesupport_introspection_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared library libmover_services__rosidl_typesupport_introspection_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -123,6 +146,8 @@ CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/clean
 
+CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__rosidl_typesupport_introspection_c.h
+CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/mover_services/srv/detail/move_abs__type_support.c
 CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__rosidl_typesupport_introspection_c.h
 CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/mover_services/srv/detail/move_dir__type_support.c
 	cd /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/mover_services /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/mover_services /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/CMakeFiles/mover_services__rosidl_typesupport_introspection_c.dir/DependInfo.cmake --color=$(COLOR)

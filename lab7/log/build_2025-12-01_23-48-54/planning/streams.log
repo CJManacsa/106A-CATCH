@@ -1,0 +1,42 @@
+[1.738s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/planning': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/planning build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/install.log --single-version-externally-managed install_data
+[2.103s] running egg_info
+[2.103s] writing ../../build/planning/planning.egg-info/PKG-INFO
+[2.108s] writing dependency_links to ../../build/planning/planning.egg-info/dependency_links.txt
+[2.111s] writing entry points to ../../build/planning/planning.egg-info/entry_points.txt
+[2.115s] writing requirements to ../../build/planning/planning.egg-info/requires.txt
+[2.118s] writing top-level names to ../../build/planning/planning.egg-info/top_level.txt
+[2.131s] reading manifest file '../../build/planning/planning.egg-info/SOURCES.txt'
+[2.135s] writing manifest file '../../build/planning/planning.egg-info/SOURCES.txt'
+[2.138s] running build
+[2.138s] running build_py
+[2.140s] copying planning/__init__.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build/lib/planning
+[2.145s] copying planning/ik.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build/lib/planning
+[2.151s] copying planning/main.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build/lib/planning
+[2.156s] copying planning/static_tf_transform.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build/lib/planning
+[2.160s] copying planning/transform_cube_pose.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build/lib/planning
+[2.165s] running install
+[2.165s] running install_lib
+[2.169s] copying /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build/lib/planning/__init__.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning
+[2.176s] copying /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build/lib/planning/ik.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning
+[2.183s] copying /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build/lib/planning/main.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning
+[2.191s] copying /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build/lib/planning/static_tf_transform.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning
+[2.197s] copying /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build/lib/planning/transform_cube_pose.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning
+[2.207s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning/__init__.py to __init__.cpython-310.pyc
+[2.215s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning/ik.py to ik.cpython-310.pyc
+[2.222s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning/main.py to main.cpython-310.pyc
+[2.228s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning/static_tf_transform.py to static_tf_transform.cpython-310.pyc
+[2.235s] byte-compiling /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning/transform_cube_pose.py to transform_cube_pose.cpython-310.pyc
+[2.240s] running install_data
+[2.241s] copying resource/planning -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/share/ament_index/resource_index/packages
+[2.246s] copying package.xml -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/share/planning
+[2.254s] copying launch/lab7_bringup.launch.py -> /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/share/planning/launch
+[2.262s] running install_egg_info
+[2.264s] removing '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning-0.0.0-py3.10.egg-info' (and everything under it)
+[2.271s] Copying ../../build/planning/planning.egg-info to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages/planning-0.0.0-py3.10.egg-info
+[2.324s] running install_scripts
+[2.348s] Installing ik script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/planning
+[2.352s] Installing main script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/planning
+[2.355s] Installing tf script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/planning
+[2.358s] Installing transform_cube_pose script to /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/planning
+[2.363s] writing list of installed files to '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/install.log'
+[2.432s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/planning' returned '0': PYTHONPATH=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/install/planning/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/planning build --build-base /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/build install --record /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/planning/install.log --single-version-externally-managed install_data

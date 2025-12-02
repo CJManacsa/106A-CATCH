@@ -360,6 +360,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mover_services/srv" TYPE FILE FILES "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services/srv/MoveAbs.idl")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mover_services/srv" TYPE FILE FILES "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/mover_services/srv/MoveDir.srv")
 endif()
 
@@ -369,6 +373,18 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mover_services/srv" TYPE FILE FILES "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_cmake/srv/MoveDir_Response.msg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mover_services/srv" TYPE FILE FILES "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/mover_services/srv/MoveAbs.srv")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mover_services/srv" TYPE FILE FILES "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_cmake/srv/MoveAbs_Request.msg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mover_services/srv" TYPE FILE FILES "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_cmake/srv/MoveAbs_Response.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

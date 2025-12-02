@@ -5,13 +5,12 @@ from sensor_msgs.msg import JointState
 from trajectory_msgs.msg import JointTrajectory
 from control_msgs.action import FollowJointTrajectory
 from tf2_ros import Buffer, TransformListener, TransformException
-from geometry_msgs.msg import TransformStamped
 from planning.ik import IKPlanner
-from mover_services.srv import MoveDir  # Your custom service
+from mover_services.srv import MoveDir, MoveAbs  # Both services
 
-class UR7e_MoveDirServer(Node):
+class MoveServer(Node):
     def __init__(self):
-        super().__init__('ur7e_move_dir_server')
+        super().__init__('move_server')
 
         # --- Subscribers ---
         self.joint_state = None
@@ -26,37 +25,51 @@ class UR7e_MoveDirServer(Node):
             '/scaled_joint_trajectory_controller/follow_joint_trajectory'
         )
 
-        # --- TF ---
-        self.tf_buffer = Buffer()
-        self.tf_listener = TransformListener(self.tf_buffer, self)
-
         # --- IK Planner ---
         self.ik_planner = IKPlanner()
 
-        # --- Service ---
-        self.srv = self.create_service(
+        # --- Services ---
+        self.dir_srv = self.create_service(
             MoveDir,
             'move_dir',
             self.handle_move_dir_request
         )
+        self.abs_srv = self.create_service(
+            MoveAbs,
+            'move_abs',
+            self.handle_move_abs_request
+        )
 
-        self.get_logger().info("UR7e MoveDir Server started. Waiting for service calls...")
+        self.get_logger().info("MoveServer started. Waiting for service calls...")
 
     # --- Joint state callback ---
     def joint_state_callback(self, msg):
         self.joint_state = msg
 
-    # --- Service handler ---
+    # --- Handle relative move service ---
     def handle_move_dir_request(self, request, response):
         if self.joint_state is None:
             response.success = False
             response.message = "No joint state received yet."
             return response
 
-        self.get_logger().info(f"Service request received — moving '{request.direction}' by {request.distance} m.")
+        self.get_logger().info(f"MoveDir request: '{request.direction}' by {request.distance} m")
         self.move_dir(request.direction.lower(), request.distance)
         response.success = True
-        response.message = f"Move '{request.direction}' triggered."
+        response.message = f"MoveDir '{request.direction}' executed."
+        return response
+
+    # --- Handle absolute move service ---
+    def handle_move_abs_request(self, request, response):
+        if self.joint_state is None:
+            response.success = False
+            response.message = "No joint state received yet."
+            return response
+
+        self.get_logger().info(f"MoveAbs request: move to ({request.x:.3f}, {request.y:.3f}, {request.z:.3f})")
+        self.move_abs(request.x, request.y, request.z)
+        response.success = True
+        response.message = "MoveAbs executed."
         return response
 
     # --- Get latest EE transform ---
@@ -74,7 +87,7 @@ class UR7e_MoveDirServer(Node):
         self.get_logger().error("Could not find latest transform for base_link -> wrist_3_link")
         return None
 
-    # --- Move robot in direction ---
+    # --- Relative move ---
     def move_dir(self, direction: str, distance: float):
         transform = self.lookup_ee_transform_latest()
         if transform is None:
@@ -84,36 +97,38 @@ class UR7e_MoveDirServer(Node):
         y = transform.transform.translation.y
         z = transform.transform.translation.z
 
-        # Adjust coordinates based on ROS base_link frame
-        if direction == "+z":
+        # Update coordinates based on direction
+        if direction == "+z" or direction == "up":
             z += distance
-        elif direction == "-z":
+        elif direction == "-z" or direction == "down":
             z -= distance
-        elif direction == "+x":
+        elif direction == "+x" or direction == "forward":
             x += distance
-        elif direction == "-x":
+        elif direction == "-x" or direction == "backward":
             x -= distance
-        elif direction == "+y":
+        elif direction == "+y" or direction == "left":
             y += distance
-        elif direction == "-y":
+        elif direction == "-y" or direction == "right":
             y -= distance
         else:
             self.get_logger().error(f"Unknown direction '{direction}'")
             return
 
-        self.get_logger().info(f"Target EE position: x={x:.3f}, y={y:.3f}, z={z:.3f}")
+        self.move_abs(x, y, z)
 
+    # --- Absolute move ---
+    def move_abs(self, x: float, y: float, z: float):
         target_joint_state = self.ik_planner.compute_ik(self.joint_state, x, y, z)
         if target_joint_state is None:
-            self.get_logger().error("IK failed for move.")
+            self.get_logger().error("IK failed for MoveAbs.")
             return
 
         traj = self.ik_planner.plan_to_joints(target_joint_state)
         if traj is None:
-            self.get_logger().error("Planning failed.")
+            self.get_logger().error("Planning failed for MoveAbs.")
             return
 
-        self.get_logger().info(f"Planning successful, executing move '{direction}'...")
+        self.get_logger().info(f"Executing move to ({x:.3f}, {y:.3f}, {z:.3f})")
         self.execute_trajectory(traj.joint_trajectory)
 
     # --- Execute trajectory ---
@@ -129,21 +144,13 @@ class UR7e_MoveDirServer(Node):
         if not goal_handle.accepted:
             self.get_logger().error("Trajectory was rejected.")
             return
-
         result_future = goal_handle.get_result_async()
-        result_future.add_done_callback(self.on_exec_done)
-
-    def on_exec_done(self, future):
-        try:
-            future.result()
-            self.get_logger().info("Execution completed successfully.")
-        except Exception as e:
-            self.get_logger().error(f"Execution failed: {e}")
+        result_future.add_done_callback(lambda f: self.get_logger().info("Execution completed."))
 
 
 def main(args=None):
     rclpy.init(args=args)
-    node = UR7e_MoveDirServer()
+    node = MoveServer()
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()

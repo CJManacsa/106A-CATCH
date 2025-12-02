@@ -3,7 +3,8 @@
   "output_dir": "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_typesupport_introspection_c/mover_services",
   "template_dir": "/opt/ros/humble/share/rosidl_typesupport_introspection_c/resource",
   "idl_tuples": [
-    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services:srv/MoveDir.idl"
+    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services:srv/MoveDir.idl",
+    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services:srv/MoveAbs.idl"
   ],
   "target_dependencies": [
     "/opt/ros/humble/lib/rosidl_typesupport_introspection_c/rosidl_typesupport_introspection_c",
@@ -14,6 +15,7 @@
     "/opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/msg__type_support.c.em",
     "/opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/srv__rosidl_typesupport_introspection_c.h.em",
     "/opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/srv__type_support.c.em",
-    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services/srv/MoveDir.idl"
+    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services/srv/MoveDir.idl",
+    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_adapter/mover_services/srv/MoveAbs.idl"
   ]
 }

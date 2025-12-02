@@ -70,8 +70,10 @@ mover_services__py/CMakeFiles/mover_services__py: rosidl_generator_py/mover_serv
 mover_services__py/CMakeFiles/mover_services__py: rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_introspection_c.c
 mover_services__py/CMakeFiles/mover_services__py: rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_c.c
 mover_services__py/CMakeFiles/mover_services__py: rosidl_generator_py/mover_services/srv/_move_dir.py
+mover_services__py/CMakeFiles/mover_services__py: rosidl_generator_py/mover_services/srv/_move_abs.py
 mover_services__py/CMakeFiles/mover_services__py: rosidl_generator_py/mover_services/srv/__init__.py
 mover_services__py/CMakeFiles/mover_services__py: rosidl_generator_py/mover_services/srv/_move_dir_s.c
+mover_services__py/CMakeFiles/mover_services__py: rosidl_generator_py/mover_services/srv/_move_abs_s.c
 
 rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/lib/rosidl_generator_py/rosidl_generator_py
 rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_py/__init__.py
@@ -87,6 +89,7 @@ rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastr
 rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/rosidl_generator_py/resource/_srv_pkg_typesupport_entry_point.c.em
 rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/rosidl_generator_py/resource/_srv.py.em
 rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/mover_services/srv/MoveDir.idl
+rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/mover_services/srv/MoveAbs.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
 	cd /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/mover_services__py && /usr/bin/python3 /opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
 
@@ -99,17 +102,25 @@ rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_c.c: 
 rosidl_generator_py/mover_services/srv/_move_dir.py: rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/mover_services/srv/_move_dir.py
 
+rosidl_generator_py/mover_services/srv/_move_abs.py: rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/mover_services/srv/_move_abs.py
+
 rosidl_generator_py/mover_services/srv/__init__.py: rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/mover_services/srv/__init__.py
 
 rosidl_generator_py/mover_services/srv/_move_dir_s.c: rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/mover_services/srv/_move_dir_s.c
 
+rosidl_generator_py/mover_services/srv/_move_abs_s.c: rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/mover_services/srv/_move_abs_s.c
+
 mover_services__py: mover_services__py/CMakeFiles/mover_services__py
 mover_services__py: rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_c.c
 mover_services__py: rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_fastrtps_c.c
 mover_services__py: rosidl_generator_py/mover_services/_mover_services_s.ep.rosidl_typesupport_introspection_c.c
 mover_services__py: rosidl_generator_py/mover_services/srv/__init__.py
+mover_services__py: rosidl_generator_py/mover_services/srv/_move_abs.py
+mover_services__py: rosidl_generator_py/mover_services/srv/_move_abs_s.c
 mover_services__py: rosidl_generator_py/mover_services/srv/_move_dir.py
 mover_services__py: rosidl_generator_py/mover_services/srv/_move_dir_s.c
 mover_services__py: mover_services__py/CMakeFiles/mover_services__py.dir/build.make

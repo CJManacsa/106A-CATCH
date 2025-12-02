@@ -1,3 +1,3 @@
 # Request
-string direction   # "up", "down", "left", "right", "forward", "backward"
-float64 distance   # meters
+string direction   
+float64 distance   

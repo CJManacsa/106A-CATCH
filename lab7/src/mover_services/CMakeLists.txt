@@ -9,9 +9,9 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)  # <--- THIS IS REQUIRED
 
-# --- Generate service interfaces ---
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/MoveDir.srv"
+  "srv/MoveAbs.srv"
 )
 
 if(BUILD_TESTING)

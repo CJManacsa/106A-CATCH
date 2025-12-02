@@ -69,6 +69,9 @@ include CMakeFiles/mover_services.dir/progress.make
 CMakeFiles/mover_services: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/mover_services/srv/MoveDir.srv
 CMakeFiles/mover_services: rosidl_cmake/srv/MoveDir_Request.msg
 CMakeFiles/mover_services: rosidl_cmake/srv/MoveDir_Response.msg
+CMakeFiles/mover_services: /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/mover_services/srv/MoveAbs.srv
+CMakeFiles/mover_services: rosidl_cmake/srv/MoveAbs_Request.msg
+CMakeFiles/mover_services: rosidl_cmake/srv/MoveAbs_Response.msg
 
 mover_services: CMakeFiles/mover_services
 mover_services: CMakeFiles/mover_services.dir/build.make

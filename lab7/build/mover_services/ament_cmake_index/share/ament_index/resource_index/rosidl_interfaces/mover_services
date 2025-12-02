@@ -1,3 +1,7 @@
+srv/MoveAbs.idl
+srv/MoveAbs.srv
+srv/MoveAbs_Request.msg
+srv/MoveAbs_Response.msg
 srv/MoveDir.idl
 srv/MoveDir.srv
 srv/MoveDir_Request.msg

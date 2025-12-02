@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-a0e6be8a92b21595789e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "mover_services__py",
+					"jsonFile" : "directory-mover_services__py-70956fe4e5fc076ea90f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/build/mover_services/mover_services__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "mover_services",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_mover_services_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_mover_services_egg-7b891ad42a99aa535eb1.json",
+					"name" : "ament_cmake_python_build_mover_services_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_mover_services::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_mover_services-a8fed5a14ff4b44b99f3.json",
+					"name" : "ament_cmake_python_copy_mover_services",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services-b9fec214ea4d9b8e3e8f.json",
+					"name" : "mover_services",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__cpp-aeb4b4c7c3accc9b8100.json",
+					"name" : "mover_services__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "mover_services__py::@8c175500a695837dfb8c",
+					"jsonFile" : "target-mover_services__py-733fee9f9fb606e6611a.json",
+					"name" : "mover_services__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__rosidl_generator_c-ae81b56d27f34f72aea6.json",
+					"name" : "mover_services__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__rosidl_generator_py-c32059b6c13889531edf.json",
+					"name" : "mover_services__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__rosidl_typesupport_c-7d7ae0d177e5352b7f8a.json",
+					"name" : "mover_services__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__rosidl_typesupport_c__pyext-ca71ebcc82bb9fcac724.json",
+					"name" : "mover_services__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__rosidl_typesupport_cpp-d28d36410acd7d5c4402.json",
+					"name" : "mover_services__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__rosidl_typesupport_fastrtps_c-d95f1dd124196e6ceb56.json",
+					"name" : "mover_services__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__rosidl_typesupport_fastrtps_c__pyext-64156ea2c6463de4fc1a.json",
+					"name" : "mover_services__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__rosidl_typesupport_fastrtps_cpp-4082dce71888544b206b.json",
+					"name" : "mover_services__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__rosidl_typesupport_introspection_c-9531facf980727a6f4ac.json",
+					"name" : "mover_services__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__rosidl_typesupport_introspection_c__pyext-2d77e8eb6d8a90e28a50.json",
+					"name" : "mover_services__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services__rosidl_typesupport_introspection_cpp-ed90e8f63b4f038f2c94.json",
+					"name" : "mover_services__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mover_services_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mover_services_uninstall-a4fda48f4fafdc12c72d.json",
+					"name" : "mover_services_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-081a23695dad320c4204.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/build/mover_services",
+		"source" : "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/src/mover_services"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

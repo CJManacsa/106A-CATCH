@@ -24,9 +24,7 @@ extern "C"
 /// Struct defined in srv/MoveDir in the package mover_services.
 typedef struct mover_services__srv__MoveDir_Request
 {
-  /// "up", "down", "left", "right", "forward", "backward"
   rosidl_runtime_c__String direction;
-  /// meters
   double distance;
 } mover_services__srv__MoveDir_Request;
 

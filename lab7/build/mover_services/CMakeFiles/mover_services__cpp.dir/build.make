@@ -71,6 +71,11 @@ CMakeFiles/mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/m
 CMakeFiles/mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_dir__struct.hpp
 CMakeFiles/mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_dir__traits.hpp
 CMakeFiles/mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_dir__type_support.hpp
+CMakeFiles/mover_services__cpp: rosidl_generator_cpp/mover_services/srv/move_abs.hpp
+CMakeFiles/mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_abs__builder.hpp
+CMakeFiles/mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_abs__struct.hpp
+CMakeFiles/mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_abs__traits.hpp
+CMakeFiles/mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_abs__type_support.hpp
 CMakeFiles/mover_services__cpp: rosidl_generator_cpp/mover_services/msg/rosidl_generator_cpp__visibility_control.hpp
 
 rosidl_generator_cpp/mover_services/srv/move_dir.hpp: /opt/ros/humble/lib/rosidl_generator_cpp/rosidl_generator_cpp
@@ -89,6 +94,7 @@ rosidl_generator_cpp/mover_services/srv/move_dir.hpp: /opt/ros/humble/share/rosi
 rosidl_generator_cpp/mover_services/srv/move_dir.hpp: /opt/ros/humble/share/rosidl_generator_cpp/resource/srv__struct.hpp.em
 rosidl_generator_cpp/mover_services/srv/move_dir.hpp: /opt/ros/humble/share/rosidl_generator_cpp/resource/srv__traits.hpp.em
 rosidl_generator_cpp/mover_services/srv/move_dir.hpp: rosidl_adapter/mover_services/srv/MoveDir.idl
+rosidl_generator_cpp/mover_services/srv/move_dir.hpp: rosidl_adapter/mover_services/srv/MoveAbs.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
 	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/lab7/build/mover_services/rosidl_generator_cpp__arguments.json
 
@@ -104,11 +110,31 @@ rosidl_generator_cpp/mover_services/srv/detail/move_dir__traits.hpp: rosidl_gene
 rosidl_generator_cpp/mover_services/srv/detail/move_dir__type_support.hpp: rosidl_generator_cpp/mover_services/srv/move_dir.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/mover_services/srv/detail/move_dir__type_support.hpp
 
+rosidl_generator_cpp/mover_services/srv/move_abs.hpp: rosidl_generator_cpp/mover_services/srv/move_dir.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/mover_services/srv/move_abs.hpp
+
+rosidl_generator_cpp/mover_services/srv/detail/move_abs__builder.hpp: rosidl_generator_cpp/mover_services/srv/move_dir.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/mover_services/srv/detail/move_abs__builder.hpp
+
+rosidl_generator_cpp/mover_services/srv/detail/move_abs__struct.hpp: rosidl_generator_cpp/mover_services/srv/move_dir.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/mover_services/srv/detail/move_abs__struct.hpp
+
+rosidl_generator_cpp/mover_services/srv/detail/move_abs__traits.hpp: rosidl_generator_cpp/mover_services/srv/move_dir.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/mover_services/srv/detail/move_abs__traits.hpp
+
+rosidl_generator_cpp/mover_services/srv/detail/move_abs__type_support.hpp: rosidl_generator_cpp/mover_services/srv/move_dir.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/mover_services/srv/detail/move_abs__type_support.hpp
+
 mover_services__cpp: CMakeFiles/mover_services__cpp
+mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_abs__builder.hpp
+mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_abs__struct.hpp
+mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_abs__traits.hpp
+mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_abs__type_support.hpp
 mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_dir__builder.hpp
 mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_dir__struct.hpp
 mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_dir__traits.hpp
 mover_services__cpp: rosidl_generator_cpp/mover_services/srv/detail/move_dir__type_support.hpp
+mover_services__cpp: rosidl_generator_cpp/mover_services/srv/move_abs.hpp
 mover_services__cpp: rosidl_generator_cpp/mover_services/srv/move_dir.hpp
 mover_services__cpp: CMakeFiles/mover_services__cpp.dir/build.make
 .PHONY : mover_services__cpp

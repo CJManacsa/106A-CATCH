@@ -1,0 +1,21 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from mover_services/srv/MoveAbs.srv
+// generated code does not contain a copyright notice
+
+
+module mover_services {
+  module srv {
+    struct MoveAbs_Request {
+      double x;
+
+      double y;
+
+      double z;
+    };
+    struct MoveAbs_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

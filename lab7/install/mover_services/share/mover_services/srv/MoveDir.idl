@@ -8,12 +8,8 @@ module mover_services {
     @verbatim (language="comment", text=
       "Request")
     struct MoveDir_Request {
-      @verbatim (language="comment", text=
-        "\"up\", \"down\", \"left\", \"right\", \"forward\", \"backward\"")
       string direction;
 
-      @verbatim (language="comment", text=
-        "meters")
       double distance;
     };
     @verbatim (language="comment", text=
