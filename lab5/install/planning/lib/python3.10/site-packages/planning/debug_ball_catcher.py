@@ -58,7 +58,7 @@ class HighSpeedBallTracker(Node):
         
         # Control parameters
         self.CONTROL_FREQUENCY = 50  # Hz (50 Hz = 20ms between commands)
-        self.TRAJECTORY_DURATION = 1  # 100ms lookahead
+        self.TRAJECTORY_DURATION = 0.1  # 100ms lookahead
         
         # High-frequency control loop
         self.control_timer = self.create_timer(
@@ -233,20 +233,44 @@ class AggressiveCatcher(Node):
     def __init__(self):
         super().__init__('aggressive_catcher')
         
+        # Initialize PyRoKi
+        self.get_logger().info('Initializing PyRoKi IK solver...')
         self.pyroki_planner = PyRokiIKPlanner()
+        
+        # Warm up JAX (CRITICAL - do this once at startup!)
+        self.get_logger().info('Warming up JAX compilation...')
         self.pyroki_planner.compute_ik_fast(0.4, 0.0, 0.3)
+        self.get_logger().info('✓ JAX compiled and ready!')
         
         self.traj_pub = self.create_publisher(
             JointTrajectory,
             '/scaled_joint_trajectory_controller/joint_trajectory',
             10
         )
+
+        # Subscribe to joint states (for reference)
+        self.joint_state_sub = self.create_subscription(
+            JointState, '/joint_states',
+            self.joint_state_callback, 10
+        )
+
+        # CRITICAL: Define the correct UR joint order
+        self.joint_names = [
+            'shoulder_pan_joint', 
+            'shoulder_lift_joint', 
+            'elbow_joint',
+            'wrist_1_joint', 
+            'wrist_2_joint', 
+            'wrist_3_joint'
+        ]
+
+        self.current_joint_state = None
         
         # Test: Move to 3 positions VERY quickly
         self.positions = [
-            (0.5, 0.0, 0.4),
-            (0.4, 0.2, 0.3),
-            (0.3, -0.1, 0.5),
+            (0.126, 0.613, 0.517)
+            # (0.4, 0.2, 0.3),
+            # (0.5, -0.1, 0.5),
         ]
         self.current_pos = 0
         
@@ -255,6 +279,23 @@ class AggressiveCatcher(Node):
         
         self.get_logger().info('Aggressive catcher ready - will move FAST!')
     
+    def joint_state_callback(self, msg: JointState):
+        """Store current joint state"""
+        self.current_joint_state = msg
+    
+    def get_current_joints_ordered(self):
+        """Get current joints in correct UR order (matching IK output)"""
+        if self.current_joint_state is None:
+            return None
+        
+        # Build dictionary from joint_states
+        current_positions = {}
+        for i, name in enumerate(self.current_joint_state.name):
+            current_positions[name] = self.current_joint_state.position[i]
+        
+        # Return in CORRECT order (matching IK solver)
+        return [current_positions[name] for name in self.joint_names]
+    
     def next_position(self):
         if self.current_pos >= len(self.positions):
             self.get_logger().info('All positions reached!')
@@ -262,8 +303,16 @@ class AggressiveCatcher(Node):
         
         x, y, z = self.positions[self.current_pos]
         self.get_logger().info(f'Moving to ({x}, {y}, {z}) in 0.3s...')
-        
+
         joints = self.pyroki_planner.compute_ik_fast(x, y, z)
+        
+        current_ordered = self.get_current_joints_ordered()
+        
+        if current_ordered:
+            self.get_logger().info(f'Current joints (UR order): {[f"{j:.3f}" for j in current_ordered]}')
+        
+        if joints: self.get_logger().info(f'IK joints (UR order):  {[f"{j:.3f}" for j in joints.position]}')
+
         
         if joints:
             traj = JointTrajectory()
@@ -273,7 +322,7 @@ class AggressiveCatcher(Node):
             point.positions = joints.position
             point.velocities = [0.0] * len(joints.position)
             point.time_from_start.sec = 0
-            point.time_from_start.nanosec = int(0.3 * 1e9)  # Only 300ms!
+            point.time_from_start.nanosec = int(0.2 * 1e9)  # Only 300ms!
             
             traj.points.append(point)
             self.traj_pub.publish(traj)

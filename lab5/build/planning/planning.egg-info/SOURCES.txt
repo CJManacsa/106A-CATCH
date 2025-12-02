@@ -16,6 +16,7 @@ planning/debug_ball_catcher.py
 planning/main.py
 planning/pyroki_ik_planner.py
 planning/pyroki_test.py
+planning/pyroki_with_moveit.py
 planning/robot_control.py
 planning/single_pos.py
 planning/static_tf_transform.py

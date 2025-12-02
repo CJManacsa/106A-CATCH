@@ -166,7 +166,7 @@ class BallCatcherNode(Node):
         self.get_logger().info(f"Total diff (norm):     {total_diff:.3f} rad")
         self.get_logger().info("=" * 60)
         
-        if max_joint_diff > 1.5:
+        if max_joint_diff > 6.0:
             self.get_logger().warn(
                 f"⚠ Target too far! Max joint diff: {max_joint_diff:.3f} rad "
                 f"({np.rad2deg(max_joint_diff):.1f}°). NOT MOVING."
@@ -184,11 +184,22 @@ class BallCatcherNode(Node):
     
     def publish_trajectory(self, current_pos, target_pos, joint_names):
         """
-        Publish a 2-point trajectory: current position -> target position
+        Publish a 2-point trajectory with RELAXED tolerances
+        This prevents "holding position" errors when joint slightly misses target
         """
         traj = JointTrajectory()
         traj.header.stamp = self.get_clock().now().to_msg()
         traj.joint_names = joint_names
+        
+        # Calculate movement magnitude to adjust timing
+        diff = np.array(target_pos) - np.array(current_pos)
+        max_joint_movement = np.max(np.abs(diff))
+        
+        # Adaptive timing: give more time for larger movements
+        # Base time: 1.0s, add 0.5s per radian of max joint movement
+        move_time = max(1.0, 1.0 + 0.5 * max_joint_movement)
+        
+        self.get_logger().info(f"Trajectory time: {move_time:.2f}s for max joint move of {max_joint_movement:.3f} rad")
         
         # Point 1: Start at current position (t=0)
         point1 = JointTrajectoryPoint()
@@ -196,11 +207,15 @@ class BallCatcherNode(Node):
         point1.velocities = [0.0] * 6
         point1.time_from_start = Duration(sec=0, nanosec=0)
         
-        # Point 2: End at target position (t=1.0s)
+        # Point 2: End at target position (with extra time)
         point2 = JointTrajectoryPoint()
         point2.positions = target_pos
         point2.velocities = [0.0] * 6
-        point2.time_from_start = Duration(sec=1, nanosec=0)
+        
+        # Convert float seconds to Duration
+        sec = int(move_time)
+        nanosec = int((move_time - sec) * 1e9)
+        point2.time_from_start = Duration(sec=sec, nanosec=nanosec)
         
         traj.points = [point1, point2]
         

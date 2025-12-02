@@ -17,9 +17,9 @@ class BallHitpointPublisher(Node):
         self.timer = self.create_timer(0.1, self.publish_point)
 
         # Example point — modify however you want
-        self.x = 0.115
+        self.x = 0.126
         self.y = 0.614
-        self.z = 0.3
+        self.z = 0.517
 
         self.get_logger().info("ball_hitpoint_publisher started.")
 

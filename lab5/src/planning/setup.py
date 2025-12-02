@@ -28,9 +28,9 @@ setup(
             'topic_catcher = planning.topic_ball_catcher:main',
             'single_pos = planning.single_pos:main',
             'current_pos = planning.current_pos:main',
-            'basic_IK = planning.basic_IK:main',
             'publish_ball = planning.ball_hitpoint_publisher:main',
             'ball_catcher_node = planning.ball_catcher_node:main',
+            'pyroki_moveit = planning.pyroki_with_moveit:main'
         ],
     },
 )

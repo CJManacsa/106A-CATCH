@@ -1,10 +1,10 @@
 [console_scripts]
 ball_catcher_node = planning.ball_catcher_node:main
-basic_IK = planning.basic_IK:main
 current_pos = planning.current_pos:main
 debug_catcher = planning.debug_ball_catcher:main
 main = planning.main:main
 publish_ball = planning.ball_hitpoint_publisher:main
+pyroki_moveit = planning.pyroki_with_moveit:main
 pyroki_test = planning.pyroki_test:main
 robot_control = planning.robot_control:main
 single_pos = planning.single_pos:main
