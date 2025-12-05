@@ -39,10 +39,20 @@ class PyRokiIKPlanner(Node):
             self.get_logger().error(f'Failed to load URDF: {e}')
             raise
         
+        # This makes IK solver initialize from a safe, known pose
+        tuck_config = np.array([
+            np.radians(64.3),   # shoulder_pan: 1.123 rad
+            np.radians(-73.5),  # shoulder_lift: -1.283 rad
+            np.radians(79.7),   # elbow: 1.391 rad
+            np.radians(264.0),  # wrist_1: 4.604 rad
+            np.radians(-90.0),  # wrist_2: -1.571 rad
+            np.radians(-205.6)  # wrist_3: -3.589 rad
+        ])
+
         # Initialize PyRoKi robot model - actual API
-        self.robot = pk.Robot.from_urdf(urdf)
+        self.robot = pk.Robot.from_urdf(urdf, default_joint_cfg=tuck_config)
         
-        self.target_link_name = 'tool0'  # UR7e end effector
+        self.target_link_name = 'wrist_3_link'  # UR7e end effector
         self.current_joint_state = None
         
         # Subscribe to joint states for reference
@@ -57,7 +67,7 @@ class PyRokiIKPlanner(Node):
         self.get_logger().info(f'Robot has {self.robot.joints.num_actuated_joints} actuated joints')
     
     def _find_ur7e_urdf(self):
-        """Try to find the UR7e URDF file in common locations"""
+        """Try to find thfe UR7e URDF file in common locations"""
         import os
         from ament_index_python.packages import get_package_share_directory
         import subprocess

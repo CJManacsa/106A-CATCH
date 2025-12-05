@@ -134,7 +134,19 @@ class AggressiveCatcher(Node):
         if current_ordered is not None: self.get_logger().info(f'Current joints (UR order): {[f"{j:.3f}" for j in current_ordered]}')
         if joints is not None: 
             self.get_logger().info(f'IK joints (UR order):  {[f"{j:.3f}" for j in joints.position]}')
-            self.send_trajectory(joints)
+                # Fix wrist_2 (index 4) and wrist_3 (index 5) to keep current values
+            modified_positions = list(joints.position)  # Copy IK solution
+            # modified_positions[4] = current_ordered[4]  # Keep current wrist_2
+            modified_positions[5] = current_ordered[5]  # Keep current wrist_3
+            
+            # Create modified JointState
+            fixed_joints = JointState()
+            fixed_joints.name = joints.name
+            fixed_joints.position = modified_positions
+            self.get_logger().info(f'fixed joints (UR order):  {[f"{j:.3f}" for j in fixed_joints.position]}')
+
+            
+            self.send_trajectory(fixed_joints)
             self.last_ball_position = self.ball_position.copy()
         
 
@@ -145,8 +157,8 @@ class AggressiveCatcher(Node):
         point = JointTrajectoryPoint()
         point.positions = joints.position
         point.velocities = [0.0] * len(joints.position)
-        point.time_from_start.sec = 0
-        point.time_from_start.nanosec = int(0.2 * 1e9)  # Only 300ms!
+        point.time_from_start.sec = 0 # Change to 10 for first moving around the entire loop
+        point.time_from_start.nanosec = int(0.3 * 1e9)  # Tested in ranges 0.05 - 0.3
 
         traj.points.append(point)
         self.traj_pub.publish(traj)

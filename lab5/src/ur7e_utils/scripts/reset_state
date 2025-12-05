@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ros2 action send_goal /ur_robot_state_helper/set_mode ur_dashboard_msgs/action/SetMode "{ target_robot_mode: 7, stop_program: true, play_program: true }"
+ros2 service call /dashboard_client/close_safety_popup std_srvs/srv/Trigger {}
+ros2 service call /reset_gripper std_srvs/srv/Trigger {}
+
