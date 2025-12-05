@@ -1,8 +1,0 @@
-[console_scripts]
-ball_tracker = perception.ball_tracker:main
-color_identifier = perception.color_identifier:main
-display_plane = perception.find_table_plane:main
-process_pointcloud = perception.process_pointcloud:main
-show_hsv = perception.show_hsv:main
-track_ball = perception.track_ball:main
-
