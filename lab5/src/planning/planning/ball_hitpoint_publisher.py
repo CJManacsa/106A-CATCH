@@ -2,40 +2,60 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import PointStamped
-from builtin_interfaces.msg import Time
+from mover_services.srv import MoveAbs
 
 class BallHitpointPublisher(Node):
     def __init__(self):
         super().__init__('ball_hitpoint_publisher')
-
+        
         # Publisher: topic name and msg type
-        self.pub = self.create_publisher(PointStamped, 
-                                         'ball_hitpoint_base', 
-                                         10)
-
-        # Publish at 10 Hz
-        self.timer = self.create_timer(0.1, self.publish_point)
-
-        # Example point — modify however you want
-        self.x = 0.234 #0.134
-        self.y = 0.708 #0.608
-        self.z = 0.528 #0.428
-
-        self.get_logger().info("ball_hitpoint_publisher started.")
-
-    def publish_point(self):
+        self.pub = self.create_publisher(
+            PointStamped, 
+            'ball_hitpoint_base', 
+            10
+        )
+        
+        # Create service instead of timer
+        self.srv = self.create_service(
+            MoveAbs,
+            'publish_hitpoint',
+            self.publish_point_callback
+        )
+        
+        self.get_logger().info("Ball hitpoint publisher service ready!")
+        self.get_logger().info("Call service: ros2 service call /publish_hitpoint mover_services/srv/MoveAbs \"{x: 0.234, y: 0.608, z: 0.428}\"")
+    
+    def publish_point_callback(self, request, response):
+        """Service callback - publishes point and returns success"""
+        
+        # Extract coordinates from service request
+        x = request.x
+        y = request.y
+        z = request.z
+        #0.134
+        #0.608
+        #0.428
+        
+        # Create and publish the message
         msg = PointStamped()
         msg.header.stamp = self.get_clock().now().to_msg()
-        msg.header.frame_id = 'base_link'   # Make sure this matches your IK frame
-
-        msg.point.x = self.x
-        msg.point.y = self.y
-        msg.point.z = self.z
-
+        msg.header.frame_id = 'base_link'
+        msg.point.x = x
+        msg.point.y = y
+        msg.point.z = z
+        
         self.pub.publish(msg)
+        
+        # Log the published point
         self.get_logger().info(
-            f"Published hitpoint: ({self.x:.3f}, {self.y:.3f}, {self.z:.3f})"
+            f"Published hitpoint: ({x:.3f}, {y:.3f}, {z:.3f})"
         )
+        
+        # Set response
+        response.success = True
+        response.message = f"Successfully published point ({x:.3f}, {y:.3f}, {z:.3f})"
+        
+        return response
 
 def main(args=None):
     rclpy.init(args=args)
