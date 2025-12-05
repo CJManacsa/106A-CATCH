@@ -3,6 +3,6 @@ install/
 log/
 *.pyc
 __pycache__/
-/lab5/build
-/lab5/install
-/lab5/log
+lab5/build
+lab5/install
+lab5/log
