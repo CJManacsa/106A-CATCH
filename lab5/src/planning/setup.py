@@ -20,16 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'main = planning.main:main',
-            'tf = planning.static_tf_transform:main',
-            'pyroki_test = planning.pyroki_test:main',
-            'robot_control = planning.robot_control:main',
             'debug_catcher = planning.debug_ball_catcher:main',
-            'topic_catcher = planning.topic_ball_catcher:main',
-            'single_pos = planning.single_pos:main',
             'current_pos = planning.current_pos:main',
             'publish_ball = planning.ball_hitpoint_publisher:main',
-            'ball_catcher_node = planning.ball_catcher_node:main',
             'pyroki_moveit = planning.pyroki_with_moveit:main'
         ],
     },
