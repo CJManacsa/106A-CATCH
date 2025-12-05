@@ -1,6 +1,0 @@
-msg/ArucoMarkers.idl
-msg/ArucoMarkers.msg
-srv/StoreTransform.idl
-srv/StoreTransform.srv
-srv/StoreTransform_Request.msg
-srv/StoreTransform_Response.msg

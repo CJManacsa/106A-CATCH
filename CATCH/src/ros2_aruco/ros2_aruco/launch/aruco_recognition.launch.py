@@ -17,6 +17,12 @@ def generate_launch_description():
         parameters=[aruco_params]
     )
 
+    aruco_static_tf_node = Node(
+        package='ros2_aruco',
+        executable='aruco_static_tf_node',
+    )
+
     return LaunchDescription([
-        aruco_node
+        aruco_node,
+        aruco_static_tf_node
     ])

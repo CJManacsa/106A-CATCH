@@ -1,4 +1,6 @@
 from setuptools import find_packages, setup
+import os
+from glob import glob
 
 package_name = 'perception'
 
@@ -9,7 +11,12 @@ setup(
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
+
         ('share/' + package_name, ['package.xml']),
+
+        # Correct path: launch/ is inside the package folder
+        ('share/' + package_name + '/launch', 
+            glob('perception/launch/*.launch.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -26,7 +33,7 @@ setup(
             'ball_trajectory_estimator = perception.ball_trajectory_estimator:main',
             'blob_detector = perception.blob_detector_ros2:main',
             'closest_predicted_point = perception.closest_predicted_point:main',
-            'zxLS = perception.zxLS:main',    
+            'zxLS = perception.zxLS:main',
         ],
     },
 )
