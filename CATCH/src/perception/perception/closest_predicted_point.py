@@ -37,7 +37,8 @@ class ClosestPredictedPoint(Node):
 
         # Frame names
         self.wrist_frame = "wrist_3_link"
-        self.ball_frame = "camera_color_optical_frame"
+        self.ball_frame = "camera_color_optical_frame"  # input trajectory frame
+        self.output_frame = "base_link"                 # NEW: output frame
 
         # Store last received cloud and precomputed closest point
         self.last_cloud = None
@@ -46,7 +47,7 @@ class ClosestPredictedPoint(Node):
 
         # Trajectory counter
         self.trajectory_count = 0
-        self.target_trajectory = 5  # Publish only on 5th valid trajectory
+        self.target_trajectory = 4  # Publish only on 5th valid trajectory
 
         self.get_logger().info("Closest predicted point node started.")
 
@@ -83,8 +84,8 @@ class ClosestPredictedPoint(Node):
             self.published_last = True
             self.get_logger().info("Published closest point for the 5th trajectory.")
 
-
     def compute_closest_point(self, cloud_msg):
+        # --- 1. Lookup wrist pose in ball frame ---
         try:
             tf = self.tf_buffer.lookup_transform(
                 self.ball_frame,
@@ -104,21 +105,38 @@ class ClosestPredictedPoint(Node):
             self.get_logger().warn(f"TF lookup/transform failed: {e}")
             return None
 
+        # --- 2. Extract predicted trajectory points ---
         pred_pts = self.pointcloud2_to_xyz(cloud_msg)
         if pred_pts.shape[0] <= 1:
             return None
 
+        # --- 3. Find the closest point (in camera frame) ---
         diffs = pred_pts - wrist_vec
         dists = np.linalg.norm(diffs, axis=1)
         idx = np.argmin(dists)
         closest_point = pred_pts[idx]
 
-        out = PointStamped()
-        out.header = cloud_msg.header
-        out.point.x = float(closest_point[0])
-        out.point.y = float(closest_point[1])
-        out.point.z = float(closest_point[2])
-        return out
+        # --- 4. Create PointStamped in camera frame ---
+        point_cam = PointStamped()
+        point_cam.header = cloud_msg.header
+        point_cam.point.x = float(closest_point[0])
+        point_cam.point.y = float(closest_point[1])
+        point_cam.point.z = float(closest_point[2])
+
+        # --- 5. Transform the point to base_link (NEW) ---
+        try:
+            tf_to_base = self.tf_buffer.lookup_transform(
+                self.output_frame,
+                point_cam.header.frame_id,  # likely camera_color_optical_frame
+                rclpy.time.Time()
+            )
+            point_base = tf2_geometry_msgs.do_transform_point(point_cam, tf_to_base)
+            point_base.header.frame_id = self.output_frame
+        except Exception as e:
+            self.get_logger().warn(f"Failed to transform predicted point to base_link: {e}")
+            return None
+
+        return point_base
 
     def reset_callback(self, request, response):
         """Reset all trajectory histories and counters."""

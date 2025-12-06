@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ros2 launch ur7e_utils ur7e_gripper.launch.py

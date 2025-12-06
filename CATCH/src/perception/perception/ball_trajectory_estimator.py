@@ -27,8 +27,8 @@ class KalmanFilter3D:
         F = np.eye(6)
         F[0,3] = F[1,4] = F[2,5] = dt
         B = np.zeros((6,1))
-        B[1,0] = 0.5*self.g*dt**2
-        B[4,0] = self.g*dt
+        B[0,0] = -0.5*self.g * dt**2   # gravity in -x
+        B[3,0] = -self.g * dt          # gravity in -vx
         self.x = F @ self.x + B
         self.P = F @ self.P @ F.T + self.Q
 
@@ -113,8 +113,8 @@ class BallTrajectoryEstimator(Node):
         pred = []
         for i in range(1, self.pred_points+1):
             t = i*dt
-            xp = x + vx*t
-            yp = y + vy*t + 0.5*g*t**2
+            xp = x + vx*t - 0.5*g*t**2
+            yp = y + vy*t
             zp = z + vz*t
             pred.append([xp, yp, zp])
 

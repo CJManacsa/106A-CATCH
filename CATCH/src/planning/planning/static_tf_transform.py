@@ -33,7 +33,7 @@ class ConstantTransformPublisher(Node):
         quaternion = rot.as_quat()  # [x, y, z, w]
 
         # Create the transform
-        self.transform.header.frame_id = "ar_marker_6" # parent
+        self.transform.header.frame_id = "ar_marker_7" # parent
         self.transform.child_frame_id = "base_link" # child
 
         # Set translation (Vector3)

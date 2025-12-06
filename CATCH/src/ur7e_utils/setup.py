@@ -1,6 +1,8 @@
 from setuptools import find_packages, setup
+import os
+from glob import glob
 
-package_name = 'planning'
+package_name = 'ur7e_utils'
 
 setup(
     name=package_name,
@@ -10,6 +12,9 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/urdf', ['urdf/ur7e_with_pedestal.urdf.xacro']),
+        (os.path.join('share', package_name, 'calibration'), glob('calibration/*')),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -20,11 +25,16 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'debug_catcher = planning.debug_ball_catcher:main',
-            'current_pos = planning.current_pos:main',
-            'publish_ball = planning.ball_hitpoint_publisher:main',
-            'tf = planning.static_tf_transform:main',
-            'pyroki_moveit = planning.pyroki_with_moveit:main'
+            'tuck_robot = ur7e_utils.tuck:main',
+            'keyboard_controller = ur7e_utils.keyboard_controller:main',
+            'enable_gripper = ur7e_utils.gripper:main',
         ],
     },
+    scripts=[
+        'scripts/freedrive',
+        'scripts/enable_comms',
+        'scripts/tuck',
+        'scripts/reset_state',
+    ]
 )
+
