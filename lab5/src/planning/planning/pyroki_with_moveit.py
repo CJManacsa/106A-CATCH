@@ -135,22 +135,27 @@ class AggressiveCatcher(Node):
         if joints is not None: 
             self.get_logger().info(f'IK joints (UR order):  {[f"{j:.3f}" for j in joints.position]}')
                 # Fix wrist_2 (index 4) and wrist_3 (index 5) to keep current values
-            modified_positions = list(joints.position)  # Copy IK solution
+            # modified_positions = list(joints.position)  # Copy IK solution
             # modified_positions[4] = current_ordered[4]  # Keep current wrist_2
-            modified_positions[5] = current_ordered[5]  # Keep current wrist_3
+            # modified_positions[5] = current_ordered[5]  # Keep current wrist_3
             
-            # Create modified JointState
-            fixed_joints = JointState()
-            fixed_joints.name = joints.name
-            fixed_joints.position = modified_positions
-            self.get_logger().info(f'fixed joints (UR order):  {[f"{j:.3f}" for j in fixed_joints.position]}')
+            # # Create  JointState message for trajectory
+            # fixed_joints = JointState()
+            # fixed_joints.name = joints.name
+            # fixed_joints.position = joints.position
+            # self.get_logger().info(f'fixed joints (UR order):  {[f"{j:.3f}" for j in fixed_joints.position]}')
 
+            current = np.array(current_ordered)
+            target = np.array(joints.position)
+            diff = np.abs(current - target)
+            max_diff = np.max(diff)
+            self.get_logger().info(f'max joint differece: {max_diff:.3f}')
             
-            self.send_trajectory(fixed_joints)
+            self.send_trajectory(joints, max_diff)
             self.last_ball_position = self.ball_position.copy()
         
 
-    def send_trajectory(self, joints: JointState):
+    def send_trajectory(self, joints: JointState, max_joints_diff):
         traj = JointTrajectory()
         traj.joint_names = joints.name
 
@@ -158,7 +163,7 @@ class AggressiveCatcher(Node):
         point.positions = joints.position
         point.velocities = [0.0] * len(joints.position)
         point.time_from_start.sec = 0 # Change to 10 for first moving around the entire loop
-        point.time_from_start.nanosec = int(0.1 * 1e9)  # Tested in ranges 0.05 - 0.3
+        point.time_from_start.nanosec = int(max(0.1 * 1e9, max_joints_diff / 2*1e9))  # Tested in ranges 0.05 - 0.3
 
         traj.points.append(point)
         self.traj_pub.publish(traj)
