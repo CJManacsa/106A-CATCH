@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image, CameraInfo
@@ -6,6 +7,7 @@ from catch_custom_msgs.msg import PointVel
 import numpy as np
 from cv_bridge import CvBridge
 import cv2
+from collections import deque
 
 
 class RealSensePCSubscriber(Node):
@@ -38,12 +40,12 @@ class RealSensePCSubscriber(Node):
 
         # Utilities
         self.bridge = CvBridge()
-        self.image_mask = None
+        self.mask_buffer = deque(maxlen=10)  # store last 10 masks
         self.have_intrinsics = False
 
         # For velocity calculation
-        self.prev_pos = None  # np.array([x, y, z])
-        self.prev_time = None  # seconds
+        self.prev_pos = None
+        self.prev_time = None
 
         self.get_logger().info("Subscribed to depth, color info, and blob mask topics.")
 
@@ -55,19 +57,34 @@ class RealSensePCSubscriber(Node):
         self.have_intrinsics = True
 
     def image_mask_callback(self, msg):
-        """Receive binary mask from blob detector."""
+        """Store mask along with its timestamp."""
         try:
-            self.image_mask = self.bridge.imgmsg_to_cv2(msg, desired_encoding='passthrough')
+            mask_cv = self.bridge.imgmsg_to_cv2(msg, desired_encoding='passthrough')
+            self.mask_buffer.append((msg.header.stamp, mask_cv))
         except Exception as e:
             self.get_logger().error(f"Failed to convert image mask: {e}")
 
     def aligned_depth_to_color_callback(self, msg: Image):
-        """Compute 3D ball pose and velocity, then publish PointVel with header."""
-        if not self.have_intrinsics:
-            self.get_logger().warn("No camera intrinsics yet")
+        """Compute 3D ball pose and velocity, using timestamp-matched mask."""
+        if not self.have_intrinsics or not self.mask_buffer:
             return
-        if self.image_mask is None:
-            return  # mask not available
+
+        # Find closest mask in time
+        depth_stamp = msg.header.stamp.sec + msg.header.stamp.nanosec * 1e-9
+        closest_mask = None
+        closest_dt = float('inf')
+        for mask_stamp, mask_cv in self.mask_buffer:
+            mask_time = mask_stamp.sec + mask_stamp.nanosec * 1e-9
+            dt = abs(mask_time - depth_stamp)
+            if dt < closest_dt:
+                closest_dt = dt
+                closest_mask = mask_cv
+
+        # Skip if no mask is close enough (e.g., >20ms)
+        if closest_mask is None or closest_dt > 0.02:
+            return
+
+        mask = closest_mask
 
         # Convert depth image to meters
         try:
@@ -75,10 +92,9 @@ class RealSensePCSubscriber(Node):
         except Exception as e:
             self.get_logger().error(f"Depth conversion failed: {e}")
             return
-        depth_m = depth_img.astype(np.float32) / 1000.0  # mm → meters
+        depth_m = depth_img.astype(np.float32) / 1000.0
 
         # Resize mask if needed
-        mask = self.image_mask
         if mask.shape != depth_m.shape:
             mask = cv2.resize(mask, (depth_m.shape[1], depth_m.shape[0]), interpolation=cv2.INTER_NEAREST)
 
@@ -130,27 +146,25 @@ class RealSensePCSubscriber(Node):
         pt.point.x, pt.point.y, pt.point.z = float(X_final), float(Y_final), float(Z_final)
         self.ball_pose_pub.publish(pt)
 
-        # --- Compute velocity using proper dt ---
+        # --- Compute velocity ---
         curr_pos = np.array([X_final, Y_final, Z_final])
-        curr_time = msg.header.stamp.sec + msg.header.stamp.nanosec*1e-9
-
+        curr_time = depth_stamp
         if self.prev_pos is not None:
-            dt = max(curr_time - self.prev_time, 1e-6)  # avoid div-by-zero
+            dt = max(curr_time - self.prev_time, 1e-6)
             vel = (curr_pos - self.prev_pos) / dt
         else:
-            dt = 0.033  # small default dt for first measurement
             vel = np.zeros(3)
 
-        # Update previous values after computing velocity
         self.prev_pos = curr_pos
         self.prev_time = curr_time
 
-        # --- Publish PointVel with header ---
+        # --- Publish PointVel ---
         pv = PointVel()
         pv.header = msg.header
         pv.x, pv.y, pv.z = float(X_final), float(Y_final), float(Z_final)
         pv.vx, pv.vy, pv.vz = float(vel[0]), float(vel[1]), float(vel[2])
         self.ball_state_pub.publish(pv)
+
 
 def main(args=None):
     rclpy.init(args=args)

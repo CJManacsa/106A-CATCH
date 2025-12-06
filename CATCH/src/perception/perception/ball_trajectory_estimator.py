@@ -46,13 +46,7 @@ class BallTrajectoryEstimator(Node):
         self.sub = self.create_subscription(PointVel, '/ball_state', self.ball_callback, 10)
         self.trajectory_pub = self.create_publisher(PointCloud2, '/ball_trajectory', 1)
         self.predicted_pub = self.create_publisher(PointCloud2, '/ball_predicted_trajectory', 1)
-
-        # NEW PUBLISHER YOU REQUESTED
-        self.latest_pred_pub = self.create_publisher(
-            PointCloud2,
-            '/ball_latest_predicted_trajectory',
-            1
-        )
+        self.latest_pred_pub = self.create_publisher(PointCloud2, '/ball_latest_predicted_trajectory', 1)
 
         self.reset_srv = self.create_service(Empty, 'reset_trajectory_estimator', self.reset_callback)
 
@@ -64,9 +58,16 @@ class BallTrajectoryEstimator(Node):
         self.header_frame = None
         self.pred_points = 20
 
+        # --- New: count valid points ---
+        self.valid_points_received = 0
+        self.max_valid_points = 5  # stop publishing after this
+
     def ball_callback(self, msg: PointVel):
+        if self.valid_points_received >= self.max_valid_points:
+            return  # stop processing after 5 valid points
+
         curr_time = msg.header.stamp.sec + msg.header.stamp.nanosec*1e-9
-        dt = max(curr_time - self.last_time, 1e-6) if self.last_time is not None else 0.033
+        dt = max(curr_time - self.last_time, 1e-6) if self.last_time is not None else (1.0/60.0)
         self.last_time = curr_time
         self.header_frame = msg.header.frame_id
 
@@ -100,13 +101,8 @@ class BallTrajectoryEstimator(Node):
         x, y, z, vx, vy, vz = self.kf.x.flatten()
         self.positions[-1] = [x, y, z]
 
-        # Publish filtered trajectory
-        self.publish_pointcloud(
-            np.array(self.positions),
-            self.trajectory_pub,
-            msg.header,
-            color=(0,255,0,255)
-        )
+        # --- Publish filtered trajectory ---
+        self.publish_pointcloud(np.array(self.positions), self.trajectory_pub, msg.header, color=(0,255,0,255))
 
         # Predict future trajectory
         g = 9.81
@@ -117,26 +113,17 @@ class BallTrajectoryEstimator(Node):
             yp = y + vy*t + 0.5*g*t**2
             zp = z + vz*t
             pred.append([xp, yp, zp])
-
         pred_array = np.array(pred)
 
-        # --- Store ONLY older predictions in history ---
+        # Store older predictions
         if not hasattr(self, "last_pred"):
             self.last_pred = None
-
         if self.last_pred is not None:
             self.predicted_trajs.append(self.last_pred)
-
         self.last_pred = pred_array
 
         # NEW: publish only newest prediction (cyan)
-        self.publish_pointcloud(
-            pred_array,
-            self.latest_pred_pub,
-            msg.header,
-            color=(0, 255, 255, 255)
-        )
-
+        self.publish_pointcloud(pred_array, self.latest_pred_pub, msg.header, color=(0,255,255,255))
 
         # Fade older predictions for big topic
         all_points = []
@@ -145,23 +132,19 @@ class BallTrajectoryEstimator(Node):
             fade = (i+1)/n
             r, g_col, b_col, a = 255, int(255*fade), 0, 255
             for p in traj:
-                rgba = struct.unpack('<I',
-                        struct.pack('<BBBB', b_col, g_col, r, a))[0]
+                rgba = struct.unpack('<I', struct.pack('<BBBB', b_col, g_col, r, a))[0]
                 all_points.append([p[0], p[1], p[2], rgba])
+        self.publish_pointcloud(np.array(all_points), self.predicted_pub, msg.header, color=None)
 
-        self.publish_pointcloud(
-            np.array(all_points),
-            self.predicted_pub,
-            msg.header,
-            color=None
-        )
+        # --- Increment valid points counter ---
+        self.valid_points_received += 1
 
     def reset_callback(self, req, res):
-        # --- Reset this node ---
         self.positions.clear()
         self.predicted_trajs.clear()
         self.kf = KalmanFilter3D()
         self.last_time = None
+        self.valid_points_received = 0  # reset counter
 
         header = Header()
         header.stamp = self.get_clock().now().to_msg()
@@ -171,21 +154,17 @@ class BallTrajectoryEstimator(Node):
         self.publish_pointcloud(dummy, self.trajectory_pub, header, color=(0,255,0,255))
         self.publish_pointcloud(dummy, self.predicted_pub, header, color=None)
         self.publish_pointcloud(dummy, self.latest_pred_pub, header, color=(255,255,0,255))
-
         self.get_logger().info("Trajectory reset.")
 
-        # --- Fire-and-forget call to ClosestPredictedPoint reset ---
+        # Fire-and-forget ClosestPredictedPoint reset
         client = self.create_client(Empty, "reset_closest_predicted_point")
         if client.wait_for_service(timeout_sec=1.0):
             req2 = Empty.Request()
-            client.call_async(req2)  # send request asynchronously
+            client.call_async(req2)
             self.get_logger().info("Triggered reset on ClosestPredictedPoint asynchronously.")
         else:
             self.get_logger().warn("ClosestPredictedPoint reset service not available.")
-
         return res
-
-
 
     def publish_pointcloud(self, points_array, publisher, header, color=None):
         if points_array.size == 0:
@@ -195,8 +174,7 @@ class BallTrajectoryEstimator(Node):
             r, g, b, a = color
             for p in points_array:
                 x, y, z = np.clip(p[:3], -1e6, 1e6)
-                rgba = struct.unpack('<I',
-                        struct.pack('<BBBB', b, g, r, a))[0]
+                rgba = struct.unpack('<I', struct.pack('<BBBB', b, g, r, a))[0]
                 pts.append([float(x), float(y), float(z), rgba])
         else:
             for p in points_array:
@@ -205,10 +183,8 @@ class BallTrajectoryEstimator(Node):
                 x, y, z, rgba = p
                 x, y, z = np.clip([x, y, z], -1e6, 1e6)
                 pts.append([float(x), float(y), float(z), int(rgba)])
-
         if len(pts) == 0:
             return
-
         flat = b''.join([struct.pack('<fffI', *p) for p in pts])
         msg = PointCloud2()
         msg.header = header
