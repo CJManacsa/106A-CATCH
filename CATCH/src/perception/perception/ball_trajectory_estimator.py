@@ -56,7 +56,7 @@ class BallTrajectoryEstimator(Node):
         self.kf.P[3:6, 3:6] = np.eye(3) * 5.0  # reduced vel uncertainty
         self.last_time = None
         self.header_frame = None
-        self.pred_points = 20
+        self.pred_points = 40
 
         # --- New: count valid points ---
         self.valid_points_received = 0
