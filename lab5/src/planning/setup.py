@@ -23,7 +23,8 @@ setup(
             'debug_catcher = planning.debug_ball_catcher:main',
             'current_pos = planning.current_pos:main',
             'publish_ball = planning.ball_hitpoint_publisher:main',
-            'pyroki_moveit = planning.pyroki_with_moveit:main'
+            'pyroki_moveit = planning.pyroki_with_moveit:main',
+            'pyroki_rtde = planning.pyroki_with_rtde:main',
         ],
     },
 )
