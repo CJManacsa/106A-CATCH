@@ -116,7 +116,7 @@ class ClosestPredictedPoint(Node):
             return None
 
         # --- 3. Filter points by Y range (0.30 → 0.65) ---
-        y_mask = (pred_pts[:, 1] >= 0.30) & (pred_pts[:, 1] <= 0.65)
+        y_mask = (pred_pts[:, 1] >= 0.55) & (pred_pts[:, 1] <= 0.75)
         pred_pts = pred_pts[y_mask]
         if pred_pts.shape[0] == 0:
             self.get_logger().warn("No points in Y range 0.30–0.65.")
@@ -141,7 +141,9 @@ class ClosestPredictedPoint(Node):
             for p in pred_pts:
                 pt = PointStamped()
                 pt.header = cloud_msg.header
-                pt.point.x, pt.point.y, pt.point.z = p
+                pt.point.x = float(p[0])
+                pt.point.y = float(p[1])
+                pt.point.z = float(p[2])
                 pt_base = tf2_geometry_msgs.do_transform_point(pt, tf_to_base)
                 points_base.append(pt_base)
         except Exception as e:
@@ -153,8 +155,12 @@ class ClosestPredictedPoint(Node):
             np.array([pt.point.x, pt.point.y, pt.point.z]) - wrist_vec
         ) for pt in points_base]
         closest_idx = int(np.argmin(dists_base))
-        return points_base[closest_idx]
 
+        # Subtract 11 cm (0.11m) from the y-coordinate of the closest point
+        closest_point = points_base[closest_idx]
+        closest_point.point.y -= 0.08  # Subtract 0.08m (8 cm) from y
+
+        return closest_point
 
     def reset_callback(self, request, response):
         self.last_cloud = None
