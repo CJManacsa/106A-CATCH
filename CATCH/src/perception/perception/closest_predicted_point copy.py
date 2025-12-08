@@ -137,7 +137,7 @@ class ClosestPredictedPoint(Node):
             self.closest_pub.publish(self.computed_closest)
             self.published_last = True
             ts = self.get_clock().now().to_msg()
-            print(f"Last point printed from trajectory {self.trajectory_count}: {ts.sec}.{ts.nanosec:09d}")
+            # print(f"Last point printed from trajectory {self.trajectory_count}: {ts.sec}.{ts.nanosec:09d}")
 
     def reset_callback(self, request, response):
         """Reset all trajectory histories and counters."""

@@ -38,7 +38,7 @@ def blob_detect(image,                  #-- The frame (cv standard)
             cv2.waitKey(0)
         
     #- Search window
-    if search_window is None: search_window = [0.0, 0.0, 1.0, 1.0]
+    if search_window is None: search_window = [0.0, 0.0, 0.75, 1.0]
     
     #- Convert image from BGR to HSV
     hsv     = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
