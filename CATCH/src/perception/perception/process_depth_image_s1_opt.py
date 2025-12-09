@@ -40,7 +40,7 @@ class RealSensePCSubscriber(Node):
 
         # Utilities
         self.bridge = CvBridge()
-        self.mask_buffer = deque(maxlen=50)  # store last 50 masks
+        self.mask_buffer = deque(maxlen=50)
         self.have_intrinsics = False
 
         # For velocity calculation
@@ -80,8 +80,8 @@ class RealSensePCSubscriber(Node):
                 closest_dt = dt
                 closest_mask = mask_cv
 
-        # Skip if no mask is close enough (e.g., >20ms)
-        if closest_mask is None or closest_dt > 0.02:
+        # Skip if no mask is close enough (e.g., >50ms)
+        if closest_mask is None or closest_dt > 0.05:
             return
 
         mask = closest_mask

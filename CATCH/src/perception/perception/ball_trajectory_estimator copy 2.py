@@ -60,7 +60,7 @@ class BallTrajectoryEstimator(Node):
 
         # --- New: count valid points ---
         self.valid_points_received = 0
-        self.max_valid_points = 4  # stop publishing after this
+        self.max_valid_points = 5  # stop publishing after this
 
     def ball_callback(self, msg: PointVel):
         if self.valid_points_received >= self.max_valid_points:
@@ -142,7 +142,6 @@ class BallTrajectoryEstimator(Node):
     def reset_callback(self, req, res):
         self.positions.clear()
         self.predicted_trajs.clear()
-        self.last_pred = None              # <---- FIX
         self.kf = KalmanFilter3D()
         self.last_time = None
         self.valid_points_received = 0  # reset counter

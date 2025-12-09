@@ -163,7 +163,7 @@ class AggressiveCatcher(Node):
         point.positions = joints.position
         point.velocities = [0.0] * len(joints.position)
         point.time_from_start.sec = 0 # Change to 10 for first moving around the entire loop
-        point.time_from_start.nanosec = int(max(0.1 * 1e9, max_joints_diff / 2*1e9))  # Tested in ranges 0.05 - 0.3
+        point.time_from_start.nanosec = int(max(0.1 * 1e9, max_joints_diff / 2.5 *1e9))  # Tested in ranges 0.05 - 0.3
 
         traj.points.append(point)
         self.traj_pub.publish(traj)

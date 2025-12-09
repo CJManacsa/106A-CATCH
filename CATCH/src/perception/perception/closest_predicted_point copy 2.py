@@ -49,7 +49,7 @@ class ClosestPredictedPoint(Node):
 
         # Only publish on 5th trajectory
         self.trajectory_count = 0
-        self.target_trajectory = 4
+        self.target_trajectory = 5
 
         self.get_logger().info("Closest predicted point node started.")
 
@@ -87,120 +87,80 @@ class ClosestPredictedPoint(Node):
             self.get_logger().info("Published closest point for 5th trajectory.")
 
     def compute_closest_point(self, cloud_msg):
-        # --- 1. TF: wrist → base_link ---
+        # --- 1. Wrist → ball frame transform ---
         try:
-            wrist_tf = self.tf_buffer.lookup_transform(
-                self.output_frame,        # base_link
-                self.wrist_frame,         # wrist
+            tf = self.tf_buffer.lookup_transform(
+                self.ball_frame,
+                self.wrist_frame,
                 rclpy.time.Time()
             )
 
-            wrist_pt = PointStamped()
-            wrist_pt.header.frame_id = self.wrist_frame
-            wrist_pt.point.x = wrist_pt.point.y = wrist_pt.point.z = 0.0
+            wrist_point = PointStamped()
+            wrist_point.header.frame_id = self.wrist_frame
+            wrist_point.point.x = wrist_point.point.y = wrist_point.point.z = 0.0
 
-            wrist_in_base = tf2_geometry_msgs.do_transform_point(wrist_pt, wrist_tf)
+            wrist_in_ball = tf2_geometry_msgs.do_transform_point(wrist_point, tf)
             wrist_vec = np.array([
-                wrist_in_base.point.x,
-                wrist_in_base.point.y,
-                wrist_in_base.point.z
+                wrist_in_ball.point.x,
+                wrist_in_ball.point.y,
+                wrist_in_ball.point.z
             ], dtype=np.float32)
 
         except Exception as e:
-            self.get_logger().warn(f"TF lookup failed for wrist position: {e}")
+            self.get_logger().warn(f"TF lookup failed: {e}")
             return None
 
-        # --- 2. Convert point cloud to xyz ---
+        # --- 2. Extract points ---
         pred_pts = self.pointcloud2_to_xyz(cloud_msg)
         if pred_pts.shape[0] <= 1:
-            self.get_logger().warn("Not enough predicted points.")
             return None
 
-        # --- 3. Transform all predicted points to base_link ---
+        # --- 3. Filter points by Y range (0.30 → 0.65) ---
+        y_mask = (pred_pts[:, 1] >= 0.55) & (pred_pts[:, 1] <= 0.75)
+        pred_pts = pred_pts[y_mask]
+        if pred_pts.shape[0] == 0:
+            self.get_logger().warn("No points in Y range 0.30–0.65.")
+            return None
+
+        # --- 4. Filter by ≤ 1 meter distance from wrist ---
+        dists = np.linalg.norm(pred_pts - wrist_vec, axis=1)
+        close_mask = dists <= 1.0
+        pred_pts = pred_pts[close_mask]
+        if pred_pts.shape[0] == 0:
+            self.get_logger().warn("No predicted points within 1 meter of the wrist.")
+            return None
+
+        # --- 5. Transform all remaining candidate points to base_link ---
         try:
             tf_to_base = self.tf_buffer.lookup_transform(
-                self.output_frame,           # base_link
-                cloud_msg.header.frame_id,   # camera frame
+                self.output_frame,
+                cloud_msg.header.frame_id,
                 rclpy.time.Time()
             )
-
-            pts_base = []
+            points_base = []
             for p in pred_pts:
                 pt = PointStamped()
                 pt.header = cloud_msg.header
-                pt.point.x, pt.point.y, pt.point.z = map(float, p)
+                pt.point.x = float(p[0])
+                pt.point.y = float(p[1])
+                pt.point.z = float(p[2])
                 pt_base = tf2_geometry_msgs.do_transform_point(pt, tf_to_base)
-                pts_base.append([
-                    pt_base.point.x,
-                    pt_base.point.y,
-                    pt_base.point.z
-                ])
-
-            pts_base = np.array(pts_base, dtype=np.float32)
-
+                points_base.append(pt_base)
         except Exception as e:
-            self.get_logger().warn(f"Point transform failed: {e}")
+            self.get_logger().warn(f"Failed to transform points to base_link: {e}")
             return None
 
-        # --- 4. Apply Filters (in base_link frame) ---
+        # --- 6. Pick the closest point to wrist (already in base_link frame) ---
+        dists_base = [np.linalg.norm(
+            np.array([pt.point.x, pt.point.y, pt.point.z]) - wrist_vec
+        ) for pt in points_base]
+        closest_idx = int(np.argmin(dists_base))
 
-        # 4.1 Keep points within 0.8m sphere
-        dist_origin = np.linalg.norm(pts_base, axis=1)
-        mask = dist_origin <= 0.8
-        pts_base = pts_base[mask]
+        # Subtract 11 cm (0.11m) from the y-coordinate of the closest point
+        closest_point = points_base[closest_idx]
+        closest_point.point.y -= 0.08  # Subtract 0.08m (8 cm) from y
 
-        if pts_base.shape[0] == 0:
-            self.get_logger().warn("Filter 4.1 (sphere <= 0.8m) removed all points.")
-            return None
-
-        # 4.2 Remove points inside 0.5m cylinder
-        radial_dist = np.linalg.norm(pts_base[:, :2], axis=1)
-        mask = radial_dist >= 0.5
-        pts_base = pts_base[mask]
-
-        if pts_base.shape[0] == 0:
-            self.get_logger().warn("Filter 4.2 (remove cylinder r < 0.5m) removed all points.")
-            return None
-
-        # 4.3 Keep z <= 0.4
-        mask = pts_base[:, 2] <= 0.4
-        pts_base = pts_base[mask]
-
-        if pts_base.shape[0] == 0:
-            self.get_logger().warn("Filter 4.3 (z <= 0.4) removed all points.")
-            return None
-
-        # 4.4 Keep y >= 0.1
-        mask = pts_base[:, 1] >= 0.1
-        pts_base = pts_base[mask]
-
-        if pts_base.shape[0] == 0:
-            self.get_logger().warn("Filter 4.4 (y >= 0.1) removed all points.")
-            return None
-
-        # 4.5 Keep z >= -0.256
-        mask = pts_base[:, 2] >= -0.256
-        pts_base = pts_base[mask]
-
-        if pts_base.shape[0] == 0:
-            self.get_logger().warn("Filter 4.5 (z >= -0.256) removed all points.")
-            return None
-
-        # --- 5. Select point closest to the wrist ---
-        dists = np.linalg.norm(pts_base - wrist_vec, axis=1)
-        idx = int(np.argmin(dists))
-        cp = pts_base[idx]
-
-        # --- 6. Construct output and apply Y offset ---
-        result = PointStamped()
-        result.header.stamp = cloud_msg.header.stamp
-        result.header.frame_id = self.output_frame
-        result.point.x = float(cp[0])
-        result.point.y = float(cp[1] - 0.08)
-        result.point.z = float(cp[2])
-
-        return result
-
+        return closest_point
 
     def reset_callback(self, request, response):
         self.last_cloud = None

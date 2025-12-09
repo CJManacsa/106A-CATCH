@@ -8,38 +8,6 @@ import struct
 from catch_custom_msgs.msg import PointVel
 from std_srvs.srv import Empty
 
-class KalmanFilter3D:
-    def __init__(self):
-        self.g = 9.81  # +Y downward
-        self.x = np.zeros((6, 1))  # [x, y, z, vx, vy, vz]
-        self.P = np.eye(6)
-        self.P[0:3,0:3] *= 1.0
-        self.P[3:6,3:6] *= 2000.0
-        self.Q = np.eye(6)
-        self.Q[0:3,0:3] *= 0.0001
-        self.Q[3:6,3:6] *= 0.25
-        self.R = np.eye(6)
-        self.R[0:3,0:3] *= 0.0015
-        self.R[3:6,3:6] *= 0.15
-        self.H = np.eye(6)
-
-    def predict(self, dt):
-        F = np.eye(6)
-        F[0,3] = F[1,4] = F[2,5] = dt
-        B = np.zeros((6,1))
-        B[1,0] = 0.5*self.g*dt**2
-        B[4,0] = self.g*dt
-        self.x = F @ self.x + B
-        self.P = F @ self.P @ F.T + self.Q
-
-    def update(self, meas):
-        z = meas.reshape((6,1))
-        y = z - self.H @ self.x
-        S = self.H @ self.P @ self.H.T + self.R
-        K = self.P @ self.H.T @ np.linalg.inv(S)
-        self.x = self.x + K @ y
-        self.P = (np.eye(6) - K @ self.H) @ self.P
-
 class BallTrajectoryEstimator(Node):
     def __init__(self):
         super().__init__('ball_trajectory_estimator')
@@ -51,66 +19,86 @@ class BallTrajectoryEstimator(Node):
         self.reset_srv = self.create_service(Empty, 'reset_trajectory_estimator', self.reset_callback)
 
         self.positions = deque(maxlen=20)
+        self.timestamps = deque(maxlen=5)
         self.predicted_trajs = deque(maxlen=20)
-        self.kf = KalmanFilter3D()
-        self.kf.P[3:6, 3:6] = np.eye(3) * 5.0  # reduced vel uncertainty
         self.last_time = None
         self.header_frame = None
         self.pred_points = 60
+        self.g = 9.81
 
-        # --- New: count valid points ---
         self.valid_points_received = 0
-        self.max_valid_points = 4  # stop publishing after this
+        self.max_valid_points = 5
+
+    def fit_projectile(self):
+        """Fit projectile motion using least squares"""
+        n = len(self.positions)
+        if n < 3:
+            return None
+        
+        # Get last 5 points
+        pos = np.array(list(self.positions)[-5:])
+        times = np.array(list(self.timestamps)[-5:])
+        times = times - times[0]  # Relative time
+        
+        # Fit x(t) = x0 + vx*t (no acceleration in x)
+        A = np.column_stack([np.ones(len(times)), times])
+        x_coeffs = np.linalg.lstsq(A, pos[:,0], rcond=None)[0]
+        
+        # Fit z(t) = z0 + vz*t (no acceleration in z)
+        z_coeffs = np.linalg.lstsq(A, pos[:,2], rcond=None)[0]
+        
+        # Fit y(t) = y0 + vy*t + 0.5*g*t^2
+        A_quad = np.column_stack([np.ones(len(times)), times, times**2])
+        y_coeffs = np.linalg.lstsq(A_quad, pos[:,1], rcond=None)[0]
+        
+        # Extract parameters at current time (last point)
+        t = times[-1]
+        x = x_coeffs[0] + x_coeffs[1] * t
+        y = y_coeffs[0] + y_coeffs[1] * t + y_coeffs[2] * t**2
+        z = z_coeffs[0] + z_coeffs[1] * t
+        
+        vx = x_coeffs[1]
+        vz = z_coeffs[1]
+        vy = y_coeffs[1] + 2 * y_coeffs[2] * t
+        
+        return x, y, z, vx, vy, vz
 
     def ball_callback(self, msg: PointVel):
         if self.valid_points_received >= self.max_valid_points:
-            return  # stop processing after 5 valid points
+            return
 
         curr_time = msg.header.stamp.sec + msg.header.stamp.nanosec*1e-9
         dt = max(curr_time - self.last_time, 1e-6) if self.last_time is not None else (1.0/60.0)
         self.last_time = curr_time
         self.header_frame = msg.header.frame_id
 
-        # --- Append and smooth positions ---
+        # Store raw measurements
         self.positions.append([msg.x, msg.y, msg.z])
-        pos_array = np.array(self.positions)
-        N = min(5, len(pos_array))
-        if N >= 2:
-            xs = pos_array[-N:,0]
-            zs = pos_array[-N:,2]
-            a, b = np.polyfit(xs, zs, 1)
-            pos_array[-1,2] = a*xs[-1] + b
-            self.positions[-1][2] = pos_array[-1,2]
+        self.timestamps.append(curr_time)
 
-        # --- Compute velocity ---
-        if len(pos_array) >= 2:
-            dx, dy, dz = pos_array[-1] - pos_array[-2]
-            vx, vy, vz = dx/dt, dy/dt, dz/dt
-            if len(self.positions) == 2:
-                self.kf.x[3,0] = vx
-                self.kf.x[4,0] = vy
-                self.kf.x[5,0] = vz
+        # Fit projectile motion if we have enough points
+        if len(self.positions) >= 3:
+            result = self.fit_projectile()
+            if result is not None:
+                x, y, z, vx, vy, vz = result
+                # Replace last position with fitted value
+                self.positions[-1] = [x, y, z]
+            else:
+                x, y, z = self.positions[-1]
+                vx = vy = vz = 0.0
         else:
+            x, y, z = self.positions[-1]
             vx = vy = vz = 0.0
 
-        meas = np.array([pos_array[-1,0], pos_array[-1,1], pos_array[-1,2], vx, vy, vz])
-
-        # Kalman update
-        self.kf.predict(dt)
-        self.kf.update(meas)
-        x, y, z, vx, vy, vz = self.kf.x.flatten()
-        self.positions[-1] = [x, y, z]
-
-        # --- Publish filtered trajectory ---
+        # Publish filtered trajectory
         self.publish_pointcloud(np.array(self.positions), self.trajectory_pub, msg.header, color=(0,255,0,255))
 
         # Predict future trajectory
-        g = 9.81
         pred = []
         for i in range(1, self.pred_points+1):
             t = i*dt
             xp = x + vx*t
-            yp = y + vy*t + 0.5*g*t**2
+            yp = y + vy*t + 0.5*self.g*t**2
             zp = z + vz*t
             pred.append([xp, yp, zp])
         pred_array = np.array(pred)
@@ -122,10 +110,10 @@ class BallTrajectoryEstimator(Node):
             self.predicted_trajs.append(self.last_pred)
         self.last_pred = pred_array
 
-        # NEW: publish only newest prediction (cyan)
+        # Publish newest prediction (cyan)
         self.publish_pointcloud(pred_array, self.latest_pred_pub, msg.header, color=(0,255,255,255))
 
-        # Fade older predictions for big topic
+        # Fade older predictions
         all_points = []
         n = len(self.predicted_trajs)
         for i, traj in enumerate(self.predicted_trajs):
@@ -136,16 +124,14 @@ class BallTrajectoryEstimator(Node):
                 all_points.append([p[0], p[1], p[2], rgba])
         self.publish_pointcloud(np.array(all_points), self.predicted_pub, msg.header, color=None)
 
-        # --- Increment valid points counter ---
         self.valid_points_received += 1
 
     def reset_callback(self, req, res):
         self.positions.clear()
+        self.timestamps.clear()
         self.predicted_trajs.clear()
-        self.last_pred = None              # <---- FIX
-        self.kf = KalmanFilter3D()
         self.last_time = None
-        self.valid_points_received = 0  # reset counter
+        self.valid_points_received = 0
 
         header = Header()
         header.stamp = self.get_clock().now().to_msg()
