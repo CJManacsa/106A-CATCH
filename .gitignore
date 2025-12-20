@@ -4,3 +4,9 @@ install/
 log/
 .colcon/
 
+# Python
+__pycache__/
+*.pyc
+
+# Editors
+.vscode/
