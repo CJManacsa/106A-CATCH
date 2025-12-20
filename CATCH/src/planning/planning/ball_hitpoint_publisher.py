@@ -4,6 +4,9 @@ from rclpy.node import Node
 from geometry_msgs.msg import PointStamped
 from mover_services.srv import MoveAbs
 
+# This file is used to allow us to make service calls to the robot to move 
+# to a certain x,y,z. We typically used this to make calls while we were
+# incrementing the speed of the robot in increments of 10%.
 class BallHitpointPublisher(Node):
     def __init__(self):
         super().__init__('ball_hitpoint_publisher')
@@ -35,6 +38,7 @@ class BallHitpointPublisher(Node):
         #0.134
         #0.608
         #0.428
+        #^Default position
         
         # Create and publish the message
         msg = PointStamped()

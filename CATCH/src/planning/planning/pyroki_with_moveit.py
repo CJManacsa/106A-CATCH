@@ -17,7 +17,7 @@ from planning.pyroki_test import PyRokiIKPlanner
 
 class AggressiveCatcher(Node):
     """
-    Most aggressive version - very fast movements
+    Very fast movements
     WARNING: Only use if you know the workspace is clear!
     """
     def __init__(self):
@@ -27,7 +27,7 @@ class AggressiveCatcher(Node):
         self.get_logger().info('Initializing PyRoKi IK solver...')
         self.pyroki_planner = PyRokiIKPlanner()
         
-        # Warm up JAX (CRITICAL - do this once at startup!)
+        # Warm up JAX (Do this once at startup)
         self.get_logger().info('Warming up JAX compilation...')
         self.pyroki_planner.compute_ik_fast(0.4, 0.0, 0.3)
         self.get_logger().info('✓ JAX compiled and ready!')
@@ -40,11 +40,11 @@ class AggressiveCatcher(Node):
                 
         # Subscribe to ball position from RealSense/tracking
         self.ball_sub = self.create_subscription(
-            PointStamped, '/ball_closest_predicted_point',  # Change to your topic name
+            PointStamped, '/ball_closest_predicted_point',
             self.ball_callback, 10
         )
 
-        # Subscribe to joint states (for reference)
+        # Subscribe to joint states
         self.joint_state_sub = self.create_subscription(
             JointState, '/joint_states',
             self.joint_state_callback, 10
@@ -90,7 +90,7 @@ class AggressiveCatcher(Node):
         for i, name in enumerate(self.current_joint_state.name):
             current_positions[name] = self.current_joint_state.position[i]
 
-                # CRITICAL: Define the correct UR joint order
+        # Define the correct UR joint order
         joint_names = [
             'shoulder_pan_joint', 
             'shoulder_lift_joint', 
@@ -99,8 +99,7 @@ class AggressiveCatcher(Node):
             'wrist_2_joint', 
             'wrist_3_joint'
         ]
-        
-        # Return in CORRECT order (matching IK solver)
+
         return [current_positions[name] for name in joint_names]
     
     def control_loop(self):
@@ -130,20 +129,9 @@ class AggressiveCatcher(Node):
         # Show joints calculated
         current_ordered = self.get_current_joints_ordered()
         
-        # Logging could slow down performance: get rid of logs if trajectory is not sending (could be preventing correct loop timer)
         if current_ordered is not None: self.get_logger().info(f'Current joints (UR order): {[f"{j:.3f}" for j in current_ordered]}')
         if joints is not None: 
             self.get_logger().info(f'IK joints (UR order):  {[f"{j:.3f}" for j in joints.position]}')
-                # Fix wrist_2 (index 4) and wrist_3 (index 5) to keep current values
-            # modified_positions = list(joints.position)  # Copy IK solution
-            # modified_positions[4] = current_ordered[4]  # Keep current wrist_2
-            # modified_positions[5] = current_ordered[5]  # Keep current wrist_3
-            
-            # # Create  JointState message for trajectory
-            # fixed_joints = JointState()
-            # fixed_joints.name = joints.name
-            # fixed_joints.position = joints.position
-            # self.get_logger().info(f'fixed joints (UR order):  {[f"{j:.3f}" for j in fixed_joints.position]}')
 
             current = np.array(current_ordered)
             target = np.array(joints.position)
@@ -162,8 +150,8 @@ class AggressiveCatcher(Node):
         point = JointTrajectoryPoint()
         point.positions = joints.position
         point.velocities = [0.0] * len(joints.position)
-        point.time_from_start.sec = 0 # Change to 10 for first moving around the entire loop
-        point.time_from_start.nanosec = int(max(0.1 * 1e9, max_joints_diff / 2.5 *1e9))  # Tested in ranges 0.05 - 0.3
+        point.time_from_start.sec = 0
+        point.time_from_start.nanosec = int(max(0.1 * 1e9, max_joints_diff / 2.5 *1e9))
 
         traj.points.append(point)
         self.traj_pub.publish(traj)

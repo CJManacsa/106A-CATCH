@@ -12,13 +12,13 @@ import numpy as np
 from scipy.spatial.transform import Rotation as R
 import time
 
-# PyRoKi imports - based on actual pyroki_snippets code
+# PyRoKi imports
 import pyroki as pk
 import jax.numpy as jnp
 import jaxlie
 import jaxls
 import jax_dataclasses as jdc
-import yourdfpy  # CRITICAL: PyRoKi uses yourdfpy to parse URDF
+import yourdfpy  # PyRoKi uses yourdfpy to parse URDF
 
 
 class PyRokiIKPlanner(Node):
@@ -31,7 +31,7 @@ class PyRokiIKPlanner(Node):
         
         self.get_logger().info(f'Loading URDF from: {urdf_path}')
         
-        # Load URDF using yourdfpy (PyRoKi expects a yourdfpy.URDF object, not a path!)
+        # Load URDF using yourdfpy (PyRoKi expects a yourdfpy.URDF object, not a path)
         try:
             urdf = yourdfpy.URDF.load(urdf_path)
             self.get_logger().info(f'URDF loaded successfully')
@@ -201,7 +201,7 @@ class PyRokiIKPlanner(Node):
         target_link_index: jnp.ndarray,
         target_wxyz: jnp.ndarray,
         target_position: jnp.ndarray,
-        current_config: jnp.ndarray = None,  # Add current config parameter
+        current_config: jnp.ndarray = None,
     ) -> jnp.ndarray:
         """
         JAX-compiled IK solver - based on pyroki_snippets/_solve_ik.py
@@ -240,7 +240,7 @@ class PyRokiIKPlanner(Node):
                 pk.costs.rest_cost(
                     joint_var,
                     rest_pose=current_config,
-                    weight=0.1,  # Low weight - just a preference, not a requirement
+                    weight=0.1,  # Low weight
                 )
             )
         
@@ -270,121 +270,5 @@ class PyRokiIKPlanner(Node):
         Returns:
             JointState with solution or None
         """
-        # For now, we don't use current_joint_state as seed
-        # PyRoKi's default initialization seems to work well
-        # TODO: Could add rest_cost to bias toward current configuration
         
         return self.compute_ik_fast(x, y, z, qx, qy, qz, qw)
-
-
-class FastBallCatcher(Node):
-    """
-    Example node for testing fast IK with a fixed target point
-    """
-    def __init__(self):
-        super().__init__('fast_ball_catcher')
-        
-        # Initialize PyRoKi IK planner
-        self.pyroki_planner = PyRokiIKPlanner()
-        
-        # Subscribe to joint states
-        self.joint_state_sub = self.create_subscription(
-            JointState, '/joint_states', 
-            self.joint_state_callback, 10
-        )
-        
-        self.current_joint_state = None
-        self.has_solved = False  # Only solve once for testing
-        
-        self.get_logger().info('Fast Ball Catcher initialized - waiting for joint states')
-    
-    def joint_state_callback(self, msg: JointState):
-        self.current_joint_state = msg
-        
-        # Test with a fixed point once
-        if not self.has_solved and self.current_joint_state is not None:
-            self.test_fixed_point()
-    
-    def test_fixed_point(self):
-        """Test IK solver with a fixed target point"""
-        self.has_solved = True
-        
-        # Use a reachable test point (similar to your cube grasping)
-        target_x = 0.4
-        target_y = 0.1
-        target_z = 0.3
-        
-        self.get_logger().info(f'Testing PyRoKi IK to reach point ({target_x}, {target_y}, {target_z})')
-        
-        solution = self.pyroki_planner.compute_ik_fast(
-            target_x, target_y, target_z
-        )
-        
-        if solution:
-            self.get_logger().info(f'✓ IK Solution found!')
-            self.get_logger().info(f'Joint angles: {[f"{j:.3f}" for j in solution.position]}')
-            
-            # Benchmark speed
-            self.benchmark_ik_speed()
-        else:
-            self.get_logger().error(f'✗ IK failed')
-    
-    def benchmark_ik_speed(self):
-        """Run multiple IK solves to benchmark speed"""
-        self.get_logger().info('\nBenchmarking IK solver speed...')
-        
-        num_tests = 20
-        solve_times = []
-        
-        # Test different target positions
-        for i in range(num_tests):
-            # Vary the target position
-            x = 0.3 + i * 0.01
-            y = 0.0 + (i % 5) * 0.02
-            z = 0.2 + (i % 3) * 0.03
-            
-            start = time.perf_counter()
-            solution = self.pyroki_planner.compute_ik_fast(x, y, z)
-            elapsed = (time.perf_counter() - start) * 1000
-            
-            if solution:
-                solve_times.append(elapsed)
-        
-        if solve_times:
-            avg_time = np.mean(solve_times)
-            max_time = np.max(solve_times)
-            min_time = np.min(solve_times)
-            
-            self.get_logger().info(f'\nIK Speed Benchmark Results ({len(solve_times)}/{num_tests} successful):')
-            self.get_logger().info(f'  Average: {avg_time:.2f}ms')
-            self.get_logger().info(f'  Min: {min_time:.2f}ms')
-            self.get_logger().info(f'  Max: {max_time:.2f}ms')
-            
-            # Note: First solve will be slower due to JAX JIT compilation
-            if len(solve_times) > 1:
-                avg_after_first = np.mean(solve_times[1:])
-                self.get_logger().info(f'  Avg (after JIT): {avg_after_first:.2f}ms')
-            
-            if avg_time < 10:
-                self.get_logger().info('✓ PyRoKi is FAST enough for real-time ball catching!')
-            else:
-                self.get_logger().warn('⚠ Average solve time may be on the edge for 1s flight time')
-
-
-def main(args=None):
-    rclpy.init(args=args)
-    
-    # Test the fast ball catcher
-    node = FastBallCatcher()
-    
-    try:
-        rclpy.spin(node)
-    except KeyboardInterrupt:
-        pass
-    finally:
-        node.destroy_node()
-        rclpy.shutdown()
-
-
-if __name__ == '__main__':
-    main()

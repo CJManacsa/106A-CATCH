@@ -15,10 +15,9 @@ class PositionPrinter(Node):
     def print_ee_position(self):
         try:
             # Get transform from base to end-effector
-            # Common frame names: 'tool0', 'ee_link', 'wrist_3_link'
             transform = self.tf_buffer.lookup_transform(
-                'base_link',      # or 'base'
-                'tool0',          # or 'ee_link' or 'wrist_3_link'
+                'base_link',
+                'tool0',
                 rclpy.time.Time()
             )
             
