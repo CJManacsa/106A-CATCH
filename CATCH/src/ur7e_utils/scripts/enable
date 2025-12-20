@@ -1,0 +1,10 @@
+#!/bin/bash
+
+CALIB_FILE="/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils/share/ur7e_utils/calibration/${EE106_UR_ROBOT_NAME}_calibration.yaml"
+
+ros2 launch ur_robot_driver ur_control.launch.py \
+    ur_type:=ur7e \
+    robot_ip:=$EE106_UR_ROBOT_IP \
+    headless_mode:=true \
+    kinematics_params_file:="$CALIB_FILE" \
+    launch_rviz:=false

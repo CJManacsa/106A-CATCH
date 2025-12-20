@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+ros2 control switch_controllers \
+  --deactivate scaled_joint_trajectory_controller \
+  --activate freedrive_mode_controller
+
+cleanup() {
+    echo "Stopping freedrive..."
+    ros2 control switch_controllers \
+      --activate scaled_joint_trajectory_controller \
+      --deactivate freedrive_mode_controller
+    exit 0
+}
+trap cleanup INT HUP TERM QUIT
+
+echo "Freedrive mode enabled. Press Ctrl+C to stop."
+ros2 topic pub --rate 2 /freedrive_mode_controller/enable_freedrive_mode std_msgs/msg/Bool "{data: true}" > /dev/null 2>&1
+

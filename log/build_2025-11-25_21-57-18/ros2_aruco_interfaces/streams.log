@@ -1,0 +1,6 @@
+[0.962s] Invoking command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/build/ros2_aruco_interfaces': CMAKE_PREFIX_PATH=/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake --build /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/build/ros2_aruco_interfaces -- -j32 -l32
+[0.982s] [0mCMake Error: The current CMakeCache.txt directory /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/build/ros2_aruco_interfaces/CMakeCache.txt is different than the directory /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/build/ros2_aruco_interfaces where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
+[1.086s] [0mCMake Error: The source directory "/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/src/ros2_aruco/ros2_aruco_interfaces" does not exist.
+[1.086s] Specify --help for usage, or press the help button on the CMake GUI.[0m
+[1.087s] gmake: *** [Makefile:747: cmake_check_build_system] Error 1
+[1.089s] Invoked command in '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/build/ros2_aruco_interfaces' returned '2': CMAKE_PREFIX_PATH=/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble /usr/bin/cmake --build /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/build/ros2_aruco_interfaces -- -j32 -l32

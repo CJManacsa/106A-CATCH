@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Check if MoveIt is running by looking for /plan_kinematic_path service
+if ros2 service list | grep -q "/plan_kinematic_path"; then
+    echo "MoveIt already running."
+    MOVEIT_STARTED=0
+else
+    echo "MoveIt not running, starting it..."
+    # Start MoveIt in its own process group (note the 'setsid')
+    setsid ros2 launch ur_moveit_config ur_moveit.launch.py ur_type:=ur7e launch_rviz:=false > /dev/null 2>&1 &
+    MOVEIT_PID=$!
+    MOVEIT_STARTED=1
+
+    echo "Waiting for MoveIt to start..."
+    until ros2 service list | grep -q "/plan_kinematic_path"; do
+        sleep 1
+    done
+fi
+
+# Run tuck
+ros2 run ur7e_utils tuck_robot
+
+# If we started MoveIt, stop it afterwards
+if [ $MOVEIT_STARTED -eq 1 ]; then
+    echo "Stopping MoveIt..."
+    # Kill the whole process group (-PID kills all in group)
+    kill -SIGINT -$MOVEIT_PID
+    sleep 2
+    # If still alive, force kill
+    kill -9 -$MOVEIT_PID 2>/dev/null
+fi
+

@@ -1,0 +1,4 @@
+ResetTrajectory.srv
+---
+bool success
+string message

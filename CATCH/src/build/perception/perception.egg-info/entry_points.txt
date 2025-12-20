@@ -1,0 +1,8 @@
+[console_scripts]
+ball_trajectory_estimator = perception.ball_trajectory_estimator:main
+blob_detector = perception.blob_detector_ros2:main
+color_identifier = perception.color_identifier:main
+display_plane = perception.find_table_plane:main
+process_depth_image = perception.process_depth_image:main
+zxLS = perception.zxLS:main
+

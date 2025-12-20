@@ -1,0 +1,36 @@
+[0.000000] (-) TimerEvent: {}
+[0.000089] (perception) JobQueued: {'identifier': 'perception', 'dependencies': OrderedDict()}
+[0.000108] (planning) JobQueued: {'identifier': 'planning', 'dependencies': OrderedDict()}
+[0.000120] (ros2_aruco) JobQueued: {'identifier': 'ros2_aruco', 'dependencies': OrderedDict()}
+[0.000129] (ros2_aruco_interfaces) JobQueued: {'identifier': 'ros2_aruco_interfaces', 'dependencies': OrderedDict()}
+[0.000138] (perception) JobStarted: {'identifier': 'perception'}
+[0.020951] (planning) JobStarted: {'identifier': 'planning'}
+[0.048329] (ros2_aruco) JobStarted: {'identifier': 'ros2_aruco'}
+[0.065076] (ros2_aruco_interfaces) JobStarted: {'identifier': 'ros2_aruco_interfaces'}
+[0.098288] (-) TimerEvent: {}
+[0.198515] (-) TimerEvent: {}
+[0.298803] (-) TimerEvent: {}
+[0.399055] (-) TimerEvent: {}
+[0.499278] (-) TimerEvent: {}
+[0.599510] (-) TimerEvent: {}
+[0.699797] (-) TimerEvent: {}
+[0.800033] (-) TimerEvent: {}
+[0.900266] (-) TimerEvent: {}
+[0.960430] (ros2_aruco_interfaces) JobProgress: {'identifier': 'ros2_aruco_interfaces', 'progress': 'cmake'}
+[0.994419] (ros2_aruco_interfaces) JobProgress: {'identifier': 'ros2_aruco_interfaces', 'progress': 'build'}
+[0.995780] (ros2_aruco_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/build/ros2_aruco_interfaces', '--', '-j32', '-l32'], 'cwd': '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/build/ros2_aruco_interfaces', 'env': OrderedDict([('ARCH', 'x86_64'), ('QT_SCALE_FACTOR', '1'), ('USER', 'ee106a-add'), ('HOSTNAME', 'ros2'), ('XDG_SESSION_TYPE', 'x11'), ('MASTERDIR', '/home/ff/ee106a'), ('COMPIZ_CONFIG_PROFILE', 'mate'), ('XDG_CACHE_HOME', '/home/cc/ee106a/fa25/class/ee106a-add/.cache'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/cc/ee106a/fa25/class/ee106a-add'), ('OLDPWD', '/home/cc/ee106a/fa25/class/ee106a-add'), ('DESKTOP_SESSION', 'mate'), ('ROS_PYTHON_VERSION', '3'), ('GTK_MODULES', 'gail:atk-bridge:appmenu-gtk-module:gail:atk-bridge:canberra-gtk-module'), ('EE106_UR_ROBOT_IP', '192.168.1.100'), ('DISTROBOX_ENTER_PATH', '/usr/local/bin/distrobox-enter'), ('SYSTEMD_EXEC_PID', '185937'), ('NNTPSERVER', 'news.csua.berkeley.edu'), ('VISUAL', 'emacs'), ('XDG_STATE_HOME', '/home/cc/ee106a/fa25/class/ee106a-add/.local/state'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/90081/bus'), ('COLORTERM', 'truecolor'), ('container', 'podman'), ('UBUNTU_MENUPROXY', '1'), ('QT_QPA_PLATFORMTHEME', 'gtk2'), ('COLCON_PREFIX_PATH', '/home/ff/ee106a/robot_workspaces/ur/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'ee106a-add'), ('MASTER', 'ee106a'), ('WINDOWID', '38280035'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERMINFO_DIRS', '/usr/share/terminfo:/run/host/usr/share/terminfo'), ('USERNAME', 'ee106a-add'), ('TERM', 'xterm-256color'), ('GTK_OVERLAY_SCROLLING', '0'), ('XDG_SESSION_ID', '1489'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/share/b/grading/bin:/home/ff/ee106a/bin:/home/ff/ee106a/bin/arch/x86_64:/share/b/grading/bin:/home/ff/ee106a/bin:/home/ff/ee106a/bin/arch/x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/share/b/grading/bin:/share/b/grading/sbin:/share/b/runas/x86_64:/share/b/bin:/home/ff/ee106a/venvs/all:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/share/b/grading/bin:/share/b/grading/sbin:/share/b/runas/x86_64:/share/b/bin:/home/ff/ee106a/venvs/all'), ('SESSION_MANAGER', 'local/c105-6:@/tmp/.ICE-unix/186021,unix/c105-6:/tmp/.ICE-unix/186021'), ('OS', 'Linux'), ('XDG_RUNTIME_DIR', '/run/user/90081'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'MATE'), ('XDG_DATA_HOME', '/home/cc/ee106a/fa25/class/ee106a-add/.local/share'), ('XDG_CONFIG_HOME', '/home/cc/ee106a/fa25/class/ee106a-add/.config'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'mate'), ('XAUTHORITY', '/run/user/90081/gdm/Xauthority'), ('SSH_AUTH_SOCK', '/run/user/90081/keyring/ssh'), ('ROS_DOMAIN_ID', '26'), ('AMENT_PREFIX_PATH', '/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble'), ('SHELL', '/usr/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('EE106_UR_ROBOT_NAME', 'baymax'), ('GDMSESSION', 'mate'), ('RUNAS', '/share/b/runas/x86_64'), ('GPG_AGENT_INFO', '/run/user/90081/gnupg/S.gpg-agent:0:1'), ('CONFIG_SHELL', '/usr/bin/ksh'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/build/ros2_aruco_interfaces'), ('EE106_ENV_SETUP', 'ur_ros2'), ('CONTAINER_ID', 'ros2'), ('LC_ALL', 'C.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-mate:/etc/xdg'), ('CLUTTER_IM_MODULE', 'ibus'), ('XDG_DATA_DIRS', '/usr/share/mate:/usr/share/mate:/usr/share/gnome:/home/cc/ee106a/fa25/class/ee106a-add/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop:/usr/local/share:/usr/share'), ('PYTHONPATH', '/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('MATE_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('COLCON', '1'), ('MANPATH', '/usr/local/man:/usr/man:/usr/X11/man:/usr/local/man:/share/b/grading/man:/usr/local/man:/usr/man:/usr/X11/man:/usr/local/man:/share/b/grading/man:'), ('VTE_VERSION', '6800'), ('EDITOR', 'emacs'), ('QT_FONT_DPI', '122'), ('CMAKE_PREFIX_PATH', '/home/ff/ee106a/robot_workspaces/ur/install/ur7e_utils:/opt/ros/humble')]), 'shell': False}
+[1.002239] (-) TimerEvent: {}
+[1.017317] (ros2_aruco_interfaces) StderrLine: {'line': b'\x1b[0mCMake Error: The current CMakeCache.txt directory /home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/build/ros2_aruco_interfaces/CMakeCache.txt is different than the directory /home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/build/ros2_aruco_interfaces where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt\x1b[0m\n'}
+[1.102342] (-) TimerEvent: {}
+[1.166594] (ros2_aruco_interfaces) StderrLine: {'line': b'\x1b[0mCMake Error: The source directory "/home/cc/ee106a/fa25/class/ee106a-adb/106project/106a-CATCH/lab5/src/ros2_aruco/ros2_aruco_interfaces" does not exist.\n'}
+[1.166794] (ros2_aruco_interfaces) StderrLine: {'line': b'Specify --help for usage, or press the help button on the CMake GUI.\x1b[0m\n'}
+[1.167521] (ros2_aruco_interfaces) StderrLine: {'line': b'gmake: *** [Makefile:747: cmake_check_build_system] Error 1\n'}
+[1.169709] (ros2_aruco_interfaces) CommandEnded: {'returncode': 2}
+[1.202423] (-) TimerEvent: {}
+[1.272667] (ros2_aruco_interfaces) JobEnded: {'identifier': 'ros2_aruco_interfaces', 'rc': 2}
+[1.302527] (-) TimerEvent: {}
+[1.402859] (-) TimerEvent: {}
+[1.480355] (ros2_aruco) JobEnded: {'identifier': 'ros2_aruco', 'rc': 'SIGINT'}
+[1.485513] (perception) JobEnded: {'identifier': 'perception', 'rc': 'SIGINT'}
+[1.488237] (planning) JobEnded: {'identifier': 'planning', 'rc': 'SIGINT'}
+[1.498380] (-) EventReactorShutdown: {}
