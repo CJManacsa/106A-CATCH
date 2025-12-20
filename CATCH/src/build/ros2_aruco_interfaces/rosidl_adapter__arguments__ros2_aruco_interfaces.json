@@ -1,7 +1,0 @@
-{
-  "package_name": "ros2_aruco_interfaces",
-  "non_idl_tuples": [
-    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/ros2_aruco/ros2_aruco_interfaces:msg/ArucoMarkers.msg",
-    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/ros2_aruco/ros2_aruco_interfaces:srv/StoreTransform.srv"
-  ]
-}

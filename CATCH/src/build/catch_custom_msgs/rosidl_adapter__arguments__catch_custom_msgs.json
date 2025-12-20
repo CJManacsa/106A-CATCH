@@ -1,6 +1,0 @@
-{
-  "package_name": "catch_custom_msgs",
-  "non_idl_tuples": [
-    "/home/cc/ee106a/fa25/class/ee106a-add/106A-CATCH/CATCH/src/custom_msgs:msg/PointVel.msg"
-  ]
-}
