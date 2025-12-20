@@ -21,10 +21,4 @@ def generate_launch_description():
             name='ball_trajectory_estimator',
             output='screen'
         ),
-        # Node(
-        #     package='perception',
-        #     executable='closest_predicted_point',
-        #     name='closest_predicted_point',
-        #     output='screen'
-        # ),
     ])

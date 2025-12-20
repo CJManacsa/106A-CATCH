@@ -28,12 +28,10 @@ setup(
     entry_points={
         'console_scripts': [
             'process_depth_image = perception.process_depth_image:main',
-            'display_plane = perception.find_table_plane:main',
             'color_identifier = perception.color_identifier:main',
             'ball_trajectory_estimator = perception.ball_trajectory_estimator:main',
             'blob_detector = perception.blob_detector_ros2:main',
             'closest_predicted_point = perception.closest_predicted_point:main',
-            'zxLS = perception.zxLS:main',
         ],
     },
 )
